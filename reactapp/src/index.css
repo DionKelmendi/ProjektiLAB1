@@ -1,0 +1,433 @@
+* {
+
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+header {
+
+  padding: 25px;
+  position: fixed;
+  width: 100%;
+  z-index: 9999999;
+}
+
+.navBrand {
+  color: white;
+  text-decoration: none;
+  transition: 0.1s all ease-in;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: auto;
+}
+
+nav ul {
+  display: flex;
+  list-style-type: none;
+  gap: 25px;
+  align-items: center;
+}
+
+.listItem {
+
+  text-decoration: none;
+  color: white;
+
+  transition: 0.1s all ease-in;
+}
+
+.listItem:hover,
+.navBrand:hover {
+  opacity: 50%;
+}
+
+.signInButton {
+
+  margin-left: 20px;
+  padding: 12px;
+  background: black;
+  border: none;
+  color: white;
+  cursor: pointer;
+  width: 100px;
+}
+
+section {
+  height: 100vh;
+}
+
+.hero {
+  background: url('images/heroImage.webp');
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+
+  display: flex;
+  justify-content: center;
+}
+
+.hero .container {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: left;
+  gap: 50px;
+
+  margin: auto;
+  padding: 20px;
+  color: white;
+
+}
+
+.hero .container>* {
+
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+}
+
+.hero .container>*:last-child {
+  backdrop-filter: none;
+}
+
+.hero .container h2 {
+
+  font-size: 70px;
+}
+
+.hero .container h3 {
+
+  font-size: 36px;
+}
+
+.hero .container .item {
+  width: 100%;
+}
+
+.hero .container button {
+
+  font-size: 24px;
+  padding: 12px;
+  background: black;
+  border: none;
+  color: white;
+  cursor: pointer;
+  width: 300px;
+  border-radius: 5px;
+}
+
+.categories {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: rgb(246, 246, 246);
+  background: linear-gradient(180deg, rgba(246, 246, 246, 1) 79%, rgba(198, 198, 198, 1) 100%);
+}
+
+.categories .container {
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: start;
+  display: flex;
+  margin-top: 35px;
+  width: 80%;
+}
+
+.categories .container div {
+  margin-bottom: 10px;
+}
+
+.categoryTitle {
+
+  margin-bottom: 20px;
+}
+
+.categories h2 {
+  text-align: left;
+}
+
+.findCar {
+  width: 66%;
+  font-size: 28px;
+}
+
+.categories .item div {
+  margin-left: 20px;
+  width: 200px;
+}
+
+.categories a {
+  text-decoration: none;
+  color: black;
+}
+
+.categoryLogo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.categoryList {
+
+  display: flex;
+  width: 700px;
+  flex-wrap: wrap;
+}
+
+.categories .item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 320px;
+  margin-left: 10px;
+  padding: 20px;
+  border-radius: 10px;
+  transition: all 0.3s ease-in;
+  box-shadow: 0px 5px 13px -7px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 5px 13px -7px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 5px 13px -7px rgba(0, 0, 0, 0.5);
+}
+
+.categories .item:hover {
+  background-color: #e6e6e6;
+}
+
+.categories .item div h4 {
+
+  font-weight: 400;
+  color: #aaa;
+}
+
+.carSlider {
+  background: #363636;
+  background: linear-gradient(180deg, #363636 14%, rgba(38, 38, 38, 1) 63%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.sliderContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(1800px);
+  transition: 1s all ease-in-out;
+}
+
+.sliderItem {
+
+  transition: 1s all ease-in-out;
+}
+
+.carSlider .sliderItem img {
+
+  width: 750px;
+  height: 350px;
+  object-fit: cover;
+  transition: 0.3s all ease-in-out;
+}
+
+.carSlider .sliderItem img:hover {
+  transform: scale(1.02);
+}
+
+.carSlider .sliderItem h1,
+.carSlider .sliderItem h4 {
+
+  color: white;
+  width: 90%;
+  margin: auto;
+  text-align: center;
+  transform: translateY(50px);
+}
+
+.carSlider .sliderItem h1 {
+  font-size: 50px;
+}
+
+.carSlider .sliderItem h4 {
+  margin-top: 25px;
+  font-weight: 100;
+  font-size: 24px;
+  text-align: justify;
+}
+
+.carSlider .sliderItem button {
+  background: none;
+  color: orange;
+  border: 1px solid orange;
+  padding: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  transform: translateY(100px);
+  margin-left: calc(50% - 75px);
+  width: 150px;
+  transition: 0.3s all ease-in;
+}
+
+.carSlider .sliderItem button:hover {
+
+  background: orange;
+  color: #363636;
+}
+
+.hidden {
+  opacity: 10%;
+}
+
+.reviews {
+
+  background: rgb(246, 246, 246);
+  background: linear-gradient(180deg, rgba(246, 246, 246, 1) 79%, rgba(198, 198, 198, 1) 100%);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.reviews .container {
+
+  width: 80%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.reviewCard {
+
+  padding: 35px;
+  height: 350px;
+  width: 350px;
+  background: white;
+  text-align: justify;
+
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.reviewCard .star {
+
+  transform: scale(1.5);
+  display: flex;
+  gap: 10px;
+  color: #f3da35;
+}
+
+.reviewTitle {
+
+  font-size: 70px;
+  transform: translateY(-150px);
+}
+
+.reviewCard h4 {
+  font-size: 24px;
+}
+
+.reviewCard img {
+
+  width: 175px;
+  height: 175px;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: 100%;
+  position: absolute;
+  transform: translateY(-225px);
+  border: 10px solid rgb(246, 246, 246);
+
+}
+
+footer {
+
+  height: 340px;
+  background: #363636;
+  color: white;
+}
+
+footer a {
+
+  color: #ddd;
+  text-decoration: none;
+}
+
+footer .container {
+
+  display: flex;
+  justify-content: space-evenly;
+  padding: 50px;
+}
+
+footer hr {
+
+  width: 90%;
+  margin: auto;
+}
+
+footer h4 {
+
+  font-size: 20px;
+}
+
+footer h3 {
+
+  width: 100%;
+  text-align: center;
+  padding: 27px;
+  font-size: 24px;
+}
+
+footer p {
+
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+footer i {
+
+  font-size: 35px;
+  margin-left: 10px;
+}
+
+footer input {
+
+  background: none;
+  color: white;
+  border: 1px solid white;
+  padding: 10px;
+  margin-right: 15px;
+
+  transition: 0.3s all ease-in;
+}
+
+footer input:focus {
+  border: 1px solid orange;
+}
+
+footer input[type="submit"]:hover {
+  background: orange;
+  border: 1px solid orange;
+  color: #363636;
+  cursor: pointer;
+}
