@@ -7,6 +7,18 @@
   letter-spacing: 1px;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  -ms-overflow-style: none;
+}
+
+html {
+  scrollbar-width: none;
+}
+
 header {
 
   padding: 25px;
@@ -141,8 +153,7 @@ section {
 
   display: flex;
   justify-content: space-evenly;
-  align-items: start;
-  display: flex;
+  align-items: flex-start;
   margin-top: 35px;
   width: 80%;
 }
@@ -308,7 +319,6 @@ section {
   width: 80%;
 
   display: flex;
-  justify-content: center;
   align-items: center;
   justify-content: space-evenly;
 }
@@ -322,7 +332,7 @@ section {
   text-align: justify;
 
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   flex-direction: column;
   gap: 25px;
@@ -414,20 +424,149 @@ footer input {
 
   background: none;
   color: white;
-  border: 1px solid white;
+  outline: 2px solid white;
   padding: 10px;
   margin-right: 15px;
+  border: none;
 
   transition: 0.3s all ease-in;
 }
 
 footer input:focus {
-  border: 1px solid orange;
+  outline: 2px solid orange;
+}
+
+footer input[type="submit"] {
+  outline: none;
+  border: 2px solid white;
 }
 
 footer input[type="submit"]:hover {
   background: orange;
-  border: 1px solid orange;
+  border: 2px solid orange;
   color: #363636;
   cursor: pointer;
+}
+
+.signIn {
+
+  background: url('images/heroImage.webp');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  font-size: 16px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signIn .formTitle {
+
+  background: #363636;
+  width: 80%;
+  height: 100px;
+  border-radius: 5px;
+  color: white;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+}
+
+.signIn h1 {
+  text-align: center;
+}
+
+.signIn form {
+
+  width: 700px;
+  height: auto;
+  background: white;
+  padding: 50px 0px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.signIn input {
+
+  width: 80%;
+  border-radius: 5px;
+  padding: 25px 5px 5px 5px;
+  font-size: 14px;
+  background: #eee;
+  outline: 2px solid #eee;
+  border: none;
+
+  transition: 0.3s ease-in;
+}
+
+.signIn input:focus {
+  outline: 2px solid orange;
+}
+
+.signIn label {
+  margin-top: 10px;
+  font-size: 12px;
+  text-align: left;
+  width: 75%;
+  opacity: 50%;
+  transform: translateY(22px);
+}
+
+.signIn input[type="submit"] {
+
+  background: orange;
+  color: white;
+  font-weight: bolder;
+  padding: 15px;
+  margin-top: 30px;
+  outline: 2px solid orange;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+}
+
+.signIn input[type="submit"]:hover {
+
+  background: rgb(255, 132, 0);
+  outline: 2px solid rgb(255, 132, 0);
+}
+
+.registerLink {
+
+  width: 80%;
+  text-align: right;
+  transform: translateY(30px);
+}
+
+.registerLink a {
+  color: orange;
+  transition: 0.3s all ease-in;
+}
+
+.registerLink a:hover {
+  color: rgb(224, 86, 0);
+}
+
+.signIn .formName {
+
+  width: 80%;
+  max-width: 80%;
+  display: flex;
+  gap: 115px;
+
+}
+
+.signIn .formName label {
+  position: absolute;
+  transform: translate(15px, 15px);
+}
+
+.signIn .formName input {
+
+  width: 155%;
 }

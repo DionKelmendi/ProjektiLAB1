@@ -29,7 +29,7 @@ export default function Footer() {
       </div>
       <hr />
 
-      <h3>Copyright ©2023 Autosalloni</h3>
+      <h3>Copyright ©2023 Auto Paradise</h3>
     </footer>
   )
 }

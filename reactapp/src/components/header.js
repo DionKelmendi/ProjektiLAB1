@@ -29,14 +29,15 @@ export default function Header() {
     <header>
       <nav>
         <div>
-          <Link className="navBrand" to='/'>
-            <h1>Autosalloni</h1>
+          <Link className="navBrand" to='/prova/prova/'>
+            <h1>Auto Paradise</h1>
           </Link>
         </div>
         <ul className="">
           <li><Link className='listItem' to="/about"> ABOUT </Link></li>
           <li><Link className='listItem' to="/products"> PRODUCTS </Link></li>
           <li><Link className='listItem' to="/contact"> CONTACT US </Link></li>
+          <li><Link className='listItem' to="/signIn"><button className="signInButton">SIGN IN</button></Link></li>
         </ul>
       </nav>
     </header>
