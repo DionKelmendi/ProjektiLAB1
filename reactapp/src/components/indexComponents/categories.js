@@ -35,6 +35,7 @@ export default function Categories() {
 
         <div>
           <h4 className="categoryTitle">Popular Categories</h4>
+
           <CategoryItem categoryLogo={Hatchback} categoryName='Hatchback' carAmount='23' />
           <CategoryItem categoryLogo={SUV} categoryName='SUV' carAmount='8' />
           <CategoryItem categoryLogo={Convertible} categoryName='Convertible' carAmount='5' />

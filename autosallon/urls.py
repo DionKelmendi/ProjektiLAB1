@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from autosallonApp.views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('prova/', include('autosallonApp.urls'))
+    path('prova/', include('autosallonApp.urls')),
+    path('', index, name='index')
 ]

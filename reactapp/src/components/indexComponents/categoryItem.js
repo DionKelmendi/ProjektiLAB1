@@ -7,7 +7,7 @@ export default function CategoryItem({ categoryLogo, categoryName, carAmount }) 
         <img className='categoryLogo' src={categoryLogo} />
         <div>
           <h2> {categoryName} </h2>
-          <h4> {carAmount} Vehicles in Inventory</h4>
+          <h4> {carAmount ? carAmount + " Vehicles in Inventory" : ""}</h4>
         </div>
       </div>
     </a>

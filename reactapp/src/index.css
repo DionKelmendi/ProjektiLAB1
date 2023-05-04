@@ -25,6 +25,7 @@ header {
   position: fixed;
   width: 100%;
   z-index: 9999999;
+  backdrop-filter: blur(2px);
 }
 
 .navBrand {
@@ -72,7 +73,7 @@ nav ul {
   width: 100px;
 }
 
-section {
+.home section {
   height: 100vh;
 }
 
@@ -456,6 +457,7 @@ footer input[type="submit"]:hover {
   background-size: cover;
   background-attachment: fixed;
   font-size: 16px;
+  height: 100vh;
 
   display: flex;
   justify-content: center;
@@ -569,4 +571,211 @@ footer input[type="submit"]:hover {
 .signIn .formName input {
 
   width: 155%;
+}
+
+.carMain {
+  background: linear-gradient(180deg, rgba(246, 246, 246, 1) 79%, rgba(198, 198, 198, 1) 100%)
+}
+
+.cars {
+  height: 20vh;
+  color: #363636;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.carMain select,
+.carMain input[type="submit"] {
+
+  margin-top: 10px;
+  background: none;
+  border: none;
+  outline: 2px solid #363636;
+  border-radius: 5px;
+  color: #363636;
+
+  transition: 0.2s all ease-in;
+}
+
+.carMain input[type="submit"]:hover {
+
+  color: white;
+  outline: 2px solid #363636;
+  background: #363636;
+  cursor: pointer;
+}
+
+.carMain option {
+
+  color: black;
+}
+
+.cars .container {
+
+  width: 80%;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.cars .container div {
+
+  width: 100%;
+}
+
+.carMain input,
+.carMain select {
+
+  width: 100%;
+  padding: 10px;
+}
+
+.carMain .content {
+
+  height: 75vh;
+}
+
+.carListing {
+
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 50px;
+
+  width: 75%;
+  height: 90vh;
+  margin: auto;
+  margin-top: 75px;
+}
+
+.carItem {
+
+  max-width: 21%;
+  height: 300px;
+  flex: 1 0 21%;
+
+  transition: all 0.1s ease-in;
+}
+
+.carItem a {
+  text-decoration: none;
+  color: black;
+}
+
+.carItem .carImg {
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: top center;
+}
+
+.extendFilter {
+
+  height: 0;
+  overflow: hidden;
+  transition: 0.3s all ease-in;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.show {
+
+  height: 115px;
+}
+
+.extendedContainer {
+  width: calc(80% + 4px);
+  margin: auto;
+}
+
+.extendedContainer div {
+  width: 100%;
+  margin: 0px 2px 10px 2px;
+}
+
+.carDetails {
+
+  background: white;
+  height: 125px;
+  transform: translateY(-100px);
+  text-align: center;
+  padding: 10px;
+  width: 303px;
+
+}
+
+.carDetails hr {
+
+  color: #e6e6e6;
+}
+
+.carDetails div {
+
+  display: flex;
+  gap: 50px;
+}
+
+.carDetails i {
+
+  font-size: 22px;
+  padding: 4px;
+}
+
+.filterToggle {
+
+  color: #363636;
+  position: absolute;
+  margin: 10px;
+}
+
+.filterToggle:hover {
+
+  color: #565656;
+}
+
+.filterToggle:active {
+
+  transform: translateY(1px);
+}
+
+.carItem:hover {
+  opacity: 60%;
+  cursor: pointer;
+}
+
+.carItem .carLogo {
+
+  width: 30px;
+  height: 30px;
+}
+
+.carMain .categories {
+
+  margin-top: -30px;
+}
+
+.carMain .categories .findCar {
+
+  width: 80%;
+}
+
+.carMain .categoryList {
+
+  width: 100%;
+}
+
+.carMain .categoryList .item {
+  width: 550px;
+}
+
+.carMain .categories h2 {
+  width: 100%;
 }
