@@ -3,6 +3,7 @@ from .views import userViews
 from django.urls import path
 
 urlpatterns = [
+    
     path('car/', carViews.CarAPIView.as_view()),
     path('car/<int:pk>/', carViews.CarDetailAPIView.as_view()),
     path('car/<int:pk>/update', carViews.CarUpdateAPIView.as_view()),
@@ -12,4 +13,15 @@ urlpatterns = [
     path('user/<int:pk>/', userViews.UserDetailAPIView.as_view()),
     path('user/<int:pk>/update', userViews.UserUpdateAPIView.as_view()),
     path('user/<int:pk>/destroy', userViews.UserDestroyAPIView.as_view()),
+
+    path('contactInfo/', contactInfoViews.ContactInfoAPIView.as_view()),
+    path('contactInfo/<int:pk>/', contactInfoViews.ContactInfoDetailAPIView.as_view()),
+    path('contactInfo/<int:pk>/update', contactInfoViews.ContactInfoUpdateAPIView.as_view()),
+    path('contactInfo/<int:pk>/destroy', contactInfoViews.ContactInfoDestroyAPIView.as_view()),
+    
+    path('favorite/', favoriteViews.FavoriteAPIView.as_view()),
+    path('favorite/<int:pk>/', favoriteViews.FavoriteDetailAPIView.as_view()),
+    path('favorite/<int:pk>/update', favoriteViews.FavoriteUpdateAPIView.as_view()),
+    path('favorite/<int:pk>/destroy', favoriteViews.FavoriteDestroyAPIView.as_view()),
+
 ]
