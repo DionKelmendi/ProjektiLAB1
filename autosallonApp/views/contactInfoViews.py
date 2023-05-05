@@ -1,3 +1,11 @@
+from django.shortcuts import render
+from django.shortcuts import redirect
+from rest_framework import generics
+from ..serializers import ContactInfoSerializer
+from ..models import ContactInfo
+from rest_framework.response import Response
+from django.shortcuts import get_object_or_404
+
 # ContactInfo CRUD
 # ContactInfo Read One Instance
 class ContactInfoDetailAPIView(generics.RetrieveAPIView):
@@ -6,7 +14,7 @@ class ContactInfoDetailAPIView(generics.RetrieveAPIView):
 
 # ContactInfo Read All Instances and Create    
 class ContactInfoAPIView(generics.ListCreateAPIView):
-  queryset = ContactInfoAPIView.objects.all()
+  queryset = ContactInfo.objects.all()
   serializer_class = ContactInfoSerializer
 
   def perform_create(self, serializer):
