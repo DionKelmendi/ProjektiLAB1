@@ -1,9 +1,9 @@
-from . import views
+from .views import carViews
 from django.urls import path
 
 urlpatterns = [
-    path('car/', views.CarView.as_view()),
-    path('category/', views.CategoryView.as_view()),
-    path('user/', views.UserView.as_view()),
-    path('worker/', views.WorkerView.as_view()),
+    path('car/', carViews.CarAPIView.as_view()),
+    path('car/<int:pk>/', carViews.CarDetailAPIView.as_view()),
+    path('car/<int:pk>/update', carViews.CarUpdateAPIView.as_view()),
+    path('car/<int:pk>/destroy', carViews.CarDestroyAPIView.as_view()),
 ]
