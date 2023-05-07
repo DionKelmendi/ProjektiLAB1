@@ -52,6 +52,7 @@ function getLink() {
   let pathname = document.querySelector("#searchCar");
   let make = document.querySelector("#make").value;
   let model = document.querySelector("#model").value;
+  let category = document.querySelector("#category").value;
   let color = document.querySelector("#color").value;
   let year = document.querySelector("#year").value;
   let mileage = document.querySelector("#mileage").value;
@@ -70,6 +71,7 @@ function getLink() {
   let data = {
     make: make,
     model: model,
+    category: category,
     color: color,
     year: year,
     mileage: mileage,
@@ -78,30 +80,31 @@ function getLink() {
     fuel: fuel
   }
 
-  // alert(JSON.stringify(data))
+  alert(JSON.stringify(data))
 
-  // let url = "/cars?";
+  let url = "/cars?";
 
-  // if (make !== "") {
-  //   url = url.concat("", "?make=" + make)
+  if (make !== "") {
+    url = url.concat("", "?make=" + make)
 
-  //   if (model !== "") {
-  //     url = url.concat("", "?make=" + model)
-  //   }
-  //   if (color !== "") {
-  //     url = url.concat("", "?make=" + color)
-  //   }
-  //   if (year !== "") {
-  //     url = url.concat("", "?make=" + year)
-  //   }
-  //   if (mileage !== "") {
-  //     url = url.concat("", "?make=" + mileage)
-  //   }
-  //   if (price !== "") {
-  //     url = url.concat("", "?make=" + price)
-  //   }
+    if (model !== "") {
+      url = url.concat("", "?make=" + model)
+    }
+    if (color !== "") {
+      url = url.concat("", "?make=" + color)
+    }
+    if (year !== "") {
+      url = url.concat("", "?make=" + year)
+    }
+    if (mileage !== "") {
+      url = url.concat("", "?make=" + mileage)
+    }
+    if (price !== "") {
+      url = url.concat("", "?make=" + price)
+    }
+  }
 
-  // }
+  pathname.href = url;
 
 }
 
@@ -129,6 +132,21 @@ export default function SelectCar() {
           <option value="" id="option1">Select Make First</option>
         </select>
       </div>
+
+      <div>
+        <label htmlFor="category">Category</label><br />
+        <select id="category" >
+          <option value="">Select Category</option>
+          <option value="convertible">Convertible</option>
+          <option value="coupe">Coupe</option>
+          <option value="suv">SUV</option>
+          <option value="stationwagon">Station Wagon</option>
+          <option value="sedan">Sedan</option>
+          <option value="van">Van</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
       <div>
         <a id="searchCar" onClick={getLink} href="">
           <input type="submit" value="Show Results" />

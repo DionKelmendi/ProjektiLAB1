@@ -10,7 +10,7 @@ import filler from "../../images/fillerCar.webp"
 
 export default function CarSlider() {
   const prova = useRef();
-  const description = "Long description containing enticing informacion about this very car! Yes, it is a very good vehicle you should consider buying it! Offer wont last long, if there is an offer that is :P";
+  const description = "Long description containing exiting informacion about this very car! Yes, it is a very good vehicle, and you should consider buying it! Offer wont last long!!!";
 
   useEffect(() => {
     const slider = prova.current;
