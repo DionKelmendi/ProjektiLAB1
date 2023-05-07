@@ -1,0 +1,221 @@
+.wrapperContainer {
+  display: flex;
+  padding: 0 35px;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, rgba(246, 246, 246, 1) 79%, rgba(198, 198, 198, 1) 100%);
+
+}
+
+.wrapper {
+  display: flex;
+  max-width: 1700px;
+  position: relative;
+}
+
+.wrapper i {
+  top: 50%;
+  height: 44px;
+  width: 44px;
+  color: white;
+  cursor: pointer;
+  font-size: 1.15rem;
+  position: absolute;
+  text-align: center;
+  line-height: 44px;
+  background: #161616;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.1s linear;
+}
+
+.wrapper i:active {
+  transform: translateY(-50%) scale(0.9);
+}
+
+.wrapper i:hover {
+  background: #363636;
+}
+
+.wrapper i:first-child {
+  left: -22px;
+  display: none;
+}
+
+.wrapper i:last-child {
+  right: -22px;
+}
+
+.wrapper .carousel {
+  font-size: 0px;
+  cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+}
+
+.carousel.dragging {
+  cursor: grab;
+  scroll-behavior: auto;
+}
+
+.carousel.dragging img {
+  pointer-events: none;
+}
+
+.carousel img {
+  max-height: 450px;
+  object-fit: cover;
+  user-select: none;
+  margin-left: 14px;
+  width: calc(100% / 3);
+}
+
+.carousel img:first-child {
+  margin-left: 0px;
+}
+
+@media screen and (max-width: 900px) {
+  .carousel img {
+    width: calc(100% / 2);
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .carousel img {
+    width: 100%;
+  }
+}
+
+.vehicle section {
+
+  height: 100vh;
+  background-color: #363636;
+  color: white;
+}
+
+.vehicle .container {
+
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  align-items: center;
+}
+
+.vehicle .container>.vItem {
+
+  outline: 2px solid lavender;
+  height: 475px;
+  width: 400px;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.vehicle .findCar,
+.vehicle .categoryTitle {
+  color: black;
+}
+
+.vehicle .carInfo h1,
+.vehicle .calculator h1 {
+
+  margin-bottom: 50px;
+}
+
+.vehicle p {
+
+  padding: 10px;
+}
+
+.vehicle span {
+
+  float: right;
+  width: 50%;
+  text-align: right;
+  box-shadow: 0 1px 0 #aaa;
+}
+
+.vehicle .calculator div {
+  margin-top: 15px;
+}
+
+.vehicle .calculator input,
+.vehicle .contact button {
+
+  background: none;
+  border: none;
+  outline: 2px solid white;
+  color: white;
+  padding: 10px;
+  transition: 0.2s all ease-in;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.vehicle .calculator input[type=submit] {
+
+  margin-top: 35px;
+  cursor: pointer;
+  outline: 2px solid orange;
+  color: orange;
+  font-weight: bolder;
+}
+
+.vehicle .calculator input[type=submit]:hover {
+
+  outline: 2px solid orange;
+  color: #363636;
+  background: orange;
+}
+
+.vehicle input::-webkit-outer-spin-button,
+.vehicle input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.vehicle input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.vehicle .contact {
+
+  display: flex;
+  flex-direction: column;
+}
+
+.vehicle .contact h2 {
+
+  margin-top: 10px;
+}
+
+.vehicle .contact>div {
+
+  outline: 1px solid white;
+  margin-top: 35px;
+  border-radius: 5px;
+  padding: 10px;
+
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.vehicle .contact>div img {
+
+  width: 60px;
+  height: 60px;
+}
+
+.vehicle .contact button {
+
+  margin-top: 77px;
+}
+
+.vehicle .contact button:hover {
+
+  color: #363636;
+  background: white;
+  cursor: pointer;
+}
