@@ -13,16 +13,19 @@ export default function CarSlider() {
   const description = "Long description containing exiting informacion about this very car! Yes, it is a very good vehicle, and you should consider buying it! Offer wont last long!!!";
 
   useEffect(() => {
+
+    let imgWidth = document.querySelector(".sliderItem")['firstChild']['firstChild']['clientWidth'];
+
     const slider = prova.current;
     const items = slider['childNodes'];
 
     let count = 1;
-    let x = 1500;
+    let x = 2 * imgWidth;
     items[1].classList.remove("hidden");
 
     function loop() {
       slider.style.transform = ("translateX(" + x + "px)");
-      x -= 750;
+      x -= imgWidth;
 
       if (count != 1) {
         items[(count - 1)].classList.add("hidden");
@@ -33,8 +36,8 @@ export default function CarSlider() {
       items[count].classList.remove("hidden");
       count++;
 
-      if (x < -1500) {
-        x = 1500;
+      if (x < -(2 * imgWidth)) {
+        x = 2 * imgWidth;
         count = 1;
         items[1].classList.remove("hidden");
       }

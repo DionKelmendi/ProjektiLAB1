@@ -82,29 +82,29 @@ function getLink() {
 
   alert(JSON.stringify(data))
 
-  let url = "/cars?";
+  // let url = "/cars?";
 
-  if (make !== "") {
-    url = url.concat("", "?make=" + make)
+  // if (make !== "") {
+  //   url = url.concat("", "?make=" + make)
 
-    if (model !== "") {
-      url = url.concat("", "?make=" + model)
-    }
-    if (color !== "") {
-      url = url.concat("", "?make=" + color)
-    }
-    if (year !== "") {
-      url = url.concat("", "?make=" + year)
-    }
-    if (mileage !== "") {
-      url = url.concat("", "?make=" + mileage)
-    }
-    if (price !== "") {
-      url = url.concat("", "?make=" + price)
-    }
-  }
+  //   if (model !== "") {
+  //     url = url.concat("", "&model=" + model)
+  //   }
+  //   if (color !== "") {
+  //     url = url.concat("", "&color=" + color)
+  //   }
+  //   if (year !== "") {
+  //     url = url.concat("", "&year=" + year)
+  //   }
+  //   if (mileage !== "") {
+  //     url = url.concat("", "&mileage=" + mileage)
+  //   }
+  //   if (price !== "") {
+  //     url = url.concat("", "&price=" + price)
+  //   }
+  // }
 
-  pathname.href = url;
+  // pathname.href = url;
 
 }
 

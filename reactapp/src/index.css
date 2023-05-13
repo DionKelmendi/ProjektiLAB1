@@ -778,3 +778,14 @@ footer input[type="submit"]:hover {
 .carMain .categories h2 {
   width: 100%;
 }
+
+@media screen and (max-width: 550px) {
+
+
+  .carSlider .sliderItem img {
+
+    width: 400px;
+    height: 200px;
+  }
+
+}
