@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sessions',
     'rest_framework',
-    'autosallonApp'
+    'autosallonApp',
+    'chatgpt_app',
 ]
 
 MIDDLEWARE = [
