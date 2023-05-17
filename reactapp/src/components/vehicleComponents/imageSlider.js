@@ -1,6 +1,8 @@
 import { React } from 'react'
-import './slider.css';
+import './vehicle.css';
+import CarInfo from "./carInfo";
 import Car from "../../images/car.webp";
+import VW from "../../images/VW.webp"
 import { useEffect } from "react";
 
 export default function ImageSlider() {
@@ -75,22 +77,29 @@ export default function ImageSlider() {
 
   return (
     <>
-      <div className='wrapperContainer'>
-        <div className="wrapper">
-          <i id="left" className="fa-solid fa-angle-left"></i>
-          <div className="carousel">
-            <img src={Car} alt="img" draggable="false" />
-            <img src={Car} alt="img" draggable="false" />
-            <img src={Car} alt="img" draggable="false" />
-            <img src={Car} alt="img" draggable="false" />
-            <img src={Car} alt="img" draggable="false" />
-            <img src={Car} alt="img" draggable="false" />
-            <img src={Car} alt="img" draggable="false" />
-            <img src={Car} alt="img" draggable="false" />
-            <img src={Car} alt="img" draggable="false" />
+      <div className='mainSliderContainer'>
+        <img className='carLogoMain' src={VW} />
+        <h1 className='carName'>Volkswagen Golf 7</h1>
+        <div className='wrapperContainer'>
+
+          <div className="wrapper">
+            <i id="left" className="fa-solid fa-angle-left"></i>
+            <div className="carousel">
+              <img src={Car} alt="img" draggable="false" />
+              <img src={Car} alt="img" draggable="false" />
+              <img src={Car} alt="img" draggable="false" />
+              <img src={Car} alt="img" draggable="false" />
+              <img src={Car} alt="img" draggable="false" />
+              <img src={Car} alt="img" draggable="false" />
+              <img src={Car} alt="img" draggable="false" />
+              <img src={Car} alt="img" draggable="false" />
+              <img src={Car} alt="img" draggable="false" />
+            </div>
+            <i id="right" className="fa-solid fa-angle-right"></i>
           </div>
-          <i id="right" className="fa-solid fa-angle-right"></i>
         </div>
+        <hr />
+        <CarInfo make={"Volkswagen"} model={"Golf 7"} year={2020} mileage={10000} fuel={"Diesel"} transmission={"Automatic"} color={"Yellow"} engine={"2.0"} />
       </div>
     </>
   )

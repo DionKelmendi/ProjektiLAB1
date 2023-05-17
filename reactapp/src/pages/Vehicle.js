@@ -1,8 +1,8 @@
 import { React } from "react";
 import Footer from "../components/footer";
 import ImageSlider from "../components/vehicleComponents/imageSlider";
+import MiddleContent from "../components/vehicleComponents/middleContent";
 import Categories from "../components/indexComponents/categories";
-import icon from "../images/icon.webp"
 
 export default function Cars() {
 
@@ -10,70 +10,7 @@ export default function Cars() {
     <>
       <div className="vehicle">
         <ImageSlider />
-        <section className="container">
-          <div className="carInfo vItem">
-            <h1>Car Name</h1>
-
-            <p>Make <span>Make Name</span></p>
-            <p>Model <span>Model Name</span></p>
-            <p>Year <span>2000</span></p>
-            <p>Mileage <span>0</span></p>
-            <p>Fuel <span>Diesel</span></p>
-            <p>Transmission <span>Automatic</span></p>
-            <p>Color <span>Black</span></p>
-            <p>Engine <span>4.0</span></p>
-          </div>
-          <div className="calculator vItem">
-            <h1>Credit Calculator</h1>
-
-            <div>
-              <label htmlFor="amount"> Loan Amount </label><br></br>
-              <input name="amount" type="number" required /><br></br>
-            </div>
-
-            <div>
-              <label htmlFor="term"> Loan Term </label><br></br>
-              <input name="term" type="number" required /><br></br>
-            </div>
-
-            <div>
-              <label htmlFor="interest"> Interest Rate </label><br></br>
-              <input name="interest" type="number" required /><br></br>
-            </div>
-
-            <div>
-              <label htmlFor="compound"> Compound </label><br></br>
-              <input name="compound" type="number" required /><br></br>
-            </div>
-
-            <input type="submit" value="Calculate" />
-          </div>
-          <div className="contact vItem">
-
-            <h1>Contact Us</h1>
-            <h2>Sale Agents</h2>
-
-            <div>
-              <img src={icon} />
-              <div>
-                <h4>Name</h4>
-                <h3>+386 49 104 108</h3>
-              </div>
-            </div>
-
-
-            <div>
-              <img src={icon} />
-              <div>
-                <h4>Name</h4>
-                <h3>+386 49 104 108</h3>
-              </div>
-            </div>
-
-            <button>Talk directly to us</button>
-
-          </div>
-        </section>
+        <MiddleContent />
         <div className="carMain">
           <Categories />
         </div>

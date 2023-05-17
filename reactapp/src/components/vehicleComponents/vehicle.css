@@ -1,11 +1,8 @@
 .wrapperContainer {
   display: flex;
-  padding: 0 35px;
-  min-height: 100vh;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(180deg, rgba(246, 246, 246, 1) 79%, rgba(198, 198, 198, 1) 100%);
-
+  padding: 25vh 35px 12vh 35px;
 }
 
 .wrapper {
@@ -50,9 +47,15 @@
 .wrapper .carousel {
   font-size: 0px;
   cursor: pointer;
-  overflow: hidden;
+  overflow-y: hidden;
   white-space: nowrap;
   scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.wrapper::-webkit-scrollbar {
+  display: none;
 }
 
 .carousel.dragging {
@@ -69,6 +72,7 @@
   object-fit: cover;
   user-select: none;
   margin-left: 14px;
+  border-radius: 10px;
   width: calc(100% / 3);
 }
 
@@ -92,22 +96,21 @@
 
   height: 100vh;
   background-color: #363636;
-  color: white;
+  color: black;
 }
 
 .vehicle .container {
 
   display: flex;
-  justify-content: center;
-  gap: 50px;
+  justify-content: space-evenly;
   align-items: center;
 }
 
 .vehicle .container>.vItem {
 
-  outline: 2px solid lavender;
-  height: 475px;
-  width: 400px;
+  background: linear-gradient(180deg, rgba(226, 226, 226, 1) 79%, rgba(198, 198, 198, 1) 100%);
+  height: 500px;
+  width: 22vw;
   padding: 30px;
   border-radius: 10px;
 }
@@ -128,25 +131,30 @@
   padding: 10px;
 }
 
-.vehicle span {
+/* .vehicle span {
 
   float: right;
   width: 50%;
   text-align: right;
   box-shadow: 0 1px 0 #aaa;
-}
+} */
 
 .vehicle .calculator div {
   margin-top: 15px;
 }
 
+.vehicle .calculator div input {
+
+  margin-top: 5px;
+}
+
 .vehicle .calculator input,
-.vehicle .contact button {
+.vehicle .chat button {
 
   background: none;
   border: none;
-  outline: 2px solid white;
-  color: white;
+  outline: 2px solid black;
+  color: black;
   padding: 10px;
   transition: 0.2s all ease-in;
   width: 100%;
@@ -165,7 +173,7 @@
 .vehicle .calculator input[type=submit]:hover {
 
   outline: 2px solid orange;
-  color: #363636;
+  color: white;
   background: orange;
 }
 
@@ -187,12 +195,13 @@
 
 .vehicle .contact h2 {
 
+  font-size: 20px;
   margin-top: 10px;
 }
 
 .vehicle .contact>div {
 
-  outline: 1px solid white;
+  outline: 2px solid black;
   margin-top: 35px;
   border-radius: 5px;
   padding: 10px;
@@ -208,14 +217,99 @@
   height: 60px;
 }
 
-.vehicle .contact button {
+.vehicle .chat button {
 
-  margin-top: 77px;
+  margin-top: 35px;
 }
 
-.vehicle .contact button:hover {
+.vehicle .chat .aiButton:hover,
+.vehicle .chat .staffButton:hover {
 
-  color: #363636;
-  background: white;
+  color: white;
   cursor: pointer;
+}
+
+.carName {
+
+  transform: translateY(150px);
+  font-size: 40px;
+  width: 100%;
+  height: 0px;
+  text-align: center;
+}
+
+.carLogoMain {
+
+  position: absolute;
+  transform: translateY(75px);
+  width: 75px;
+  height: 75px;
+  left: calc(50% - 50px);
+  object-fit: cover;
+  object-position: center center;
+  opacity: 50%;
+}
+
+.mainSliderContainer {
+
+  height: 100vh;
+  background: linear-gradient(180deg, rgba(246, 246, 246, 1) 79%, rgba(198, 198, 198, 1) 100%);
+}
+
+.mainSliderContainer hr {
+
+  width: 90%;
+  margin: auto;
+}
+
+.carInfo {
+
+  margin: auto;
+  width: 100%;
+  height: 22vh;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.carInfo p {
+
+  font-size: 20px;
+}
+
+.carInfo span {
+
+  font-weight: bolder;
+  font-size: 24px;
+}
+
+.vehicle .chat button {
+
+  padding: 30px;
+  border-radius: 25px;
+  font-size: 24px;
+}
+
+.vehicle .chat {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.vehicle .chat .aiButton:hover {
+
+  background: #10a37f;
+
+}
+
+.vehicle .chat .staffButton:hover {
+  background: #1270b7;
+}
+
+.vehicle .chat a {
+
+  width: 100%;
 }
