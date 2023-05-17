@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 import openai
 
-openai.api_key = "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"
+openai.api_key = "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"
 
 def chat_view(request):
     if request.method == 'POST':
