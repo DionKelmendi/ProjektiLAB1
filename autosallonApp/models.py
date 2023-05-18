@@ -35,9 +35,6 @@ class CarImages(models.Model):
 
   class Meta:
     verbose_name_plural = "Car Images"
-    constraints = [
-      models.CheckConstraint(check=models.Q(car_id__images__count__lte=10), name='max_images_per_car')
-    ]  
 
   def __str__(self):
     return f"{self.car}"
