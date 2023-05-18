@@ -63,3 +63,13 @@
 
   background-color: #e78c18 !important;
 }
+
+picture img {
+
+  width: 50px !important;
+}
+
+.related-widget-wrapper select,
+.selector .selector-filter {
+  background: transparent !important;
+}
