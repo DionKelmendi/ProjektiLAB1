@@ -1,0 +1,65 @@
+.brand-link .brand-image {
+  height: 50px !important;
+}
+
+.select2-container--default .select2-selection--single {
+
+  background: none !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  color: white !important;
+}
+
+.btn-outline-success {
+
+  border-color: #00bc8c !important;
+}
+
+.btn-outline-success:hover {
+
+  background-color: #00bc8c !important;
+}
+
+.btn-outline-info {
+
+  border-color: #3498db !important;
+}
+
+.btn-outline-info:hover {
+
+  background-color: #3498db !important;
+}
+
+.vTextField,
+.vIntegerField,
+.vLargeTextField {
+
+  background: transparent !important;
+  color: white !important;
+}
+
+.select2-results__option {
+
+  color: white;
+}
+
+.btn-danger {
+
+  border-color: #e74c3c !important;
+}
+
+.btn-danger:hover {
+
+  background-color: #e74c3c !important;
+}
+
+.cancel-link {
+
+  border-color: #e78c18 !important;
+}
+
+.cancel-link:hover {
+
+  background-color: #e78c18 !important;
+}
