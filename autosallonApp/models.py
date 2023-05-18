@@ -23,6 +23,22 @@ class Car(models.Model):
 
   def __str__(self):
     return (self.make + " " + self.model)
+  
+
+def car_image_upload_path(instance, filename):
+    return f'reactapp/src/images/{filename}'
+
+class CarImages(models.Model):
+    car = models.ForeignKey(Car, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to=car_image_upload_path)
+class Meta:
+        constraints = [
+            models.CheckConstraint(check=models.Q(car_id__images__count__lte=10), name='max_images_per_car')
+        ]
+
+def __str__(self):
+    return f"{self.car}"
+
 
 class User(models.Model):
   name = models.CharField(max_length=50)
