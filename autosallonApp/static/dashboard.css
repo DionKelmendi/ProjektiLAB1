@@ -33,7 +33,8 @@
 
 .vTextField,
 .vIntegerField,
-.vLargeTextField {
+.vLargeTextField,
+input[type="number"] {
 
   background: transparent !important;
   color: white !important;

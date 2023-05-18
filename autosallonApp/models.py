@@ -8,7 +8,7 @@ class Category(models.Model):
     verbose_name_plural = "Categories"
 
   def __str__(self):
-        return self.name
+        return f"({self.id}) {self.name}"
 
 class Car(models.Model):
   make = models.CharField(max_length=50)
@@ -22,7 +22,8 @@ class Car(models.Model):
   category_id = models.ForeignKey(Category, on_delete=models.CASCADE)
 
   def __str__(self):
-    return (self.make + " " + self.model)
+    is_sold = "Sold" if self.sold else "Not sold"
+    return f"({self.id}) {self.make} {self.model} - {self.year} - {is_sold}"
 
   
 def car_image_upload_path(instance, filename):
@@ -49,7 +50,7 @@ class User(models.Model):
   registration_date = models.DateTimeField(auto_now_add=True)
 
   def __str__(self):
-    return self.name
+    return f"({self.id}) {self.name}"
 
 class ContactInfo(models.Model):
   user_id = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -57,7 +58,7 @@ class ContactInfo(models.Model):
   phone = models.CharField(max_length=20)
 
   def __str__(self):
-    return f"{self.user_id}"
+    return f"{self.user_id}'s Contact Info"
 
 class Distributor(models.Model):
   name = models.CharField(max_length=50)
@@ -66,7 +67,7 @@ class Distributor(models.Model):
   phone = models.CharField(max_length=20)
 
   def __str__(self):
-    return self.name
+    return f"({self.id}) {self.name}"
 
 class Worker(models.Model):
   name = models.CharField(max_length=50)
@@ -77,7 +78,7 @@ class Worker(models.Model):
   position = models.CharField(max_length=50)
 
   def __str__(self):
-    return self.name
+    return f"({self.id}) {self.name} {self.position}"
 
 class Favorite(models.Model):
   user_id = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -85,7 +86,7 @@ class Favorite(models.Model):
   favorite_date = models.DateTimeField(auto_now_add=True)
 
   def __str__(self):
-    return f"{self.user_id} : {self.car_id}"
+    return f"({self.id}) {self.user_id} : {self.car_id}"
 
 class Review(models.Model):
   user_id = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -95,7 +96,7 @@ class Review(models.Model):
   comment = models.TextField()
 
   def __str__(self):
-    return f"{self.user_id} : {self.car_id}"
+    return f"({self.id}) {self.user_id} : {self.car_id}"
 
 class Sale(models.Model):
   car_id = models.ForeignKey(Car, on_delete=models.CASCADE)
@@ -105,7 +106,7 @@ class Sale(models.Model):
   sale_date = models.DateTimeField(auto_now_add=True)
 
   def __str__(self):
-    return f"{self.user_id} : {self.car_id} : {self.price}"
+    return f"({self.id}) {self.user_id} : {self.car_id} : {self.price}"
 
 class Dis_Transaction(models.Model):
   distributor_id = models.ForeignKey(Distributor, on_delete=models.CASCADE)
@@ -114,5 +115,5 @@ class Dis_Transaction(models.Model):
   transaction_date = models.DateTimeField(auto_now_add=True)
 
   def __str__(self):
-    return f"{self.distributor_id} : {self.car_id} : {self.amount}"
+    return f"({self.id}) {self.distributor_id} : {self.car_id} : {self.amount}"
   
