@@ -15,10 +15,6 @@ export default function Calculator() {
 
     let message = "";
 
-    console.log(amount);
-    console.log(term);
-    console.log(interestRate);
-
     if (isNaN(amount)) {
       message = message.concat("Amount is not a number or is improperly written. \n")
     }
@@ -37,8 +33,6 @@ export default function Calculator() {
       let monthlyPayment = amount * iPm;
       monthlyPayment = monthlyPayment / (1 - Math.pow((1 + iPm), (-12) * term))
 
-      console.log("Monthly Payment " + monthlyPayment);
-
       while (amount > 0) {
 
         let interest = (amount / 12) * interestRate;
@@ -50,7 +44,6 @@ export default function Calculator() {
         amount -= principal;
       }
 
-      console.log(table);
       document.querySelector(".loanTableButton").classList.remove("hidden")
       document.querySelector(".loanTableButton").disabled = false;
     } else {

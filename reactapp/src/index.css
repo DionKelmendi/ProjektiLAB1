@@ -667,9 +667,8 @@ footer input[type="submit"]:hover {
 .carItem .carImg {
 
   width: 100%;
-  height: 100%;
+  height: 200px;
 
-  object-fit: contain;
   object-position: top center;
 }
 
@@ -704,7 +703,6 @@ footer input[type="submit"]:hover {
 
   background: white;
   height: 125px;
-  transform: translateY(-100px);
   text-align: center;
   padding: 10px;
   width: 303px;
@@ -754,6 +752,7 @@ footer input[type="submit"]:hover {
 
   width: 30px;
   height: 30px;
+  object-fit: contain;
 }
 
 .carMain .categories {

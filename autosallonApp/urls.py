@@ -1,7 +1,12 @@
-from .views import carViews, categoryViews, contactInfoViews, dis_TransactionViews, distributorViews, favoriteViews, reviewViews, saleViews, userViews, workerViews
+from .views import carImagesViews, carViews, categoryViews, contactInfoViews, dis_TransactionViews, distributorViews, favoriteViews, reviewViews, saleViews, userViews, workerViews
 from django.urls import path
 
 urlpatterns = [
+
+    path('carImages/', carImagesViews.CarImageCreateAPIView.as_view()),
+    path('carImages/<int:pk>/', carImagesViews.CarImageDetailAPIView.as_view()),
+    path('carImages/<int:pk>/update', carImagesViews.CarImageUpdateAPIView.as_view()),
+    path('carImages/<int:pk>/destroy', carImagesViews.CarImageDestroyAPIView.as_view()),
 
     path('category/', categoryViews.CategoryAPIView.as_view()),
     path('category/<int:pk>/', categoryViews.CategoryDetailAPIView.as_view()),

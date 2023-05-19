@@ -1,7 +1,14 @@
 import { React } from 'react'
 import './vehicle.css';
 import CarInfo from "./carInfo";
-import Car from "../../images/car.webp";
+import Golf7 from "../../images/Golf7.webp";
+import Golf7_2 from "../../images/Golf7_2.webp";
+import backview from "../../images/backview.webp";
+import interior1 from "../../images/interior1.webp"
+import interior2 from "../../images/interior2.webp"
+import interior3 from "../../images/interior3.webp"
+import interior4 from "../../images/interior4.webp"
+import trunk from "../../images/trunk.webp"
 import VW from "../../images/VW.webp"
 import { useEffect } from "react";
 
@@ -85,15 +92,14 @@ export default function ImageSlider() {
           <div className="wrapper">
             <i id="left" className="fa-solid fa-angle-left"></i>
             <div className="carousel">
-              <img src={Car} alt="img" draggable="false" />
-              <img src={Car} alt="img" draggable="false" />
-              <img src={Car} alt="img" draggable="false" />
-              <img src={Car} alt="img" draggable="false" />
-              <img src={Car} alt="img" draggable="false" />
-              <img src={Car} alt="img" draggable="false" />
-              <img src={Car} alt="img" draggable="false" />
-              <img src={Car} alt="img" draggable="false" />
-              <img src={Car} alt="img" draggable="false" />
+              <img src={Golf7} alt="img" draggable="false" />
+              <img src={Golf7_2} alt="img" draggable="false" />
+              <img src={backview} alt="img" draggable="false" />
+              <img src={interior1} alt="img" draggable="false" />
+              <img src={interior2} alt="img" draggable="false" />
+              <img src={interior3} alt="img" draggable="false" />
+              <img src={interior4} alt="img" draggable="false" />
+              <img src={trunk} alt="img" draggable="false" />
             </div>
             <i id="right" className="fa-solid fa-angle-right"></i>
           </div>

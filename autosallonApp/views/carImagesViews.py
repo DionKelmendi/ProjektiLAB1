@@ -7,9 +7,9 @@ from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 
 # CarImage Create
-class CarImageCreateAPIView(generics.CreateAPIView):
-    queryset = CarImages.objects.all()
-    serializer_class = CarImageSerializer
+class CarImageCreateAPIView(generics.ListCreateAPIView):
+  queryset = CarImages.objects.all()
+  serializer_class = CarImageSerializer
 
 # CarImage Read One Instance
 class CarImageDetailAPIView(generics.RetrieveAPIView):

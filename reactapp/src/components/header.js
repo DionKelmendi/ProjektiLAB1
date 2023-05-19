@@ -34,7 +34,7 @@ export default function Header() {
           </Link>
         </div>
         <ul className="">
-          <li><Link className='listItem' to="/about"> ABOUT </Link></li>
+          {/* <li><Link className='listItem' to="/about"> ABOUT </Link></li> */}
           <li><Link className='listItem' to="/cars"> VEHICLES </Link></li>
           <li><Link className='listItem' to="/contact"> CONTACT US </Link></li>
           <li><Link className='listItem' to="/signIn"><button className="signInButton">SIGN IN</button></Link></li>

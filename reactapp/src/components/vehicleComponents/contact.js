@@ -11,24 +11,24 @@ export default function Contact() {
       <div>
         <img src={icon} />
         <div>
-          <h4>Name</h4>
-          <h3>+386 49 104 108</h3>
+          <h4>Dion Kelmendi</h4>
+          <h3>+386 49 123 456</h3>
         </div>
       </div>
 
       <div>
         <img src={icon} />
         <div>
-          <h4>Name</h4>
-          <h3>+386 49 104 108</h3>
+          <h4>Blend Podvorica</h4>
+          <h3>+386 49 789 012</h3>
         </div>
       </div>
 
       <div>
         <img src={icon} />
         <div>
-          <h4>Name</h4>
-          <h3>+386 49 104 108</h3>
+          <h4>Donat Budakova</h4>
+          <h3>+386 49 345 678</h3>
         </div>
       </div>
     </div>

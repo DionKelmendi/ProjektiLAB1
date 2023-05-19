@@ -93,7 +93,7 @@ class Review(models.Model):
   comment = models.TextField()
 
   def __str__(self):
-    return f"({self.id}) {self.user_id} : {self.car_id}"
+    return f"({self.id}) {self.user_id} - Reviewed - {self.car_id} - Rating: {self.rating}"
 
 class Sale(models.Model):
   car_id = models.ForeignKey(Car, on_delete=models.CASCADE)
