@@ -1,7 +1,9 @@
 import React from 'react';
-import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Calculator() {
+
+  let table = [];
 
   function calc() {
 
@@ -9,15 +11,13 @@ export default function Calculator() {
 
     let amount = parseInt(form[1].children[2].value);
     let term = parseInt(form[2].children[2].value);
-    let interest = parseInt(form[3].children[2].value);
-    let compound = parseInt(form[4].children[2].value);
+    let interestRate = parseInt(form[3].children[2].value);
 
     let message = "";
 
     console.log(amount);
     console.log(term);
-    console.log(interest);
-    console.log(compound);
+    console.log(interestRate);
 
     if (isNaN(amount)) {
       message = message.concat("Amount is not a number or is improperly written. \n")
@@ -25,21 +25,44 @@ export default function Calculator() {
     if (isNaN(term)) {
       message = message.concat("Term is not a number or is improperly written. \n")
     }
-    if (isNaN(interest)) {
-      message = message.concat("Interest is not a number or is improperly written. \n")
-    }
-    if (isNaN(compound)) {
-      message = message.concat("Compound is not a number or is improperly written. \n")
+    if (isNaN(interestRate)) {
+      message = message.concat("Interest Rate is not a number or is improperly written. \n")
     }
 
     if (message === "") {
-      alert(Math.pow(3, -200));
+
+      interestRate = interestRate * 0.01;
+      let iPm = interestRate / 12;
+
+      let monthlyPayment = amount * iPm;
+      monthlyPayment = monthlyPayment / (1 - Math.pow((1 + iPm), (-12) * term))
+
+      console.log("Monthly Payment " + monthlyPayment);
+
+      while (amount > 0) {
+
+        let interest = (amount / 12) * interestRate;
+        let principal = monthlyPayment - interest;
+
+        let row = [amount, interest, principal, monthlyPayment]
+        table.push(row)
+
+        amount -= principal;
+      }
+
+      console.log(table);
+      document.querySelector(".loanTableButton").classList.remove("hidden")
+      document.querySelector(".loanTableButton").disabled = false;
     } else {
       alert(
         "Your credit couldn't be calculated because:\n\n" +
         message
       )
     }
+  }
+
+  function getTable() {
+    return table;
   }
 
   return (
@@ -52,21 +75,20 @@ export default function Calculator() {
       </div>
 
       <div>
-        <label htmlFor="term"> Loan Term </label><br></br>
+        <label htmlFor="term"> Loan Term (In years) </label><br></br>
         <input name="term" type="number" required /><br></br>
       </div>
 
       <div>
-        <label htmlFor="interest"> Interest Rate </label><br></br>
+        <label htmlFor="interest"> Interest Rate (%) </label><br></br>
         <input name="interest" type="number" required /><br></br>
       </div>
 
-      <div>
-        <label htmlFor="compound"> Compound </label><br></br>
-        <input name="compound" type="number" required /><br></br>
-      </div>
-
       <input type="submit" value="Calculate" onClick={calc} />
+
+      <Link to={'/table'} state={{ data: getTable() }}>
+        <button type="button" className='loanTableButton hidden' disabled> Show Table </button>
+      </Link>
     </div>
   )
 }

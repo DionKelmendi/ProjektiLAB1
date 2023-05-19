@@ -149,7 +149,8 @@
 }
 
 .vehicle .calculator input,
-.vehicle .chat button {
+.vehicle .chat button,
+.loanTableButton {
 
   background: none;
   border: none;
@@ -312,4 +313,16 @@
 .vehicle .chat a {
 
   width: 100%;
+}
+
+.loanTableButton {
+
+  margin-top: 35px;
+}
+
+.loanTableButton:hover {
+
+  background-color: black;
+  color: white;
+  cursor: pointer;
 }

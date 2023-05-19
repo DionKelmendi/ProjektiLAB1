@@ -7,6 +7,7 @@ import Header from './components/header';
 import Register from './pages/Register.js';
 import Cars from "./pages/Cars.js";
 import Vehicle from "./pages/Vehicle.js";
+import Table from "./pages/Table.js";
 
 export default function App() {
 
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="/signIn" element={<SignIn />} />
         <Route path="/register" element={<Register />} />
         <Route path="/vehicle" element={<Vehicle />} />
+        <Route path="/table" element={<Table />} />
 
       </Routes>
     </>

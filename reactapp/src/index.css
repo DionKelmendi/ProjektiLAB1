@@ -779,6 +779,41 @@ footer input[type="submit"]:hover {
   width: 100%;
 }
 
+.loanTable {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #565656;
+  padding-bottom: 30px;
+  font-size: 18px;
+}
+
+.loanTable table {
+
+  margin: auto;
+  margin-top: 100px;
+  background-color: #f7f7f7;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  margin-bottom: 50px;
+}
+
+.loanTable table td,
+.loanTable table th {
+
+  border: 2px solid #494949;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.loanTable table tr:nth-child(even) {
+
+  background: #b1b1b1;
+}
+
 @media screen and (max-width: 550px) {
 
 

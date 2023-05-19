@@ -14,21 +14,25 @@
 .btn-outline-success {
 
   border-color: #00bc8c !important;
+  color: #00bc8c !important;
 }
 
 .btn-outline-success:hover {
 
   background-color: #00bc8c !important;
+  color: white !important;
 }
 
 .btn-outline-info {
 
   border-color: #3498db !important;
+  color: #3498db !important;
 }
 
 .btn-outline-info:hover {
 
   background-color: #3498db !important;
+  color: white !important;
 }
 
 .vTextField,
@@ -48,26 +52,30 @@ input[type="number"] {
 .btn-danger {
 
   border-color: #e74c3c !important;
+  color: #e74c3c !important;
 }
 
 .btn-danger:hover {
 
   background-color: #e74c3c !important;
+  color: white !important;
 }
 
 .cancel-link {
 
   border-color: #e78c18 !important;
+  color: #e78c18 !important;
 }
 
 .cancel-link:hover {
 
   background-color: #e78c18 !important;
+  color: white !important;
 }
 
 picture img {
 
-  width: 50px !important;
+  width: 100px !important;
 }
 
 .related-widget-wrapper select,
