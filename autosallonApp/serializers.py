@@ -14,7 +14,7 @@ class CarSerializer(serializers.ModelSerializer):
 class CarImageSerializer(serializers.ModelSerializer):
   class Meta:
     model = CarImages
-    fields = ('car_id', 'image' )    
+    fields = ('id', 'car', 'image' )    
 
 class UserSerializer(serializers.ModelSerializer):
   class Meta:

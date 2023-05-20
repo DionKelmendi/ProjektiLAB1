@@ -23,9 +23,25 @@ header {
 
   padding: 25px;
   position: fixed;
-  width: 100%;
+  width: 100vw;
   z-index: 9999999;
   backdrop-filter: blur(2px);
+}
+
+header .content {
+
+  display: flex;
+}
+
+header .content a {
+  text-decoration: none;
+}
+
+.toggleMenu {
+
+  font-size: 40px;
+  color: orange;
+  display: none;
 }
 
 .navBrand {
@@ -232,6 +248,7 @@ nav ul {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  height: 110vh !important;
 }
 
 .sliderContainer {
@@ -457,6 +474,7 @@ footer input[type="submit"]:hover {
   background-attachment: fixed;
   font-size: 16px;
   height: 100vh;
+  overflow: hidden;
 
   display: flex;
   justify-content: center;
@@ -517,6 +535,11 @@ footer input[type="submit"]:hover {
   width: 75%;
   opacity: 50%;
   transform: translateY(22px);
+}
+
+.formName div>label {
+
+  width: auto;
 }
 
 .signIn input[type="submit"] {
@@ -822,4 +845,152 @@ footer input[type="submit"]:hover {
     height: 200px;
   }
 
+}
+
+@media screen and (max-width: 1000px) {
+
+  .categories .container {
+
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .reviewTitle {
+
+    font-size: 5vw;
+  }
+
+  .reviews .container {
+
+    width: 100%;
+  }
+
+  .reviewCard {
+
+    padding: 20px;
+  }
+
+  .home .categories {
+
+    height: auto;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+
+  .toggleMenu {
+
+    display: block;
+  }
+
+  header ul {
+
+    display: none;
+  }
+
+  .categoryList {
+
+    width: 90%;
+    justify-content: center;
+  }
+
+  .categories .container div {
+
+    margin: auto;
+    margin-bottom: 10px;
+  }
+
+  .findCar {
+
+    padding-top: 30px;
+  }
+}
+
+
+@media screen and (max-width: 530px) {
+
+
+  .categoryList {
+
+    width: 90%;
+  }
+
+  .reviews {
+
+    height: 1500px !important;
+  }
+
+  .reviews .container {
+
+    flex-direction: column;
+    height: 100%;
+    gap: 75px;
+  }
+
+  .reviewTitle {
+    display: none;
+  }
+
+  footer {
+
+    height: auto;
+  }
+
+  footer .container {
+
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  footer h3 {
+    width: 100%;
+    padding: 25px;
+    font-size: 20px;
+  }
+
+  footer input[type="submit"] {
+
+    margin-top: 15px;
+  }
+}
+
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  .findCar {
+
+    margin-top: 20px;
+  }
+
+  .carSlider .sliderItem h4 {
+
+    display: none;
+  }
+
+  .carSlider {
+
+    height: 700px !important;
+  }
+
+  .carSlider .sliderItem img {
+
+    transform: scale(0.5);
+  }
+
+  .carSlider .sliderItem h1 {
+    transform: translateY(-75px);
+  }
+
+  .carSlider .sliderItem button {
+
+    transform: translateY(-50px);
+  }
+
+  .reviews {
+
+    height: 800px !important;
+  }
+
+  header {
+    -webkit-text-stroke: 0.5px orange;
+  }
 }

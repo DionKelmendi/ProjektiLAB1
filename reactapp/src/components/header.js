@@ -33,12 +33,18 @@ export default function Header() {
             <h1>Auto Paradise</h1>
           </Link>
         </div>
-        <ul className="">
-          {/* <li><Link className='listItem' to="/about"> ABOUT </Link></li> */}
-          <li><Link className='listItem' to="/cars"> VEHICLES </Link></li>
-          <li><Link className='listItem' to="/contact"> CONTACT US </Link></li>
-          <li><Link className='listItem' to="/signIn"><button className="signInButton">SIGN IN</button></Link></li>
-        </ul>
+        <div className='content'>
+          <ul className="">
+            {/* <li><Link className='listItem' to="/about"> ABOUT </Link></li> */}
+            <li><Link className='listItem' to="/cars"> VEHICLES </Link></li>
+            <li><Link className='listItem' to="/contact"> CONTACT US </Link></li>
+            <li><Link className='listItem' to="/signIn"><button className="signInButton">SIGN IN</button></Link></li>
+          </ul>
+
+          <a href='#'>
+            <i className="fa-solid fa-bars toggleMenu"></i>
+          </a>
+        </div>
       </nav>
     </header>
   )
