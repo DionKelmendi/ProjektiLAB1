@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+from datetime import timedelta
 from pathlib import Path
 import os
 
@@ -33,6 +34,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'jazzmin',
+    'corsheaders',
+    'django_extensions',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,8 +43,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sessions',
     'rest_framework',
+    'rest_framework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist',
     'autosallonApp',
     'chatgpt_app',
+    'account',
+
 ]
 
 MIDDLEWARE = [
@@ -53,7 +60,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     
+]
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'http://127.0.0.1:8000'
 ]
 
 ROOT_URLCONF = 'autosallon.urls'
@@ -141,6 +154,8 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+AUTH_USER_MODEL = 'account.User'
+
 JAZZMIN_SETTINGS = {
     # title of the window (Will default to current_admin_site.site_title if absent or None)
     "site_title": "CarShowRoom Admin",
@@ -174,7 +189,7 @@ JAZZMIN_SETTINGS = {
 
     # List of model admins to search from the search bar, search bar omitted if excluded
     # If you want to use a single search field you dont need to use a list, you can use a simple string 
-    "search_model": ["auth.User", "auth.Group"],
+    "search_model": ["account.User", "auth.Group"],
 
     # Field name on user model that contains avatar ImageField/URLField/Charfield or a callable that receives the user
     "user_avatar": None,
@@ -190,7 +205,7 @@ JAZZMIN_SETTINGS = {
         {"name": "Home",  "url": "admin:index", "permissions": ["auth.view_user"]},
 
         # model admin to link to (Permissions checked against model)
-        {"model": "auth.User"},
+        {"model": "account.User"},
 
         # App with dropdown menu to all its models pages (Permissions checked against models)
         {"app": "autosallon"},
@@ -202,7 +217,7 @@ JAZZMIN_SETTINGS = {
 
     # Additional links to include in the user menu on the top right ("app" url type is not allowed)
     "usermenu_links": [
-        {"model": "auth.user"}
+        {"model": "account.user"}
     ],
 
     #############
@@ -233,7 +248,7 @@ JAZZMIN_SETTINGS = {
     # for the full list of 5.13.0 free icon classes
     "icons": {
         "auth": "fas fa-users-cog",
-        "auth.user": "fas fa-user-secret",
+        "account.user": "fas fa-user-secret",
         "auth.Group": "fas fa-users",
         "autosallonApp.CarImages": "fas fa-image",
         "autosallonApp.Car": "fas fa-car",
@@ -279,7 +294,7 @@ JAZZMIN_SETTINGS = {
     # - carousel
     "changeform_format": "horizontal_tabs",
     # override change forms on a per modeladmin basis
-    "changeform_format_overrides": {"auth.user": "collapsible", "auth.group": "vertical_tabs"},
+    "changeform_format_overrides": {"account.user": "collapsible", "auth.group": "vertical_tabs"},
     # Add a language dropdown into the admin
     "language_chooser": True,
     
@@ -315,4 +330,31 @@ JAZZMIN_UI_TWEAKS = {
         "danger": "btn-danger",
         "success": "btn-outline-success"
     }
+}
+
+# JWT Configuration
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        
+    ),
+}
+
+# JWT Settings
+SIMPLE_JWT = {
+        'ACCESS_TOKEN_LIFETIME': timedelta(minutes=20),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+
+    'AUTH_HEADER_TYPES': ('Bearer',),
+    'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
+    'USER_ID_FIELD': 'id',
+    'USER_ID_CLAIM': 'user_id',
+    'USER_AUTHENTICATION_RULE': 'rest_framework_simplejwt.authentication.default_user_authentication_rule',
+
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+    'TOKEN_TYPE_CLAIM': 'token_type',
+    'TOKEN_USER_CLASS': 'rest_framework_simplejwt.models.TokenUser',
+
+    'JTI_CLAIM': 'jti',
+
 }

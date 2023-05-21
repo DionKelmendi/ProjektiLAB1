@@ -45,3 +45,8 @@ class WorkerDestroyAPIView(generics.DestroyAPIView):
 
     def perform_destroy(self, instance):
         super().perform_destroy(instance)
+
+#Get Worker Name by ID
+def getName(id):
+   queryset = Worker.objects.get(id=id)
+   return queryset.name
