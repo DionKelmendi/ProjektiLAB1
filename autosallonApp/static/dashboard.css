@@ -82,3 +82,8 @@ picture img {
 .selector .selector-filter {
   background: transparent !important;
 }
+
+.main-footer div {
+
+  display: none !important;
+}

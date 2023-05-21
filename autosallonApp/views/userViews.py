@@ -42,3 +42,8 @@ class UserDestroyAPIView(generics.DestroyAPIView):
 
     def perform_destroy(self, instance):
         super().perform_destroy(instance)
+
+#Get User Name by ID
+def getName(id):
+   queryset = User.objects.get(id=id)
+   return queryset.name

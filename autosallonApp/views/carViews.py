@@ -47,3 +47,13 @@ class CarDestroyAPIView(generics.DestroyAPIView):
 
     def perform_destroy(self, instance):
         super().perform_destroy(instance)
+
+#Get Car Make by ID
+def getMake(id):
+   queryset = Car.objects.get(id=id)
+   return queryset.make
+
+#Get Car Model by ID
+def getModel(id):
+   queryset = Car.objects.get(id=id)
+   return queryset.model

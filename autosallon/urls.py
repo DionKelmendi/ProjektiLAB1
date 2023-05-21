@@ -23,6 +23,7 @@ urlpatterns = [
     path('prova/', include('autosallonApp.urls')),
     path('', index, name='index'),
     path('chatGPT/', include('chatgpt_app.urls')),
+    path('account/', include('account.urls')),
     
 ]
 urlpatterns += i18n_patterns(path("admin/", admin.site.urls))

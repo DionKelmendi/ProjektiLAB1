@@ -1,6 +1,25 @@
-import { React } from 'react'
+import { React, useEffect } from 'react'
 
 export default function Footer() {
+
+  useEffect(() => {
+
+    let rows = document.querySelector(".rows").children;
+    let rowsArray = Array.prototype.slice.call(rows)
+
+    let count = 0;
+
+    rowsArray.forEach(element => {
+
+      element.style.borderTop = count + "px solid #BDBDBD";
+      if (count != 0) {
+
+        element.style.marginTop = (17 - count) + "px";
+      }
+      count++;
+    });
+  }, [])
+
   return (
     <footer>
 
@@ -30,6 +49,27 @@ export default function Footer() {
       <hr />
 
       <h3>Copyright ©2023 Auto Paradise</h3>
+
+      <div className='rows'>
+        <div className='row'></div>
+        <div className='row'></div>
+        <div className='row'></div>
+        <div className='row'></div>
+        <div className='row'></div>
+        <div className='row'></div>
+        <div className='row'></div>
+        <div className='row'></div>
+        <div className='row'></div>
+        <div className='row'></div>
+        <div className='row'></div>
+        <div className='row'></div>
+        <div className='row'></div>
+        <div className='row'></div>
+        <div className='row'></div>
+        <div className='row'></div>
+        <div className='row'></div>
+        <div className='row'></div>
+      </div>
     </footer>
   )
 }

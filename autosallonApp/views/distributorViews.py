@@ -43,3 +43,8 @@ class DistributorDestroyAPIView(generics.DestroyAPIView):
 
     def perform_destroy(self, instance):
         super().perform_destroy(instance)
+
+#Get Distributor Name by ID
+def getName(id):
+   queryset = Distributor.objects.get(id=id)
+   return queryset.name

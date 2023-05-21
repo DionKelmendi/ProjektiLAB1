@@ -465,6 +465,22 @@ footer input[type="submit"]:hover {
   cursor: pointer;
 }
 
+footer .rows {
+
+  background-color: #363636;
+}
+
+footer .row {
+
+  width: 110%;
+  transform: translateX(-5px);
+  overflow: hidden;
+  height: 15px;
+
+  color: #363636;
+}
+
+
 .signIn {
 
   background: url('images/heroImage.webp');
