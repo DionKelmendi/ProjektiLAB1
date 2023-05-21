@@ -161,3 +161,5 @@ cython_debug/
 #.idea/
 autosallon.__pycache__/
 autosallonApp.__pycache__/
+autosallonApp.migrations.__pycache__/
+autosallonApp.views.__pycache__/
