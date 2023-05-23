@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .views import userViews, carViews, distributorViews, workerViews
+from .views import userViews, carViews, distributorViews, workerViews, categoryViews
 from django.utils.safestring import mark_safe 
 from . import models
 from django.urls import reverse
@@ -21,11 +21,17 @@ admin.site.register(models.Category, CategoryModelAdmin)
 
 # Car Admin Display
 class CarModelAdmin(admin.ModelAdmin):
-  list_display = ["id", "make", "model", "price", "mileage", "year", "color", "sold", "car_link"]
+  list_display = ["id", "make", "model", "price", "mileage", "year", "color", "category_name","sold", "car_link"]
   search_fields = ["make", "model", "price"]
   ordering = ["id"]
-  list_filter = ["sold", "make", "model"]
+  list_filter = ["sold", "make", "model", "category_id__name", "color"]
   filter_horizontal = []
+
+  def category_name(self, obj):
+    categoryName = categoryViews.getName(obj.category_id)
+    return mark_safe('<a href="{}">{}</a>'.format(
+      reverse("admin:autosallonApp_category_change", args=(obj.category_id,)),
+      categoryName))
 
   def car_link(self, obj):
     return mark_safe('<a href="{}">{}</a>'.format(
@@ -38,15 +44,15 @@ admin.site.register(models.Car, CarModelAdmin)
 # Contact Info Admin Display
 class ContactInfoModelAdmin(admin.ModelAdmin):
   list_display = ["id", "address", "phone", "user_name", "contactInfo_link"]
-  search_fields = ["address", "phone", "user_id_id__name"]
+  search_fields = ["address", "phone", "user_id__name"]
   list_filter = ["address"]
   ordering = ["id"]
   filter_horizontal = []
 
   def user_name(self, obj):
-    userName = userViews.getName(obj.user_id_id)
+    userName = userViews.getName(obj.user_id)
     return mark_safe('<a href="{}">{}</a>'.format(
-      reverse("admin:autosallonApp_user_change", args=(obj.user_id_id,)),
+      reverse("admin:account_user_change", args=(obj.user_id,)),
       userName))
 
   def contactInfo_link(self, obj):
@@ -61,20 +67,20 @@ admin.site.register(models.ContactInfo, ContactInfoModelAdmin)
 class DisTransactionModelAdmin(admin.ModelAdmin):
   list_display = ["id", "amount", "distributor_name", "car_name", "disTransaction_link"]
   ordering = ["id"]
-  list_filter = ["distributor_id_id__name"]
-  search_fields = ["amount", "distributor_id_id__name", "car_id_id__name"]
+  list_filter = ["distributor_id__name"]
+  search_fields = ["amount", "distributor_id__name", "car_id__name"]
   filter_horizontal = []
 
   def car_name(self, obj):
-    carName = carViews.getMake(obj.car_id_id) + " " + carViews.getModel(obj.car_id_id)
+    carName = carViews.getMake(obj.car_id) + " " + carViews.getModel(obj.car_id)
     return mark_safe('<a href="{}">{}</a>'.format(
-      reverse("admin:autosallonApp_car_change", args=(obj.car_id_id,)),
+      reverse("admin:autosallonApp_car_change", args=(obj.car_id,)),
       carName))
     
   def distributor_name(self, obj):
-    distributorName = distributorViews.getName(obj.distributor_id_id)
+    distributorName = distributorViews.getName(obj.distributor_id)
     return mark_safe('<a href="{}">{}</a>'.format(
-      reverse("admin:autosallonApp_distributor_change", args=(obj.distributor_id_id,)),
+      reverse("admin:autosallonApp_distributor_change", args=(obj.distributor_id,)),
       distributorName))
 
   def disTransaction_link(self, obj):
@@ -103,20 +109,20 @@ admin.site.register(models.Distributor, DistributorModelAdmin)
 class FavoriteModelAdmin(admin.ModelAdmin):
   list_display = ["id","user_name", "car_name", "favorite_link"]
   ordering = ["id"]
-  list_filter = ["user_id_id__name", "car_id_id__make", "car_id_id__model"]
-  search_fields = ["user_id_id__name", "car_id_id__make", "car_id_id__model"]
+  list_filter = ["user_id__name", "car_id__make", "car_id__model"]
+  search_fields = ["user_id__name", "car_id__make", "car_id__model"]
   filter_horizontal = []
 
   def car_name(self, obj):
-    carName = carViews.getMake(obj.car_id_id) + " " + carViews.getModel(obj.car_id_id)
+    carName = carViews.getMake(obj.car_id) + " " + carViews.getModel(obj.car_id)
     return mark_safe('<a href="{}">{}</a>'.format(
-      reverse("admin:autosallonApp_car_change", args=(obj.car_id_id,)),
+      reverse("admin:autosallonApp_car_change", args=(obj.car_id,)),
       carName))
     
   def user_name(self, obj):
-    userName = userViews.getName(obj.user_id_id)
+    userName = userViews.getName(obj.user_id)
     return mark_safe('<a href="{}">{}</a>'.format(
-      reverse("admin:autosallonApp_user_change", args=(obj.user_id_id,)),
+      reverse("admin:account_user_change", args=(obj.user_id,)),
       userName))
 
   def favorite_link(self, obj):
@@ -130,20 +136,20 @@ admin.site.register(models.Favorite, FavoriteModelAdmin)
 class ReviewModelAdmin(admin.ModelAdmin):
   list_display = ["id","user_name", "car_name", "rating", "review_date" ,"review_link"]
   ordering = ["id"]
-  list_filter = ["user_id_id__name", "car_id_id__make", "car_id_id__model", "rating"]
-  search_fields = ["user_id_id__name", "car_id_id__make", "car_id_id__model"]
+  list_filter = ["user_id__name", "car_id__make", "car_id__model", "rating"]
+  search_fields = ["user_id__name", "car_id__make", "car_id__model"]
   filter_horizontal = []
 
   def car_name(self, obj):
-    carName = carViews.getMake(obj.car_id_id) + " " + carViews.getModel(obj.car_id_id)
+    carName = carViews.getMake(obj.car_id) + " " + carViews.getModel(obj.car_id)
     return mark_safe('<a href="{}">{}</a>'.format(
-      reverse("admin:autosallonApp_car_change", args=(obj.car_id_id,)),
+      reverse("admin:autosallonApp_car_change", args=(obj.car_id,)),
       carName))
     
   def user_name(self, obj):
-    userName = userViews.getName(obj.user_id_id)
+    userName = userViews.getName(obj.user_id)
     return mark_safe('<a href="{}">{}</a>'.format(
-      reverse("admin:autosallonApp_user_change", args=(obj.user_id_id,)),
+      reverse("admin:account_user_change", args=(obj.user_id,)),
       userName))
 
   def review_link(self, obj):
@@ -157,26 +163,26 @@ admin.site.register(models.Review, ReviewModelAdmin)
 class SaleModelAdmin(admin.ModelAdmin):
   list_display = ["id","user_name", "car_name", "worker_name", "sale_date","sale_link"]
   ordering = ["id"]
-  list_filter = ["user_id_id__name", "car_id_id__make", "car_id_id__model", "worker_id_id__name"]
-  search_fields = ["user_id_id__name", "car_id_id__make", "car_id_id__model", "worker_id_id__name"]
+  list_filter = ["user_id__name", "car_id__make", "car_id__model", "worker_id__name"]
+  search_fields = ["user_id__name", "car_id__make", "car_id__model", "worker_id__name"]
   filter_horizontal = []
 
   def car_name(self, obj):
-    carName = carViews.getMake(obj.car_id_id) + " " + carViews.getModel(obj.car_id_id)
+    carName = carViews.getMake(obj.car_id) + " " + carViews.getModel(obj.car_id)
     return mark_safe('<a href="{}">{}</a>'.format(
-      reverse("admin:autosallonApp_car_change", args=(obj.car_id_id,)),
+      reverse("admin:autosallonApp_car_change", args=(obj.car_id,)),
       carName))
     
   def user_name(self, obj):
-    userName = userViews.getName(obj.user_id_id)
+    userName = userViews.getName(obj.user_id)
     return mark_safe('<a href="{}">{}</a>'.format(
-      reverse("admin:autosallonApp_user_change", args=(obj.user_id_id,)),
+      reverse("admin:account_user_change", args=(obj.user_id,)),
       userName))
   
   def worker_name(self, obj):
-    workerName = workerViews.getName(obj.worker_id_id)
+    workerName = workerViews.getName(obj.worker_id)
     return mark_safe('<a href="{}">{}</a>'.format(
-      reverse("admin:autosallonApp_worker_change", args=(obj.worker_id_id,)),
+      reverse("admin:autosallonApp_worker_change", args=(obj.worker_id,)),
       workerName))
 
   def sale_link(self, obj):
@@ -227,4 +233,4 @@ admin.site.register(models.CarImages, CarImageModelAdmin)
 
 
 
-admin.site.register(models.User)
+# admin.site.register(models.User)

@@ -40,3 +40,8 @@ class CategoryDestroyAPIView(generics.DestroyAPIView):
 
     def perform_destroy(self, instance):
         super().perform_destroy(instance)
+
+#Get Category Name by ID
+def getName(id):
+   queryset = Category.objects.get(id=id)
+   return queryset.name
