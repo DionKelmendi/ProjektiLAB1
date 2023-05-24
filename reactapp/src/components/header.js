@@ -23,25 +23,37 @@ export default function Header() {
         document.querySelector(".navBrand").style.color = "white";
       }
     }
+
   }, [])
+
+  function toggleMenu() {
+
+    let content = document.querySelector(".contentList");
+    content.classList.toggle("contentHidden");
+  }
 
   return (
     <header>
       <nav>
         <div>
-          <Link className="navBrand" to='/'>
+          <Link onClick={() => {
+
+            let content = document.querySelector(".contentList");
+            content.classList.add("contentHidden")
+          }}
+            className="navBrand" to='/'>
             <h1>Auto Paradise</h1>
           </Link>
         </div>
         <div className='content'>
-          <ul className="">
+          <ul className="contentList contentHidden">
             {/* <li><Link className='listItem' to="/about"> ABOUT </Link></li> */}
-            <li><Link className='listItem' to="/cars"> VEHICLES </Link></li>
-            <li><Link className='listItem' to="/contact"> CONTACT US </Link></li>
-            <li><Link className='listItem' to="/signIn"><button className="signInButton">SIGN IN</button></Link></li>
+            <li><Link onClick={toggleMenu} className='listItem' to="/cars"> VEHICLES </Link></li>
+            <li><Link onClick={toggleMenu} className='listItem' to="/contact"> CONTACT US </Link></li>
+            <li><Link onClick={toggleMenu} className='listItem' to="/signIn"><button className="signInButton">SIGN IN</button></Link></li>
           </ul>
 
-          <a href='#'>
+          <a href='#' onClick={toggleMenu}>
             <i className="fa-solid fa-bars toggleMenu"></i>
           </a>
         </div>

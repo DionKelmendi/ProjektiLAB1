@@ -24,7 +24,7 @@ header {
   padding: 25px;
   position: fixed;
   width: 100vw;
-  z-index: 9999999;
+  z-index: 9999;
   backdrop-filter: blur(2px);
 }
 
@@ -468,6 +468,7 @@ footer input[type="submit"]:hover {
 footer .rows {
 
   background-color: #363636;
+  overflow: hidden;
 }
 
 footer .row {
@@ -597,8 +598,7 @@ footer .row {
   width: 80%;
   max-width: 80%;
   display: flex;
-  gap: 115px;
-
+  gap: 20px;
 }
 
 .signIn .formName label {
@@ -608,7 +608,7 @@ footer .row {
 
 .signIn .formName input {
 
-  width: 155%;
+  width: 100%;
 }
 
 .carMain {
@@ -852,8 +852,12 @@ footer .row {
   background: #b1b1b1;
 }
 
-@media screen and (max-width: 550px) {
+.formName div {
 
+  width: 100%;
+}
+
+@media screen and (max-width: 550px) {
 
   .carSlider .sliderItem img {
 
@@ -895,14 +899,47 @@ footer .row {
 
 @media screen and (max-width: 768px) {
 
+  .signIn form {
+
+    margin-top: 75px;
+  }
+
   .toggleMenu {
 
     display: block;
+    z-index: 9999999999;
   }
 
   header ul {
 
-    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+  }
+
+  .contentList {
+
+    width: 100vw;
+    height: 100vh;
+    font-size: 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #363636;
+    z-index: -1;
+    transition: all 0.3s ease-in;
+    overflow: hidden;
+  }
+
+  .contentHidden {
+
+    height: 0;
+  }
+
+  .signInButton {
+
+    transform: scale(1.5);
   }
 
   .categoryList {
@@ -926,6 +963,10 @@ footer .row {
 
 @media screen and (max-width: 530px) {
 
+  .formTitle p {
+
+    width: 90%;
+  }
 
   .categoryList {
 
@@ -1008,5 +1049,33 @@ footer .row {
 
   header {
     -webkit-text-stroke: 0.5px orange;
+  }
+
+  .categories .container>*:last-child {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100vw;
+    margin-bottom: 50px;
+  }
+
+  .categories .container>*:last-child .categoryTitle {
+
+    position: absolute;
+    margin-top: -30px;
+  }
+
+  .home section {
+
+    height: 115vh;
+  }
+
+  .hero .container h2 {
+
+    font-size: 50px;
+  }
+
+  .hero .container h3 {
+
+    font-size: 26px;
   }
 }

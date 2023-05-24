@@ -28,10 +28,10 @@ export default function SignIn() {
           <label htmlFor="confirmPassword"> Confirm Password </label><br></br>
           <input name="confirmPassword" type="password" required />
 
-          <label htmlFor="address"> Address </label><br></br>
+          <label htmlFor="address"> Address (Optional) </label><br></br>
           <input name="address" type="text" required />
 
-          <label htmlFor="phone"> Phone </label><br></br>
+          <label htmlFor="phone"> Phone (Optional) </label><br></br>
           <input name="phone" type="text" required />
 
           <input type="submit" value="Create Account" />
