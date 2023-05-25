@@ -1,7 +1,13 @@
+import os
 from django.db import models
+from django.dispatch import receiver
 from account.models import User
 
 # Create your models here.
+  
+def car_image_upload_path(instance, filename):
+    return f'reactapp/src/images/{filename}'
+
 class Category(models.Model):
   name = models.CharField(max_length=50)
 
@@ -21,25 +27,42 @@ class Car(models.Model):
   registration_date = models.DateTimeField(auto_now_add=True)
   sold = models.BooleanField(null=False, default=False)
   category = models.ForeignKey(Category, on_delete=models.CASCADE)
+  image = models.ImageField(upload_to=car_image_upload_path, default='reactapp/src/images/No_Image_Available.jpg')
 
   def __str__(self):
     is_sold = "Sold" if self.sold else "Not sold"
     return f"({self.id}) {self.make} {self.model} - {self.year} - {is_sold}"
 
-  
-def car_image_upload_path(instance, filename):
-    return f'reactapp/src/images/{filename}'
+  def delete(self, *args, **kwargs):
+    
+    if self.image:
+      file_path = str(self.image)
+    
+      if os.path.isfile(file_path):
+        os.remove(file_path)
+    super().delete(*args, **kwargs)
+
+  def save(self, *args, **kwargs):
+
+    if self.pk is not None:
+      obj = Car.objects.get(pk=self.pk)
+
+      if self.image:
+        file_path = str(obj.image)
+                
+        if os.path.isfile(file_path):
+          os.remove(file_path)
+    super().save(*args, **kwargs)
 
 class CarImages(models.Model):
   car = models.ForeignKey(Car, on_delete=models.CASCADE)
-  image = models.ImageField(upload_to=car_image_upload_path)
+  image = models.ImageField(upload_to=car_image_upload_path, default='reactapp/src/images/No_Image_Available.jpg')
 
   class Meta:
     verbose_name_plural = "Car Images"
 
   def __str__(self):
     return f"{self.car}"
-
 
 # class User(models.Model):
 #   name = models.CharField(max_length=50)

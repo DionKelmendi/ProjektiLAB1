@@ -19,7 +19,7 @@ class CarAPIView(generics.ListCreateAPIView):
   queryset = Car.objects.all()
   serializer_class = CarSerializer
 
-  def perform_create(self, serializer):
+  def perform_create(self, serializer):    
     make = serializer.validated_data.get('make')
     model = serializer.validated_data.get('model')
     price = serializer.validated_data.get('price')
@@ -28,6 +28,7 @@ class CarAPIView(generics.ListCreateAPIView):
     color = serializer.validated_data.get('color')
     sold = serializer.validated_data.get('sold')
     category_id = serializer.validated_data.get('category_id')
+    image = serializer.validated_data.get('image')
     serializer.save()
 
 #Car Update

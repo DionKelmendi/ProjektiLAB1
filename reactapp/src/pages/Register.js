@@ -40,6 +40,11 @@ export default function SignIn() {
         </form>
       </section>
 
+      <div className="signInWarning">
+        <h3>
+          Please rotate your phone for a better sign-in / register experience.
+        </h3>
+      </div>
     </>
   )
 }

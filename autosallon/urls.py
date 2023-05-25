@@ -21,9 +21,13 @@ from django.conf.urls.i18n import i18n_patterns
 urlpatterns = [
     path("i18n/", include("django.conf.urls.i18n")),
     path('prova/', include('autosallonApp.urls')),
-    path('', index, name='index'),
     path('chatGPT/', include('chatgpt_app.urls')),
     path('account/', include('account.urls')),
     
+    path('', index, name='index'),
+    path('cars/', index, name='index'),
+    path('vehicle/', index, name='index'),
+    path('signIn/', index, name='index'),
+    path('register/', index, name='index'),
 ]
 urlpatterns += i18n_patterns(path("admin/", admin.site.urls))

@@ -9,7 +9,7 @@ import interior2 from "../../images/interior2.webp"
 import interior3 from "../../images/interior3.webp"
 import interior4 from "../../images/interior4.webp"
 import trunk from "../../images/trunk.webp"
-import VW from "../../images/VW.webp"
+import VW from "../../images/logos/Volkswagen.webp"
 import { useEffect } from "react";
 
 export default function ImageSlider() {

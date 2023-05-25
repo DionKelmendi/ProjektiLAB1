@@ -1,17 +1,17 @@
 import { React } from "react";
 import CategoryItem from "./categoryItem";
-import BMW from "../../images/BMW.webp";
-import Mercedes from "../../images/Mercedes.webp";
-import Audi from "../../images/Audi.webp";
-import VW from "../../images/VW.webp";
-import Ford from "../../images/Ford.webp";
-import Hyndai from "../../images/Hyndai.webp";
-import Toyota from "../../images/Toyota.webp";
-import Mitsubishi from "../../images/Mitsubishi.webp";
-import Convertible from "../../images/Convertible.webp";
-import Hatchback from "../../images/Hatchback.webp";
-import SUV from "../../images/SUV.webp";
-import Wagon from "../../images/Wagon.webp";
+import BMW from "../../images/logos/BMW.webp";
+import Mercedes from "../../images/logos/Mercedes.webp";
+import Audi from "../../images/logos/Audi.webp";
+import VW from "../../images/logos/Volkswagen.webp";
+import Ford from "../../images/logos/Ford.webp";
+import Hyndai from "../../images/logos/Hyndai.webp";
+import Toyota from "../../images/logos/Toyota.webp";
+import Mitsubishi from "../../images/logos/Mitsubishi.webp";
+import Convertible from "../../images/logos/Convertible.webp";
+import Hatchback from "../../images/logos/Hatchback.webp";
+import SUV from "../../images/logos/SUV.webp";
+import Wagon from "../../images/logos/Wagon.webp";
 
 export default function Categories() {
   return (

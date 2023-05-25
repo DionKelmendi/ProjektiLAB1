@@ -7,14 +7,6 @@ import ExtendedFilter from "../components/carComponents/extendedFilter";
 
 export default function Cars() {
 
-  const [car, setCar] = useState();
-
-  useEffect(() => {
-    fetch("http://127.0.0.1:8000/prova/car/")
-      .then((response) => response.json())
-      .then((data) => console.log(data));
-  }, [])
-
   return (
     <div className="carMain">
       <section className="cars">

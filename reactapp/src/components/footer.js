@@ -25,7 +25,23 @@ export default function Footer() {
 
       <div className='container'>
         <div className='item'>
-          <h4><b>Company</b></h4><br />
+          <h4><b>Explore</b></h4><br />
+          <a href="#"><p>History</p></a>
+          <a href="#"><p>Location</p></a>
+          <a href="#"><p>Team</p></a>
+          <a href="#"><p>Media</p></a>
+        </div>
+
+        <div className='item'>
+          <h4><b>Shop</b></h4><br />
+          <a href="#"><p>History</p></a>
+          <a href="#"><p>Location</p></a>
+          <a href="#"><p>Team</p></a>
+          <a href="#"><p>Media</p></a>
+        </div>
+
+        <div className='item'>
+          <h4><b>Support</b></h4><br />
           <a href="#"><p>History</p></a>
           <a href="#"><p>Location</p></a>
           <a href="#"><p>Team</p></a>
@@ -38,10 +54,9 @@ export default function Footer() {
           <a href="#"><i className="fa-brands fa-square-instagram"></i></a>
           <a href="#"><i className="fa-brands fa-square-snapchat"></i></a>
           <a href="#"><i className="fa-brands fa-linkedin"></i></a>
-        </div>
 
-        <div className='item'>
-          <h4><b>Want to recieve news?</b></h4><br />
+          <br /><br />
+          <p>Subscribe to our newsletter</p>
           <input type="text" placeholder='Enter email'></input>
           <input type="submit" value="Subscribe"></input>
         </div>

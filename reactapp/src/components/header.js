@@ -30,6 +30,7 @@ export default function Header() {
 
     let content = document.querySelector(".contentList");
     content.classList.toggle("contentHidden");
+
   }
 
   return (
@@ -53,7 +54,7 @@ export default function Header() {
             <li><Link onClick={toggleMenu} className='listItem' to="/signIn"><button className="signInButton">SIGN IN</button></Link></li>
           </ul>
 
-          <a href='#' onClick={toggleMenu}>
+          <a onClick={toggleMenu}>
             <i className="fa-solid fa-bars toggleMenu"></i>
           </a>
         </div>

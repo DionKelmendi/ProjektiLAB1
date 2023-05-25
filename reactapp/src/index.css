@@ -44,6 +44,11 @@ header .content a {
   display: none;
 }
 
+.toggleMenu:active {
+
+  transform: translateY(5px);
+}
+
 .navBrand {
   color: white;
   text-decoration: none;
@@ -388,7 +393,6 @@ nav ul {
 
 footer {
 
-  height: 340px;
   background: #363636;
   color: white;
 }
@@ -399,11 +403,18 @@ footer a {
   text-decoration: none;
 }
 
+footer a:hover {
+
+  opacity: 50%;
+}
+
 footer .container {
 
   display: flex;
   justify-content: space-evenly;
   padding: 50px;
+
+  height: 300px;
 }
 
 footer hr {
@@ -679,23 +690,27 @@ footer .row {
 .carListing {
 
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 50px;
 
-  width: 75%;
-  height: 90vh;
+  width: 90%;
   margin: auto;
-  margin-top: 75px;
+  margin-top: 25px;
+  margin-bottom: 175px;
 }
 
 .carItem {
 
-  max-width: 21%;
+  width: 350px;
   height: 300px;
-  flex: 1 0 21%;
 
   transition: all 0.1s ease-in;
+}
+
+.carListing .carItem {
+
+  margin-top: 50px;
 }
 
 .carItem a {
@@ -708,7 +723,8 @@ footer .row {
   width: 100%;
   height: 200px;
 
-  object-position: top center;
+  object-position: center;
+  object-fit: cover;
 }
 
 .extendFilter {
@@ -741,10 +757,10 @@ footer .row {
 .carDetails {
 
   background: white;
-  height: 125px;
+  height: 150px;
   text-align: center;
   padding: 10px;
-  width: 303px;
+  width: 100%;
 
 }
 
@@ -756,7 +772,8 @@ footer .row {
 .carDetails div {
 
   display: flex;
-  gap: 50px;
+  justify-content: space-evenly;
+  margin-top: 10px;
 }
 
 .carDetails i {
@@ -764,6 +781,8 @@ footer .row {
   font-size: 22px;
   padding: 4px;
 }
+
+.carDetails h4 {}
 
 .filterToggle {
 
@@ -857,6 +876,11 @@ footer .row {
   width: 100%;
 }
 
+.signInWarning {
+
+  display: none;
+}
+
 @media screen and (max-width: 550px) {
 
   .carSlider .sliderItem img {
@@ -908,6 +932,7 @@ footer .row {
 
     display: block;
     z-index: 9999999999;
+    cursor: pointer;
   }
 
   header ul {
@@ -1004,6 +1029,7 @@ footer .row {
     width: 100%;
     padding: 25px;
     font-size: 20px;
+    padding-bottom: 0;
   }
 
   footer input[type="submit"] {
@@ -1013,6 +1039,30 @@ footer .row {
 }
 
 @media screen and (max-height: 500px) and (orientation: landscape) {
+
+  .signInWarning {
+
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: #363636;
+    color: white;
+    margin: auto;
+    z-index: 99999999;
+  }
+
+  .signInWarning h3 {
+
+    position: absolute;
+    width: 800px;
+    top: calc(50% - 10px);
+    left: calc(50% - 400px);
+    text-align: center;
+    font-weight: 100;
+  }
+
   .findCar {
 
     margin-top: 20px;
@@ -1078,4 +1128,11 @@ footer .row {
 
     font-size: 26px;
   }
+
+  .signInWarning {
+
+    display: block;
+  }
 }
+
+@media screen and (max-width: 1280px) {}
