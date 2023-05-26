@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'autosallonApp',
     'chatgpt_app',
     'account',
-
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 MIDDLEWARE = [

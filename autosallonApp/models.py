@@ -33,27 +33,6 @@ class Car(models.Model):
     is_sold = "Sold" if self.sold else "Not sold"
     return f"({self.id}) {self.make} {self.model} - {self.year} - {is_sold}"
 
-  def delete(self, *args, **kwargs):
-    
-    if self.image:
-      file_path = str(self.image)
-    
-      if os.path.isfile(file_path):
-        os.remove(file_path)
-    super().delete(*args, **kwargs)
-
-  def save(self, *args, **kwargs):
-
-    if self.pk is not None:
-      obj = Car.objects.get(pk=self.pk)
-
-      if self.image:
-        file_path = str(obj.image)
-                
-        if os.path.isfile(file_path):
-          os.remove(file_path)
-    super().save(*args, **kwargs)
-
 class CarImages(models.Model):
   car = models.ForeignKey(Car, on_delete=models.CASCADE)
   image = models.ImageField(upload_to=car_image_upload_path, default='reactapp/src/images/No_Image_Available.jpg')

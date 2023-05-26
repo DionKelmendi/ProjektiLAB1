@@ -163,3 +163,5 @@ autosallon.__pycache__/
 autosallonApp.__pycache__/
 autosallonApp.migrations.__pycache__/
 autosallonApp.views.__pycache__/
+*.py
+autosallonApp/migrations/0001_initial.py
