@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.urls import path, include
 from account.views import SendPasswordResetEmailView, UserRegistrationView, UserLoginView, UserProfileView, UserChangePasswordView, UserPasswordResetView
+from autosallonApp.views.indexViews import index
 
 urlpatterns = [
     path('register/', UserRegistrationView.as_view(), name='register'),
@@ -22,6 +23,7 @@ urlpatterns = [
     path('profile/', UserProfileView.as_view(), name='profile'),
     path('changepassword/', UserChangePasswordView.as_view(), name='changepassword'),
     path('resetpasswordemail/', SendPasswordResetEmailView.as_view(), name='resetpasswordemail'),
-    path('resetpassword/<uid>/<token>', UserPasswordResetView.as_view(), name='resetpassword'),
+    path('reset/<uid>/<token>', UserPasswordResetView.as_view(), name='resetpassword'),
+    path('resetpassword/<uid>/<token>', index, name='index')
 
 ]

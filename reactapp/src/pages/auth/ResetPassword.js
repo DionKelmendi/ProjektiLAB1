@@ -17,6 +17,8 @@ const ResetPassword = () => {
       password2: data.get('password2'),
     }
     const res = await resetPassword({ actualData, id, token })
+
+    console.log(res);
     if (res.error) {
       setServerMsg({})
       setServerError(res.error.data.errors)
@@ -26,7 +28,7 @@ const ResetPassword = () => {
       setServerMsg(res.data)
       document.getElementById('password-reset-form').reset()
       setTimeout(() => {
-        navigate("/login")
+        navigate("/")
       }, 3000)
     }
 

@@ -1,6 +1,7 @@
 import { Grid, TextField, Button, Box, Alert, Typography } from "@mui/material";
 import { useState } from 'react';
 import { useSendPasswordResetEmailMutation } from "../../services/userAuthApi";
+
 const SendPasswordResetEmail = () => {
   const [server_error, setServerError] = useState({})
   const [server_msg, setServerMsg] = useState({})
@@ -12,6 +13,7 @@ const SendPasswordResetEmail = () => {
       email: data.get('email'),
     }
     const res = await sendPasswordResetEmail(actualData)
+    console.log(res);
     if (res.error) {
       console.log(typeof (res.error.data.errors))
       console.log(res.error.data.errors)

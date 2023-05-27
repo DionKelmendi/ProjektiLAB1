@@ -67,7 +67,6 @@ class SendPasswordResetEmailView(APIView):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class UserPasswordResetView(APIView):
-  renderer_classes = [UserRenderer]
   def post(self, request, uid, token, format=None):
     serializer = UserPasswordResetSerializer(data=request.data, context={'uid':uid, 'token':token})
 

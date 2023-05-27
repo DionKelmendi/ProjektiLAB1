@@ -1,7 +1,7 @@
 import { React } from 'react'
 import './vehicle.css';
 import CarInfo from "./carInfo";
-import Golf7 from "../../images/Golf7.webp";
+// import Golf7 from "../../images/Golf7.webp";
 import Golf7_2 from "../../images/Golf7_2.webp";
 import backview from "../../images/backview.webp";
 import interior1 from "../../images/interior1.webp"
@@ -85,14 +85,14 @@ export default function ImageSlider() {
   return (
     <>
       <div className='mainSliderContainer'>
-        <img className='carLogoMain' src={VW} />
+        <img className='carLogoMain' src={"VW"} />
         <h1 className='carName'>Volkswagen Golf 7</h1>
         <div className='wrapperContainer'>
 
           <div className="wrapper">
             <i id="left" className="fa-solid fa-angle-left"></i>
             <div className="carousel">
-              <img src={Golf7} alt="img" draggable="false" />
+              <img src={"Golf7"} alt="img" draggable="false" />
               <img src={Golf7_2} alt="img" draggable="false" />
               <img src={backview} alt="img" draggable="false" />
               <img src={interior1} alt="img" draggable="false" />

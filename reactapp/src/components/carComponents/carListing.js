@@ -1,25 +1,6 @@
 import { React } from "react"
-import Golf7 from "../../images/Golf7.webp";
-import A4Avant from "../../images/A4Avant.webp";
-import ThreeSeries from "../../images/3Series.webp";
-import Porsche from "../../images/logos/Porsche.webp";
-import Taycan from "../../images/Taycan.webp";
-import F_150 from "../../images/F-150.webp";
-import C63AMG from "../../images/C63AMG.webp";
-import GRSupra from "../../images/GRSupra.webp";
-import Civic from "../../images/Civic.webp";
-
-import VW from "../../images/logos/Volkswagen.webp";
-import Audi from "../../images/logos/Audi.webp";
-import BMW from "../../images/logos/BMW.webp";
-import Ford from "../../images/logos/Ford.webp";
-import Mercedes from "../../images/logos/Mercedes.webp";
-import Toyota from "../../images/logos/Toyota.webp";
-import Honda from "../../images/logos/Honda.webp";
 import { useEffect, useState } from "react";
 import CarItem from "./carItem"
-
-console.log(VW);
 
 export default function CarListing() {
 
@@ -64,7 +45,7 @@ export default function CarListing() {
   return (
     <section className="carListing">
       {data.map((item, i) => {
-        return <CarItem key={item.id} id={item.id} image={item.imageName} logo={VW} name={item.make + " " + item.model} year={item.year} mileage={item.mileage} />
+        return <CarItem key={item.id} id={item.id} image={item.imageName} logo={item.make} name={item.make + " " + item.model} year={item.year} mileage={item.mileage} />
       })}
 
       {/* <CarItem id={1} image={Golf7} logo={VW} name={"Volkswagen Golf 7"} year={2018} mileage={14000} /> */}

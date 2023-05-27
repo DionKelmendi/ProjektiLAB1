@@ -2,16 +2,19 @@ import { React } from "react";
 import Home from "./pages/Home.js";
 import Contact from "./pages/Contact.js";
 import SignIn from "./pages/auth/UserLogin.js";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import Header from './components/header';
 import Register from './pages/auth/Registration.js';
 import Cars from "./pages/Cars.js";
 import Vehicle from "./pages/Vehicle.js";
 import Table from "./pages/Table.js";
 import Dashboard from "./pages/Dashboard.js";
+import ResetPassword from "./pages/auth/ResetPassword.js";
+import SendPasswordResetEmail from "./pages/auth/SendPasswordResetEmail.js"
+import { useSelector } from "react-redux";
 
 export default function App() {
-
+  const { access_token } = useSelector(state => state.auth)
   return (
     <>
       <Header />
@@ -20,12 +23,13 @@ export default function App() {
         <Route path="" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/cars" element={<Cars />} />
-        <Route path="/signIn" element={<SignIn />} />
+        <Route path="/signIn" element={!access_token ? <SignIn /> : <Navigate to="/dashboard" />} />
         <Route path="/register" element={<Register />} />
         <Route path="/vehicle" element={<Vehicle />} />
         <Route path="/table" element={<Table />} />
         <Route path="/dashboard" element={<Dashboard />} />
-
+        <Route path="/sendpasswordresetemail" element={<SendPasswordResetEmail />} />
+        <Route path="/account/resetpassword/:id/:token" element={<ResetPassword />} />
       </Routes>
     </>
   )

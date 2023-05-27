@@ -19,7 +19,10 @@ export default function CarItem({ id, image, logo, name, year, mileage }) {
 
           {/* <img src={image} className="carImg" /> */}
           <div className="carDetails">
-            <img src={logo} className="carLogo" alt="carLogo" />
+            <img
+              src={require('../../images/logos/' +
+                logo + ".webp")}
+              className="carLogo" alt="carLogo" />
             <h2>{name}</h2>
             <hr />
             <div>
@@ -31,6 +34,7 @@ export default function CarItem({ id, image, logo, name, year, mileage }) {
       </div>
     )
   } catch (error) {
-    window.location.reload(false);
+    // window.location.reload(false);
+    console.log(error);
   }
 }

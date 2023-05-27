@@ -12,7 +12,7 @@ const Dashboard = () => {
     dispatch(unsetUserInfo({ name: "", email: "" }))
     dispatch(unSetUserToken({ access_token: null }))
     removeToken()
-    navigate('/login')
+    navigate('/')
   }
   const navigate = useNavigate()
   const dispatch = useDispatch()
