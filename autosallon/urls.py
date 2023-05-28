@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from autosallonApp.views.indexViews import index
+from autosallonApp.views.indexViews import index, email
 from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns = [
@@ -29,5 +29,8 @@ urlpatterns = [
     path('vehicle/', index, name='index'),
     path('signIn/', index, name='index'),
     path('register/', index, name='index'),
+
+    path('email/', email, name='email'),
+
 ]
 urlpatterns += i18n_patterns(path("admin/", admin.site.urls))

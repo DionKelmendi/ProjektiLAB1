@@ -49,7 +49,7 @@ export default function ResetPassword() {
         <input id='password2' name='password2' label='Confirm New Password' type='password' />
         {server_error.password2 ? <p className="errorP"><i className="fa-solid fa-circle-exclamation"></i> {server_error.password2[0]}</p> : ""}
         {server_error.non_field_errors ? <p className="errorP"><i className="fa-solid fa-circle-exclamation"></i> {server_error.non_field_errors[0]}</p> : ''}
-        {server_msg.msg ? <p className="successP"><i class="fa-solid fa-circle-check"></i> {server_msg.msg}</p> : ''}
+        {server_msg.msg ? <p className="successP"><i className="fa-solid fa-circle-check"></i> {server_msg.msg}</p> : ''}
 
         <input type="submit" value="Change Password" className='logInButton' />
 

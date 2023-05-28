@@ -1,1 +1,48 @@
-<h1 style="color: red">{{link}}</h1>
+{% load static %}
+
+<body style="margin: 0">
+  <span style="opacity: 0"> </span>
+  <div style="background: #363636; display: flex; justify-content: center; align-items: center; padding: 50px; margin: 0; height: 100%; font-family: Arial, Helvetica, sans-serif">
+    <div style="background: white; width: 37%; margin: auto; padding: 50px; border-radius: 5px; gap: 20px">
+      <div style="display: table; margin-bottom: 30px">
+        {% comment %} <img style="width: 150px" src="{{site}}{% static 'autosallonLogo.png' %}" /> {% endcomment %}
+        <img style="width: 150px" src="cid:myimage" />
+        <h1 style="color: gray; display: table-cell; vertical-align: middle; padding-left: 50px">AutoParadise©</h1>
+      </div>
+      <h2 style="margin: 0; background: #363636; width: calc(100% - 40px); text-align: center; color: white; border-radius: 5px; padding: 20px; margin-bottom: 10px">
+        Reset Password
+      </h2>
+      <p style="margin: 0; background: #eee; width: calc(100% - 40px); text-align: center; color: gray; border-radius: 5px; padding: 20px; margin-bottom: 10px">
+        Click the link below to change your password:
+      </p>
+      <a
+        href="{{link}}"
+        style="
+          display: block;
+          margin: 0;
+          background: orange;
+          width: 100%;
+          text-align: center;
+          color: white;
+          border-radius: 5px;
+          padding: 20px 0px;
+          margin-bottom: 10px;
+          font-size: 15px;
+        "
+      >
+        {{'http://127.0.0.1:8000/account/resetpassword/'}}</a
+      >
+      <p style="margin: 0; background: #eee; width: calc(100% - 40px); text-align: center; color: gray; border-radius: 5px; padding: 20px; text-align: justify">
+        Be careful around sensitive information like passwords. Don't share this email to anyone else, or they can be able to change your password without further notice. If this
+        request was not sent by you you can simply ignore this email. Or you can
+        <span style="cursor: pointer"><a style="color: orange" href="http://127.0.0.1:8000/contact/">contact our staff</a></span> about any questions you may have.
+      </p>
+
+      <p style="color: gray">
+        You're receiving this email because you signed up for a AutoParadise account. You can update your preferences at any time. If you wish to be removed from our email list,
+        <span style="color: black; text-decoration: underline; cursor: pointer">unsubscribe</span>.
+      </p>
+    </div>
+  </div>
+  <span style="opacity: 0"> </span>
+</body>

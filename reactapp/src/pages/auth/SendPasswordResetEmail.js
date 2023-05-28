@@ -40,7 +40,7 @@ export default function SendPasswordResetEmail() {
         <input type="text" id='email' name='email' label='Email Address' />
         {server_error.email ? <p className="errorP"><i className="fa-solid fa-circle-exclamation"></i> {server_error.email[0]}</p> : ""}
         {server_error.non_field_errors ? <p className='errorP'><i className="fa-solid fa-circle-exclamation"></i> {server_error.non_field_errors[0]}</p> : ''}
-        {server_msg.msg ? <p className='successP'><i class="fa-solid fa-circle-check"></i> {server_msg.msg}</p> : ''}
+        {server_msg.msg ? <p className='successP'><i className="fa-solid fa-circle-check"></i> {server_msg.msg}</p> : ''}
 
         <input type="submit" value="Send Email" className='logInButton' />
 

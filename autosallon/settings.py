@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'autosallonApp',
     'chatgpt_app',
     'account',
-    'django_cleanup.apps.CleanupConfig',
+    'django_cleanup.apps.CleanupConfig', # Keep last installed app
 ]
 
 MIDDLEWARE = [
@@ -60,7 +60,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
-    
 ]
 
 PASSWORD_RESET_TIMEOUT=900 # Timeout is in seconds
