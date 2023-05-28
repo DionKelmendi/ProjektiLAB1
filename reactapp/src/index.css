@@ -608,7 +608,6 @@ form .error {
   border-radius: 5px;
   padding: 10px;
   text-align: center;
-  margin-top: 45px;
   transform: translateY(15px);
 }
 
@@ -805,7 +804,6 @@ form .errorP {
   padding: 4px;
 }
 
-.carDetails h4 {}
 
 .filterToggle {
 

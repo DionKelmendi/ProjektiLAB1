@@ -95,8 +95,6 @@ const UserLogin = () => {
         <input type='text' required id='username' name='username' label='Username' />
         {server_error.username ? <p className='errorP'>{server_error.username[0]}</p> : ""}
 
-
-
         <label htmlFor="password"> Password </label><br></br>
         <input required id='password' name='password' label='Password' type='password' />
         {server_error.password ? <p className='errorP'>{server_error.password[0]}</p> : ""}

@@ -12,7 +12,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
 
   class Meta:
     model = User
-    fields=['email', 'username', 'password', 'password2']
+    fields=['email', 'username', 'password', 'password2', 'first_name', 'last_name']
     extra_kwargs={
       'password':{'write_only':True}
     }
@@ -21,7 +21,6 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
     password = data.get('password')
     password2 = data.get('password2')
     email = data.get('email')
-    username = data.get('username')
 
     if password != password2:
       raise serializers.ValidationError("Password and Confirm Password didn't match")
