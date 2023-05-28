@@ -616,6 +616,27 @@ form .errorP {
   font-size: 14px;
 }
 
+form .success,
+form .successP {
+
+  color: green;
+  width: 80%;
+}
+
+form .success {
+  border: 1px solid green;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  transform: translateY(15px);
+}
+
+form .successP {
+
+  margin-top: 10px;
+  font-size: 14px;
+}
+
 .registerLink a,
 .forgotLink a {
   color: orange;

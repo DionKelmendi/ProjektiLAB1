@@ -1,8 +1,7 @@
-import { Grid, TextField, Button, Box, Alert, Typography } from "@mui/material";
 import { useState } from 'react';
 import { useSendPasswordResetEmailMutation } from "../../services/userAuthApi";
 
-const SendPasswordResetEmail = () => {
+export default function SendPasswordResetEmail() {
   const [server_error, setServerError] = useState({})
   const [server_msg, setServerMsg] = useState({})
   const [sendPasswordResetEmail, { isLoading }] = useSendPasswordResetEmailMutation()
@@ -29,21 +28,25 @@ const SendPasswordResetEmail = () => {
     }
   }
   return <>
-    <Grid container justifyContent='center'>
-      <Grid item sm={6} xs={12}>
-        <h1>Reset Password</h1>
-        <Box component='form' noValidate sx={{ mt: 1 }} id='password-reset-email-form' onSubmit={handleSubmit}>
-          <TextField margin='normal' required fullWidth id='email' name='email' label='Email Address' />
-          {server_error.email ? <Typography style={{ fontSize: 12, color: 'red', paddingLeft: 10 }}>{server_error.email[0]}</Typography> : ""}
-          <Box textAlign='center'>
-            <Button type='submit' variant='contained' sx={{ mt: 3, mb: 2, px: 5 }}>Send</Button>
-          </Box>
-          {server_error.non_field_errors ? <Alert severity='error'>{server_error.non_field_errors[0]}</Alert> : ''}
-          {server_msg.msg ? <Alert severity='success'>{server_msg.msg}</Alert> : ''}
-        </Box>
-      </Grid>
-    </Grid>
+
+    <section className="signIn">
+      <form noValidate id='password-reset-email-form' onSubmit={handleSubmit}>
+        <div className="formTitle">
+          <h1>Change Password</h1>
+          <p>Please enter your email to get the link to change your password</p>
+        </div>
+
+        <label htmlFor="email"> Email </label><br></br>
+        <input type="text" id='email' name='email' label='Email Address' />
+        {server_error.email ? <p className="errorP"><i className="fa-solid fa-circle-exclamation"></i> {server_error.email[0]}</p> : ""}
+        {server_error.non_field_errors ? <p className='errorP'><i className="fa-solid fa-circle-exclamation"></i> {server_error.non_field_errors[0]}</p> : ''}
+        {server_msg.msg ? <p className='successP'><i class="fa-solid fa-circle-check"></i> {server_msg.msg}</p> : ''}
+
+        <input type="submit" value="Send Email" className='logInButton' />
+
+      </form>
+    </section>
   </>;
 };
 
-export default SendPasswordResetEmail;
+

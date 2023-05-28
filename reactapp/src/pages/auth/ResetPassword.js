@@ -1,9 +1,8 @@
-import { Grid, TextField, Button, Box, Alert, Typography } from "@mui/material";
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useResetPasswordMutation } from "../../services/userAuthApi";
 
-const ResetPassword = () => {
+export default function ResetPassword() {
   const [server_error, setServerError] = useState({})
   const [server_msg, setServerMsg] = useState({})
   const [resetPassword] = useResetPasswordMutation()
@@ -34,23 +33,28 @@ const ResetPassword = () => {
 
   }
   return <>
-    <Grid container justifyContent='center'>
-      <Grid item sm={6} xs={12}>
-        <h1>Reset Password</h1>
-        <Box component='form' noValidate sx={{ mt: 1 }} id='password-reset-form' onSubmit={handleSubmit}>
-          <TextField margin='normal' required fullWidth id='password' name='password' label='New Password' type='password' />
-          {server_error.password ? <Typography style={{ fontSize: 12, color: 'red', paddingLeft: 10 }}>{server_error.password[0]}</Typography> : ""}
-          <TextField margin='normal' required fullWidth id='password2' name='password2' label='Confirm New Password' type='password' />
-          {server_error.password2 ? <Typography style={{ fontSize: 12, color: 'red', paddingLeft: 10 }}>{server_error.password2[0]}</Typography> : ""}
-          <Box textAlign='center'>
-            <Button type='submit' variant='contained' sx={{ mt: 3, mb: 2, px: 5 }}>Save</Button>
-          </Box>
-          {server_error.non_field_errors ? <Alert severity='error'>{server_error.non_field_errors[0]}</Alert> : ''}
-          {server_msg.msg ? <Alert severity='success'>{server_msg.msg}</Alert> : ''}
-        </Box>
-      </Grid>
-    </Grid>
+    <section className="signIn">
+
+      <form noValidate id='password-reset-form' onSubmit={handleSubmit}>
+        <div className="formTitle">
+          <h1>Reset Password</h1>
+          <p>Please write your new password on the areas below</p>
+        </div>
+
+        <label htmlFor="password"> New Password </label><br></br>
+        <input id='password' name='password' label='New Password' type='password' />
+        {server_error.password ? <p className="errorP"><i className="fa-solid fa-circle-exclamation"></i> {server_error.password[0]}</p> : ""}
+
+        <label htmlFor="password2"> Confirm New Password </label><br></br>
+        <input id='password2' name='password2' label='Confirm New Password' type='password' />
+        {server_error.password2 ? <p className="errorP"><i className="fa-solid fa-circle-exclamation"></i> {server_error.password2[0]}</p> : ""}
+        {server_error.non_field_errors ? <p className="errorP"><i className="fa-solid fa-circle-exclamation"></i> {server_error.non_field_errors[0]}</p> : ''}
+        {server_msg.msg ? <p className="successP"><i class="fa-solid fa-circle-check"></i> {server_msg.msg}</p> : ''}
+
+        <input type="submit" value="Change Password" className='logInButton' />
+
+      </form>
+    </section>
   </>;
 };
 
-export default ResetPassword;
