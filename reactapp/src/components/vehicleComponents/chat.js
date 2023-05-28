@@ -9,7 +9,7 @@ export default function Chat() {
       <h1>Do you have a question?</h1> <br />
       <h3>We can answer your questions here:</h3>
 
-      <a href="chatGPT/">
+      <a href="http://localhost:8000/chatGPT/">
         <button className="aiButton">
           Talk to an AI &ensp; <i className="fa-solid fa-code-branch"></i>
         </button>
