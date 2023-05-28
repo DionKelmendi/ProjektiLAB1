@@ -532,6 +532,7 @@ footer .row {
   height: auto;
   background: white;
   padding: 50px 0px;
+  border-radius: 5px;
 
   display: flex;
   flex-direction: column;
@@ -590,12 +591,34 @@ footer .row {
 
 .registerLink {
 
+  display: flex;
+  justify-content: space-between;
   width: 80%;
-  text-align: right;
-  transform: translateY(30px);
+  transform: translateY(25px);
 }
 
-.registerLink a {
+form .error,
+form .errorP {
+  color: red;
+  width: 80%;
+}
+
+form .error {
+  border: 1px solid red;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  margin-top: 45px;
+  transform: translateY(15px);
+}
+
+form .errorP {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.registerLink a,
+.forgotLink a {
   color: orange;
   transition: 0.3s all ease-in;
 }
