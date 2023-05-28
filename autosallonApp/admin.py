@@ -44,7 +44,7 @@ admin.site.register(models.Car, CarModelAdmin)
 # Contact Info Admin Display
 class ContactInfoModelAdmin(admin.ModelAdmin):
   list_display = ["id", "address", "phone", "user_name", "contactInfo_link"]
-  search_fields = ["address", "phone", "user_id__name"]
+  search_fields = ["address", "phone", "user_id__username"]
   list_filter = ["address"]
   ordering = ["id"]
   filter_horizontal = []
@@ -52,7 +52,7 @@ class ContactInfoModelAdmin(admin.ModelAdmin):
   def user_name(self, obj):
     userName = userViews.getName(obj.user_id)
     return mark_safe('<a href="{}">{}</a>'.format(
-      reverse("admin:account_user_change", args=(obj.user_id,)),
+      reverse("admin:auth_user_change", args=(obj.user_id,)),
       userName))
 
   def contactInfo_link(self, obj):
@@ -109,8 +109,8 @@ admin.site.register(models.Distributor, DistributorModelAdmin)
 class FavoriteModelAdmin(admin.ModelAdmin):
   list_display = ["id","user_name", "car_name", "favorite_link"]
   ordering = ["id"]
-  list_filter = ["user_id__name", "car_id__make", "car_id__model"]
-  search_fields = ["user_id__name", "car_id__make", "car_id__model"]
+  list_filter = ["user_id__username", "car_id__make", "car_id__model"]
+  search_fields = ["user_id__username", "car_id__make", "car_id__model"]
   filter_horizontal = []
 
   def car_name(self, obj):
@@ -122,7 +122,7 @@ class FavoriteModelAdmin(admin.ModelAdmin):
   def user_name(self, obj):
     userName = userViews.getName(obj.user_id)
     return mark_safe('<a href="{}">{}</a>'.format(
-      reverse("admin:account_user_change", args=(obj.user_id,)),
+      reverse("admin:auth_user_change", args=(obj.user_id,)),
       userName))
 
   def favorite_link(self, obj):
@@ -136,8 +136,8 @@ admin.site.register(models.Favorite, FavoriteModelAdmin)
 class ReviewModelAdmin(admin.ModelAdmin):
   list_display = ["id","user_name", "car_name", "rating", "review_date" ,"review_link"]
   ordering = ["id"]
-  list_filter = ["user_id__name", "car_id__make", "car_id__model", "rating"]
-  search_fields = ["user_id__name", "car_id__make", "car_id__model"]
+  list_filter = ["user_id__username", "car_id__make", "car_id__model", "rating"]
+  search_fields = ["user_id__username", "car_id__make", "car_id__model"]
   filter_horizontal = []
 
   def car_name(self, obj):
@@ -149,7 +149,7 @@ class ReviewModelAdmin(admin.ModelAdmin):
   def user_name(self, obj):
     userName = userViews.getName(obj.user_id)
     return mark_safe('<a href="{}">{}</a>'.format(
-      reverse("admin:account_user_change", args=(obj.user_id,)),
+      reverse("admin:auth_user_change", args=(obj.user_id,)),
       userName))
 
   def review_link(self, obj):
@@ -163,8 +163,8 @@ admin.site.register(models.Review, ReviewModelAdmin)
 class SaleModelAdmin(admin.ModelAdmin):
   list_display = ["id","user_name", "car_name", "worker_name", "sale_date","sale_link"]
   ordering = ["id"]
-  list_filter = ["user_id__name", "car_id__make", "car_id__model", "worker_id__name"]
-  search_fields = ["user_id__name", "car_id__make", "car_id__model", "worker_id__name"]
+  list_filter = ["user_id__username", "car_id__make", "car_id__model", "worker_id__name"]
+  search_fields = ["user_id__username", "car_id__make", "car_id__model", "worker_id__name"]
   filter_horizontal = []
 
   def car_name(self, obj):
@@ -176,7 +176,7 @@ class SaleModelAdmin(admin.ModelAdmin):
   def user_name(self, obj):
     userName = userViews.getName(obj.user_id)
     return mark_safe('<a href="{}">{}</a>'.format(
-      reverse("admin:account_user_change", args=(obj.user_id,)),
+      reverse("admin:auth_user_change", args=(obj.user_id,)),
       userName))
   
   def worker_name(self, obj):

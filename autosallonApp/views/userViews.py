@@ -46,4 +46,4 @@ class UserDestroyAPIView(generics.DestroyAPIView):
 #Get User Name by ID
 def getName(id):
    queryset = User.objects.get(id=id)
-   return queryset.name
+   return queryset.username

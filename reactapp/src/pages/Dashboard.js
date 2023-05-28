@@ -29,13 +29,14 @@ const Dashboard = () => {
     if (data && isSuccess) {
       setUserData({
         email: data.email,
-        name: data.name,
+        name: data.username,
       })
     }
   }, [data, isSuccess])
 
   // Store User Data in Redux Store
   useEffect(() => {
+    console.log(data);
     if (data && isSuccess) {
       dispatch(setUserInfo({
         email: data.email,

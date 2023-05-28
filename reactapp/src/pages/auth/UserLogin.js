@@ -40,13 +40,14 @@ const UserLogin = () => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
     const actualData = {
-      email: data.get('email'),
+      username: data.get('username'),
       password: data.get('password'),
     }
     const res = await loginUser(actualData)
     if (res.error) {
-      // console.log(typeof (res.error.data.errors))
-      // console.log(res.error.data.errors)
+      console.log(res.error);
+      console.log(typeof (res.error.data.errors))
+      console.log(res.error.data.errors)
       setServerError(res.error.data.errors)
     }
     if (res.data) {
@@ -66,11 +67,11 @@ const UserLogin = () => {
 
   return <>
     {server_error.non_field_errors ? console.log(server_error.non_field_errors[0]) : ""}
-    {server_error.email ? console.log(server_error.email[0]) : ""}
+    {server_error.username ? console.log(server_error.username[0]) : ""}
     {server_error.password ? console.log(server_error.password[0]) : ""}
     <Box component='form' noValidate sx={{ mt: 1 }} id='login-form' onSubmit={handleSubmit}>
-      <TextField margin='normal' required fullWidth id='email' name='email' label='Email Address' />
-      {server_error.email ? <Typography style={{ fontSize: 12, color: 'red', paddingLeft: 10 }}>{server_error.email[0]}</Typography> : ""}
+      <TextField margin='normal' required fullWidth id='username' name='username' label='Username' />
+      {server_error.username ? <Typography style={{ fontSize: 12, color: 'red', paddingLeft: 10 }}>{server_error.username[0]}</Typography> : ""}
       <TextField margin='normal' required fullWidth id='password' name='password' label='Password' type='password' />
       {server_error.password ? <Typography style={{ fontSize: 12, color: 'red', paddingLeft: 10 }}>{server_error.password[0]}</Typography> : ""}
       <Box textAlign='center'>

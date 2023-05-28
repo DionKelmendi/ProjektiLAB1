@@ -1,6 +1,6 @@
-from xml.dom import ValidationErr
+from django.forms import ValidationError
 from rest_framework import serializers
-from account.models import User
+from django.contrib.auth.models import User
 from django.utils.encoding import smart_str, force_bytes, DjangoUnicodeDecodeError
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
@@ -9,10 +9,10 @@ from autosallon.utils import Util
 class UserRegistrationSerializer(serializers.ModelSerializer):
 
   password2 = serializers.CharField(style={'input_type':'password'}, write_only=True)
-    
+
   class Meta:
     model = User
-    fields=['email', 'name', 'password', 'password2']
+    fields=['email', 'username', 'password', 'password2']
     extra_kwargs={
       'password':{'write_only':True}
     }
@@ -20,24 +20,30 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
   def validate(self, data):
     password = data.get('password')
     password2 = data.get('password2')
+    email = data.get('email')
+    username = data.get('username')
 
     if password != password2:
       raise serializers.ValidationError("Password and Confirm Password didn't match")
+
+    if User.objects.filter(email=email).exists():
+      raise serializers.ValidationError("Email already exists")
     return data
   
   def create(self, validate_data):
     return User.objects.create_user(**validate_data)
   
 class UserLoginSerializer(serializers.ModelSerializer):
-  email = serializers.EmailField(max_length=255)
+  # email = serializers.EmailField(max_length=255)
+  username = serializers.CharField(max_length=255)
   class Meta:
     model = User
-    fields = ["email", "password"]
+    fields = ["username", "password"]
 
 class UserProfileSerializer(serializers.ModelSerializer):
   class Meta:
     model = User
-    fields = ['id', 'email', 'name']
+    fields = ['id', 'email', 'username']
 
 class UserChangePasswordSerializer(serializers.ModelSerializer):
   password = serializers.CharField(max_length=255, style={'input_type':'password'}, write_only=True)
@@ -81,7 +87,7 @@ class SendPasswordResetEmailSerializer(serializers.Serializer):
       Util.send_email(data)
       return data
     else:
-      raise ValidationErr('You are not a Registered User')
+      raise ValidationError('You are not a Registered User')
     
 class UserPasswordResetSerializer(serializers.Serializer):
   password = serializers.CharField(max_length=255, style={'input_type':'password'}, write_only=True)
@@ -103,11 +109,11 @@ class UserPasswordResetSerializer(serializers.Serializer):
       user = User.objects.get(id=id)
 
       if not PasswordResetTokenGenerator().check_token(user, token):
-        raise ValidationErr("Token is not valid or has expired")
+        raise ValidationError("Token is not valid or has expired")
       user.set_password(password)
       user.save()
       return data
     except DjangoUnicodeDecodeError as identifier:
       PasswordResetTokenGenerator().check_token(user, token)
-      raise ValidationErr("Token is not valid or has expired")
+      raise ValidationError("Token is not valid or has expired")
     
