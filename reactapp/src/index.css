@@ -923,6 +923,287 @@ form .successP {
   display: none;
 }
 
+.dashboard {
+
+  background: #363636;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.dashboard .containerMain {
+
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  gap: 20px;
+  flex-wrap: wrap;
+
+  width: 1090px;
+  margin: auto;
+  /* outline: 1px solid lime; */
+}
+
+.dashboard .item {
+
+  background: white;
+  border-radius: 5px;
+
+  /* border: 1px solid lime; */
+}
+
+.dashboard .userWelcome {
+
+  width: 350px;
+  height: 350px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.dashboard .userWelcome img {
+
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+}
+
+.dashboard .welcomeMessage {
+
+  font-size: 20px;
+}
+
+.dashboard .userReviews button,
+.dashboard .userFavorites button,
+.dashboard .userWelcome button,
+.dashboard .changePassword .update,
+.dashboard .userInfo button {
+  width: 202px;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+}
+
+.dashboard .userWelcome button {
+  color: black;
+  background: #d9d9d9;
+}
+
+.dashboard .userInfo {
+  width: 720px;
+  height: 350px;
+  font-weight: bold;
+  padding: 30px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.dashboard .userInfo span {
+
+  float: right;
+  font-weight: 400;
+}
+
+.dashboard .userReviews button,
+.dashboard .userFavorites button,
+.dashboard .changePassword .update,
+.dashboard .userInfo button {
+
+  color: white;
+  background: orange;
+  border-radius: 5px;
+  transform: translateY(24px);
+
+}
+
+.dashboard .userReviews,
+.dashboard .changePassword,
+.dashboard .userFavorites {
+
+  width: 350px;
+  height: 350px;
+  padding: 20px;
+}
+
+.dashboard .changePassword .container {
+
+  width: 100%;
+  height: 100%;
+}
+
+.dashboard .changePassword form {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+  height: 100%;
+}
+
+.dashboard .changePassword a {
+  padding: 8px;
+  border-bottom: 1px solid black;
+}
+
+.changePassword .errorP,
+.changePassword .successP {
+  margin-top: 0;
+  width: auto;
+
+  position: absolute;
+  width: 250px;
+}
+
+.dashboard .changePassword form div {
+
+  width: 85%;
+}
+
+.dashboard .userFavorites h1,
+.dashboard .userReviews h1,
+.dashboard .changePassword h1 {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.dashboard .changePassword form div input {
+
+  width: 85%;
+  border: none;
+  border-bottom: 1px solid black;
+  height: 32px;
+  margin-top: 5px;
+}
+
+.dashboard .changePassword form div input:focus {
+  outline: none;
+}
+
+.dashboard .changePassword i {
+  width: 20px;
+  height: 20px;
+}
+
+.dashboard .userFavorites img {
+
+  width: 30px;
+  height: 30px;
+}
+
+.dashboard .userFavorites .favoriteItem {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 95%;
+  margin: auto;
+  background-color: #d9d9d9;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.dashboard .userFavorites .favoriteItem {
+
+  color: black;
+}
+
+.dashboard a {
+
+  text-decoration: none;
+}
+
+.dashboard .userFavorites .favoriteItem:hover {
+
+  opacity: 70%;
+}
+
+.dashboard .userFavorites .favoriteItem:active {
+
+  color: orange;
+}
+
+.dashboard .userFavorites button {
+  margin: auto;
+  margin-top: 29px;
+  margin-left: calc(50% - 101px);
+}
+
+.dashboard .userReviews {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard .reviewRating {
+
+  display: flex;
+  justify-content: space-between;
+  color: black;
+}
+
+.dashboard .userReviews h1 {
+  align-self: flex-start;
+}
+
+.dashboard .reviewContent {
+
+  background: #e6e6e6;
+  padding: 15px;
+  border-radius: 5px;
+  color: black;
+}
+
+.dashboard .reviewContent i {
+
+  color: #f3da35;
+}
+
+
+.dashboard .reviewRating>div {
+
+  background: white;
+  padding: 2px;
+  border-radius: 5px;
+}
+
+.dashboard .reviewContent>* {
+
+  padding: 5px;
+}
+
+.dashboard .reviewContent:hover {
+
+  opacity: 70%;
+}
+
+.dashboard .comment {
+
+  background: white;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.dashboard .userReviews button {
+
+  transform: translateY(5px);
+}
+
+.dashboard .reviewRating {
+  padding-left: 0;
+}
+
 @media screen and (max-width: 550px) {
 
   .carSlider .sliderItem img {
