@@ -8,6 +8,9 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        
+    </style>
 </head>
 <body>
     <div class="container">
@@ -18,6 +21,9 @@
             <input type="text" id="user_input" placeholder="Type your message...">
             <button type="submit">Send</button>
         </form>
+        <div class="loader">
+            <img src="{% static 'images/loader.gif' %}"  alt="Loader">
+        </div>
     </div>
     <script>
         function getCookie(name) {
@@ -44,6 +50,9 @@
                 let user_message = $('<p>').text('You: ' + user_input);
                 $('#chat-window').append(user_message);
 
+                // Show the loader
+                $('.loader').show();
+
                 $.ajax({
                     type: 'POST',
                     url: '',
@@ -57,6 +66,14 @@
                         let bot_message = $('<p>').text('ChatGPT: ' + bot_response);
                         $('#chat-window').append(bot_message);
                         $('#chat-window').scrollTop($('#chat-window')[0].scrollHeight);
+
+                        // Hide the loader
+                        $('.loader').hide();
+                    },
+                    error: function () {
+                        // Handle error if the request fails
+                        // Hide the loader
+                        $('.loader').hide();
                     }
                 });
             }
