@@ -23,7 +23,7 @@ def chat_view(request):
             presence_penalty=0,
             n=1,
             stop=["\nUser:"],
-        )
+        ) 
 
         bot_response = response["choices"][0]["message"]["content"]
         return JsonResponse({'response': bot_response})
