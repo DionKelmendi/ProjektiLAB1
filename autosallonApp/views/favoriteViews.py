@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from rest_framework import generics
-from ..serializers import FavoriteSerializer
-from ..models import Favorite
+from ..serializers import FavoriteSerializer, CarSerializer
+from ..models import Favorite, Car
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 
@@ -39,3 +39,20 @@ class FavoriteDestroyAPIView(generics.DestroyAPIView):
 
     def perform_destroy(self, instance):
         super().perform_destroy(instance)
+
+# Favorite Read All Instances From One User
+class FavoriteUserAPIView(generics.ListAPIView):
+    queryset = Favorite.objects.all()
+    serializer_class = CarSerializer
+    lookup_field = 'user_id'
+
+    def get_queryset(self):
+      car_ids = Favorite.objects.filter(user_id=self.kwargs['user_id']).order_by('-favorite_date').values_list('car_id', flat=True)[:3]
+      cars = []
+        
+      for car_id in car_ids:
+        cars.append(get_object_or_404(Car, id=car_id))
+
+      print(cars)
+
+      return cars;

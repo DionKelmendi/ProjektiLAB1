@@ -42,6 +42,7 @@ urlpatterns = [
     path('favorite/<int:pk>/', favoriteViews.FavoriteDetailAPIView.as_view()),
     path('favorite/<int:pk>/update', favoriteViews.FavoriteUpdateAPIView.as_view()),
     path('favorite/<int:pk>/destroy', favoriteViews.FavoriteDestroyAPIView.as_view()),
+    path('favorite/user/<int:user_id>/', favoriteViews.FavoriteUserAPIView.as_view()),
 
     path('review/', reviewViews.ReviewAPIView.as_view()),
     path('review/<int:pk>/', reviewViews.ReviewDetailAPIView.as_view()),

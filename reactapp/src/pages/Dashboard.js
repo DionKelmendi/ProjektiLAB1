@@ -4,14 +4,16 @@ import { unSetUserToken } from '../features/authSlice';
 import { getToken, removeToken } from '../services/LocalStorageService';
 import ChangePassword from './auth/ChangePassword';
 import { useGetLoggedUserQuery } from '../services/userAuthApi';
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { setUserInfo, unsetUserInfo } from '../features/userSlice';
-import logo from "../images/autosallonLogo.png"
-import Volkswagen from "../images/logos/Volkswagen.webp"
+import logo from "../images/autosallonLogo.png";
+import Volkswagen from "../images/logos/Volkswagen.webp";
+import FavoriteItem from '../components/dashboardComponents/favoriteItem';
 
 const Dashboard = () => {
+
   const handleLogout = () => {
-    dispatch(unsetUserInfo({ name: "", email: "", first_name: "", last_name: "" }))
+    dispatch(unsetUserInfo({ id: "", name: "", email: "", first_name: "", last_name: "" }))
     dispatch(unSetUserToken({ access_token: null }))
     removeToken()
     navigate('/')
@@ -22,6 +24,7 @@ const Dashboard = () => {
   const { data, isSuccess } = useGetLoggedUserQuery(access_token)
 
   const [userData, setUserData] = useState({
+    id: "",
     email: "",
     name: "",
     first_name: "",
@@ -32,6 +35,7 @@ const Dashboard = () => {
   useEffect(() => {
     if (data && isSuccess) {
       setUserData({
+        id: data.id,
         email: data.email,
         name: data.username,
         first_name: data.first_name,
@@ -42,9 +46,12 @@ const Dashboard = () => {
 
   // Store User Data in Redux Store
   useEffect(() => {
-    console.log(data);
+
+    fetchFavoriteData();
+
     if (data && isSuccess) {
       dispatch(setUserInfo({
+        id: data.id,
         email: data.email,
         name: data.name,
         first_name: data.first_name,
@@ -53,20 +60,20 @@ const Dashboard = () => {
     }
   }, [data, isSuccess, dispatch])
 
+  const [favoriteData, getFavoriteData] = useState([])
+  const API = 'http://127.0.0.1:8000/prova/favorite/user/6/';
+  const fetchFavoriteData = () => {
+    fetch(API)
+      .then((res) => res.json())
+      .then((res) => {
+        getFavoriteData(res)
+        console.log(res);
+      })
+  }
+
   return (
     <section className="dashboard">
-      {/* <div className='container'>
-        <div>
-          <h1>Dashboard</h1>
-          <p>Email: {userData.email}</p>
-          <p>Username: {userData.name}</p>
-          <p>Full Name: {userData.first_name + " " + userData.last_name}</p>
-          <button type='submit' onClick={handleLogout}>Logout</button>
-        </div>
-        <div className='changePasswordContainer'>
-          <ChangePassword />
-        </div>
-      </div> */}
+
       <div className='containerMain'>
         <div className='userWelcome item'>
           <img src={logo}></img>
@@ -96,29 +103,10 @@ const Dashboard = () => {
 
         <div className='userFavorites item'>
           <h1>Recent Favorites</h1>
-          <Link to="/vehicle?id=1">
-            <div className='favoriteItem'>
-              <img src={Volkswagen} />
-              <p>Volkswagen Golf 7</p>
-              <i className="fa-solid fa-arrow-right"></i>
-            </div>
-          </Link>
 
-          <Link to="/vehicle?id=1">
-            <div className='favoriteItem'>
-              <img src={Volkswagen} />
-              <p>Volkswagen Golf 7</p>
-              <i className="fa-solid fa-arrow-right"></i>
-            </div>
-          </Link>
-
-          <Link to="/vehicle?id=1">
-            <div className='favoriteItem'>
-              <img src={Volkswagen} />
-              <p>Volkswagen Golf 7</p>
-              <i className="fa-solid fa-arrow-right"></i>
-            </div>
-          </Link>
+          {favoriteData.map((item, i) => {
+            return <FavoriteItem key={item.id} id={item.id} img={item.make} name={item.make + " " + item.model} />
+          })}
 
           <Link to="/favorites">
             <button>See all favorites</button>
