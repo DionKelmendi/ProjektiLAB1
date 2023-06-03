@@ -10,7 +10,7 @@ import { setUserInfo, unsetUserInfo } from '../features/userSlice';
 import logo from "../images/autosallonLogo.png";
 import Volkswagen from "../images/logos/Volkswagen.webp";
 import FavoriteItem from '../components/dashboardComponents/favoriteItem';
-import ReviewItem from '../components/dashboardComponents/reviewItem';
+import ReviewContent from '../components/dashboardComponents/reviewContent';
 
 const Dashboard = () => {
 
@@ -30,7 +30,9 @@ const Dashboard = () => {
     email: "",
     name: "",
     first_name: "",
-    last_name: ""
+    last_name: "",
+    address: "",
+    phoen: ""
   })
 
   // Store User Data in Local State
@@ -41,37 +43,60 @@ const Dashboard = () => {
         email: data.email,
         name: data.username,
         first_name: data.first_name,
-        last_name: data.last_name
+        last_name: data.last_name,
+        address: data.contact_info[0],
+        phone: data.contact_info[1],
       })
     }
   }, [data, isSuccess])
 
   // Store User Data in Redux Store
   useEffect(() => {
-
-    fetchFavoriteData();
-
     if (data && isSuccess) {
       dispatch(setUserInfo({
         id: data.id,
         email: data.email,
         name: data.name,
         first_name: data.first_name,
-        last_name: data.last_name
+        last_name: data.last_name,
+        address: data.contact_info[0],
+        phone: data.contact_info[1],
       }))
     }
+
   }, [data, isSuccess, dispatch])
 
   const [favoriteData, getFavoriteData] = useState([])
-  const FavoriteAPI = 'http://127.0.0.1:8000/prova/favorite/user/6/';
-  const fetchFavoriteData = () => {
-    fetch(FavoriteAPI)
-      .then((res) => res.json())
-      .then((res) => {
-        getFavoriteData(res)
-        console.log(res);
-      })
-  }
+  const [reviewData, getReviewData] = useState([])
+
+  useEffect(() => {
+    const fetchFavoriteData = (id) => {
+      const favoriteAPI = 'http://127.0.0.1:8000/prova/favorite/user/' + id + "/";
+      if (id) {
+        fetch(favoriteAPI)
+          .then((res) => res.json())
+          .then((res) => {
+            getFavoriteData(res);
+            console.log(res);
+          });
+      }
+    };
+
+    const fetchReviewData = (id) => {
+      const reviewAPI = 'http://127.0.0.1:8000/prova/review/user/' + id + "/";
+      if (id) {
+        fetch(reviewAPI)
+          .then((res) => res.json())
+          .then((res) => {
+            getReviewData(res);
+            console.log(res);
+          });
+      }
+    };
+
+    fetchFavoriteData(userData.id);
+    fetchReviewData(userData.id);
+  }, [userData.id]);
 
   return (
     <section className="dashboard">
@@ -90,10 +115,10 @@ const Dashboard = () => {
           <p>Email <span>{userData.email}</span></p>
           <hr />
 
-          <p>Phone <span>{userData.phone ? userData.phone : "Phone Number"}</span></p>
+          <p>Phone <span>{userData.phone}</span></p>
           <hr />
 
-          <p>Address <span>{userData.address ? userData.address : "Address"}</span></p>
+          <p>Address <span>{userData.address}</span></p>
           <hr />
 
           <Link to="/">
@@ -115,7 +140,20 @@ const Dashboard = () => {
           </Link>
         </div>
 
-        <ReviewItem />
+        {/* <ReviewItem /> */}
+        <div className='userReviews item'>
+          <h1>Most Recent Review</h1>
+
+          {reviewData.length > 0 && (
+            <Link to="/vehicle?id=1">
+              <ReviewContent car_name={reviewData[0].car_name} comment={reviewData[0].comment} />
+            </Link>
+          )}
+
+          <Link to="/reviews">
+            <button>See all reviews</button>
+          </Link>
+        </div>
 
       </div>
     </section >
