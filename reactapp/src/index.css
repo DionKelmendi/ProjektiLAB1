@@ -992,6 +992,13 @@ form .successP {
 .dashboard .userWelcome button {
   color: black;
   background: #d9d9d9;
+  transition: 0.3s all;
+}
+
+.dashboard .userWelcome button:hover {
+
+  background: #c5c5c5;
+  cursor: pointer;
 }
 
 .dashboard .userInfo {
@@ -1020,7 +1027,16 @@ form .successP {
   background: orange;
   border-radius: 5px;
   transform: translateY(24px);
+  transition: 0.3s all;
+}
 
+.dashboard .userReviews button:hover,
+.dashboard .userFavorites button:hover,
+.dashboard .changePassword .update:hover,
+.dashboard .userInfo button:hover {
+
+  background: rgb(255, 132, 0);
+  cursor: pointer;
 }
 
 .dashboard .userReviews,
@@ -1193,6 +1209,18 @@ form .successP {
   background: white;
   border-radius: 5px;
   padding: 15px;
+  word-wrap: break-word;
+  max-width: 310px;
+  text-align: justify;
+}
+
+.dashboard .readMore {
+  color: gray;
+  text-decoration: underline;
+}
+
+.dashboard .readMore:hover {
+  color: black;
 }
 
 .dashboard .userReviews button {

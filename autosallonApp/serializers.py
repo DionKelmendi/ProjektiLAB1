@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from rest_framework import serializers
 from .models import Category, Car, User, ContactInfo, Distributor, Worker, Favorite, Review, Sale, Dis_Transaction, CarImages
 
@@ -53,6 +54,21 @@ class ReviewSerializer(serializers.ModelSerializer):
   class Meta:
     model = Review
     fields = ('id', 'user_id', 'car_id', 'rating', 'review_date', 'comment')
+
+class ReviewUserSerializer(serializers.ModelSerializer):
+  
+  car_name = serializers.SerializerMethodField()
+
+  def get_car_name(self, obj):
+    car_id = obj['car_id']
+
+    car = Car.objects.filter(id=car_id).values_list('make', 'model')
+
+    return car
+
+  class Meta:
+    model = Review
+    fields = ('id', 'user_id', 'car_id', 'rating', 'review_date', 'comment', 'car_name')
 
 class SaleSerializer(serializers.ModelSerializer):
   class Meta:

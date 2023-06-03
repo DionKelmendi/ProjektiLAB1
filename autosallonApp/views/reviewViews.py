@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from rest_framework import generics
-from ..serializers import ReviewSerializer
-from ..models import Review
+from ..serializers import CarSerializer, ReviewSerializer, ReviewUserSerializer
+from ..models import Car, Review
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 
@@ -43,3 +43,19 @@ class ReviewDestroyAPIView(generics.DestroyAPIView):
 
     def perform_destroy(self, instance):
         super().perform_destroy(instance)
+
+# Review Read All Instances From One User
+class ReviewUserAPIView(generics.ListAPIView):
+    queryset = Review.objects.all()
+    serializer_class = ReviewUserSerializer
+    lookup_field = 'user_id'
+
+    def get_queryset(self):
+      
+      car_ids = Review.objects.filter(user_id=self.kwargs['user_id']).order_by('-review_date').values_list('car_id', flat=True)[:1]
+      cars = []
+
+      for car_id in car_ids:
+        cars.append(get_object_or_404(Car, id=car_id))
+      
+      return Review.objects.filter(user_id=self.kwargs['user_id']).order_by('-review_date').values()[:1]

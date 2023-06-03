@@ -1,3 +1,4 @@
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { unSetUserToken } from '../features/authSlice';
@@ -9,6 +10,7 @@ import { setUserInfo, unsetUserInfo } from '../features/userSlice';
 import logo from "../images/autosallonLogo.png";
 import Volkswagen from "../images/logos/Volkswagen.webp";
 import FavoriteItem from '../components/dashboardComponents/favoriteItem';
+import ReviewItem from '../components/dashboardComponents/reviewItem';
 
 const Dashboard = () => {
 
@@ -61,9 +63,9 @@ const Dashboard = () => {
   }, [data, isSuccess, dispatch])
 
   const [favoriteData, getFavoriteData] = useState([])
-  const API = 'http://127.0.0.1:8000/prova/favorite/user/6/';
+  const FavoriteAPI = 'http://127.0.0.1:8000/prova/favorite/user/6/';
   const fetchFavoriteData = () => {
-    fetch(API)
+    fetch(FavoriteAPI)
       .then((res) => res.json())
       .then((res) => {
         getFavoriteData(res)
@@ -113,36 +115,8 @@ const Dashboard = () => {
           </Link>
         </div>
 
-        <div className='userReviews item'>
-          <h1>Most Recent Review</h1>
+        <ReviewItem />
 
-          <Link to="/vehicle?id=1">
-            <div className='reviewContent'>
-
-              <h1>This car sucks ASS!</h1>
-
-              <div className='reviewRating'>
-                <div>
-                  <i className="fa fa-star" />
-                  <i className="fa-regular fa-star" />
-                  <i className="fa-regular fa-star" />
-                  <i className="fa-regular fa-star" />
-                  <i className="fa-regular fa-star" />
-                </div>
-                <p>Mitsubishi Outlander</p>
-              </div>
-
-              <div className='comment'>
-
-                <p>Like dont get me wrong im all for a inexpensive all around vehicle, but it should at least be done correctly. The most important thing they could of ad...</p>
-              </div>
-            </div>
-          </Link>
-
-          <Link to="/reviews">
-            <button>See all reviews</button>
-          </Link>
-        </div>
       </div>
     </section >
   );
