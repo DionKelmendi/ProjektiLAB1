@@ -12,6 +12,7 @@ import Dashboard from "./pages/Dashboard.js";
 import ResetPassword from "./pages/auth/ResetPassword.js";
 import SendPasswordResetEmail from "./pages/auth/SendPasswordResetEmail.js"
 import { useSelector } from "react-redux";
+import AboutUs from "./pages/AboutUs.js";
 
 export default function App() {
   const { access_token } = useSelector(state => state.auth)
@@ -22,6 +23,7 @@ export default function App() {
 
         <Route path="" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/cars" element={<Cars />} />
         <Route path="/signIn" element={!access_token ? <SignIn /> : <Navigate to="/dashboard" />} />
         <Route path="/register" element={<Register />} />

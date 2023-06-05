@@ -1,5 +1,7 @@
 body {
     background-image: url("../images/heroImage.webp");
+    background-size: cover !important;
+    background-position: center;
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;

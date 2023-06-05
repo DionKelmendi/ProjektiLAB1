@@ -50,6 +50,7 @@ export default function Header() {
           <ul className="contentList contentHidden">
             {/* <li><Link className='listItem' to="/about"> ABOUT </Link></li> */}
             <li><Link onClick={toggleMenu} className='listItem' to="/cars"> VEHICLES </Link></li>
+            <li><a onClick={toggleMenu} className='listItem' href="http://127.0.0.1:8000/chatGPT/"> CAR ASSISTANT </a></li>
             <li><Link onClick={toggleMenu} className='listItem' to="/contact"> CONTACT US </Link></li>
             <li><Link onClick={toggleMenu} className='listItem' to="/signIn"><button className="signInButton">SIGN IN</button></Link></li>
           </ul>

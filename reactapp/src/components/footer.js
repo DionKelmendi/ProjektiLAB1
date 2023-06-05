@@ -42,10 +42,10 @@ export default function Footer() {
 
         <div className='item'>
           <h4><b>Support</b></h4><br />
+          <a href="http://localhost:3000/contact"><p>Contact</p></a>
+          <a href="http://localhost:3000/aboutus"><p>About Us</p></a>
           <a href="#"><p>History</p></a>
           <a href="#"><p>Location</p></a>
-          <a href="#"><p>Team</p></a>
-          <a href="#"><p>Media</p></a>
         </div>
 
         <div className='item'>

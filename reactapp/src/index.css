@@ -1487,3 +1487,63 @@ form .successP {
 }
 
 @media screen and (max-width: 1280px) {}
+
+/* ABOUT US */
+.about-us-container {
+  background-color: white;
+  color: black;
+  padding: 40px;
+  text-align: center;
+
+}
+
+.about-us-title {
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  margin-top: 60px;
+}
+
+.about-us-description {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 40px;
+}
+
+.about-us-mission {
+  font-size: 20px;
+  line-height: 1.5;
+  margin-bottom: 40px;
+}
+
+.about-us-visit {
+  font-size: 18px;
+  line-height: 1.5;
+  color:black;
+}
+
+.about-us-container p {
+  margin-bottom: 20px;
+}
+
+/* Additional Fancy Styles */
+.about-us-title {
+  color: black;
+  font-family: 'Arial', sans-serif;
+  text-shadow: 1px 1px 1px orange;
+}
+
+.about-us-description, .about-us-mission, .about-us-visit {
+  font-family: 'Helvetica', sans-serif;
+}
+
+.about-us-container h1::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background-color: #fff;
+  margin: 0 auto;
+  margin-top: 20px;
+  border-radius: 2px;
+}
