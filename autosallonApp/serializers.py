@@ -33,7 +33,7 @@ class UserSerializer(serializers.ModelSerializer):
 class ContactInfoSerializer(serializers.ModelSerializer):
   class Meta:
     model = ContactInfo
-    fields = ('id', 'user_id', 'address', 'phone')
+    fields = ('id', 'user', 'address', 'phone')
 
 class DistributorSerializer(serializers.ModelSerializer):
   class Meta:

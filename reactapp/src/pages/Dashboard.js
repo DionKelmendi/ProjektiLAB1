@@ -32,7 +32,7 @@ const Dashboard = () => {
     first_name: "",
     last_name: "",
     address: "",
-    phoen: ""
+    phone: ""
   })
 
   // Store User Data in Local State
@@ -77,7 +77,6 @@ const Dashboard = () => {
           .then((res) => res.json())
           .then((res) => {
             getFavoriteData(res);
-            console.log(res);
           });
       }
     };
@@ -89,7 +88,6 @@ const Dashboard = () => {
           .then((res) => res.json())
           .then((res) => {
             getReviewData(res);
-            console.log(res);
           });
       }
     };
@@ -145,8 +143,8 @@ const Dashboard = () => {
           <h1>Most Recent Review</h1>
 
           {reviewData.length > 0 && (
-            <Link to="/vehicle?id=1">
-              <ReviewContent car_name={reviewData[0].car_name} comment={reviewData[0].comment} />
+            <Link className="reviewLink" to="/vehicle?id=1">
+              <ReviewContent car_name={reviewData[0].car_name} comment={reviewData[0].comment} ratingAmount={reviewData[0].rating} />
             </Link>
           )}
 
