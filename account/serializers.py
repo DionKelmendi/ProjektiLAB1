@@ -1,10 +1,12 @@
 from django.forms import ValidationError
+from django.shortcuts import get_object_or_404
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from django.utils.encoding import smart_str, force_bytes, DjangoUnicodeDecodeError
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from autosallon.utils import Util
+from autosallonApp.models import ContactInfo
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
 
@@ -40,9 +42,31 @@ class UserLoginSerializer(serializers.ModelSerializer):
     fields = ["username", "password"]
 
 class UserProfileSerializer(serializers.ModelSerializer):
+  contact_info = serializers.SerializerMethodField()
+
+  def get_contact_info(self, obj):
+    user = obj
+    print(user)
+
+    try:
+      contactInfo = ContactInfo.objects.get(user_id=user.id)
+
+      contactList = []
+      contactList.append(contactInfo.address)
+      contactList.append(contactInfo.phone)
+
+      return contactList
+    except ContactInfo.DoesNotExist:
+      
+      contactList = []
+      contactList.append("Address")
+      contactList.append("Phone")
+
+      return contactList
+  
   class Meta:
     model = User
-    fields = ['id', 'email', 'username', 'first_name', 'last_name']
+    fields = ['id', 'email', 'username', 'first_name', 'last_name', 'contact_info']
 
 class UserChangePasswordSerializer(serializers.ModelSerializer):
   password = serializers.CharField(max_length=255, style={'input_type':'password'}, write_only=True)

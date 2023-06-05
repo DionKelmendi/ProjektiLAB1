@@ -40,7 +40,7 @@ class FavoriteDestroyAPIView(generics.DestroyAPIView):
     def perform_destroy(self, instance):
         super().perform_destroy(instance)
 
-# Favorite Read All Instances From One User
+# Favorite Read All Instances For One User
 class FavoriteUserAPIView(generics.ListAPIView):
     queryset = Favorite.objects.all()
     serializer_class = CarSerializer
@@ -52,7 +52,5 @@ class FavoriteUserAPIView(generics.ListAPIView):
         
       for car_id in car_ids:
         cars.append(get_object_or_404(Car, id=car_id))
-
-      print(cars)
 
       return cars;

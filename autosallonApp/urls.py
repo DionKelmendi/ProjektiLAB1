@@ -48,6 +48,7 @@ urlpatterns = [
     path('review/<int:pk>/', reviewViews.ReviewDetailAPIView.as_view()),
     path('review/<int:pk>/update', reviewViews.ReviewUpdateAPIView.as_view()),
     path('review/<int:pk>/destroy', reviewViews.ReviewDestroyAPIView.as_view()),
+    path('review/user/<int:user_id>/', reviewViews.ReviewUserAPIView.as_view()),
 
     path('sale/', saleViews.SaleAPIView.as_view()),
     path('sale/<int:pk>/', saleViews.SaleDetailAPIView.as_view()),
