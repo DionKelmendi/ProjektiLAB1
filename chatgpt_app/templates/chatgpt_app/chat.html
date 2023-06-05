@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChatGPT</title>
+    <title>CarAssistant</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
@@ -14,13 +14,15 @@
 </head>
 <body>
     <div class="container">
+        <div class="title">Ask Anything About Cars</div> 
         <div class="main">
             <div id="chat-window"></div>
+            <form id="chat-form">
+                <input type="text" id="user_input" placeholder="Type your message...">
+                <button type="submit">Send</button>
+            </form>
         </div>
-        <form id="chat-form">
-            <input type="text" id="user_input" placeholder="Type your message...">
-            <button type="submit">Send</button>
-        </form>
+        
         <div class="loader">
             <img src="{% static 'images/loader.gif' %}"  alt="Loader">
         </div>
@@ -63,7 +65,7 @@
                     },
                     success: function (data) {
                         let bot_response = data.response;
-                        let bot_message = $('<p>').text('ChatGPT: ' + bot_response);
+                        let bot_message = $('<p>').text('CarAssistant: ' + bot_response);
                         $('#chat-window').append(bot_message);
                         $('#chat-window').scrollTop($('#chat-window')[0].scrollHeight);
 

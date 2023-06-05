@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-import openai
+import openai, os
 
-openai.api_key = "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"
+openai.api_key = os.environ.get('GPT_KEY')
 
 def chat_view(request):
     if request.method == 'POST':
