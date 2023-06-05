@@ -7,6 +7,7 @@ from django.contrib.auth import authenticate
 from account.renderers import UserRenderer
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated
+from autosallonApp.models import ContactInfo
 
 # Generate Token Manually
 def get_tokens_for_user(user):
@@ -23,6 +24,23 @@ class UserRegistrationView(APIView):
 
     if serializer.is_valid(raise_exception=True):
       user = serializer.save()
+
+      print(user.id)
+
+      if 'address' in request.data:
+        print(request.data['address'])
+        if ContactInfo.objects.filter(user_id=user.id).exists():
+          contact_info=ContactInfo.objects.filter(user_id=user.id).update(address=request.data['address'])
+        else:
+          contact_info=ContactInfo.objects.create(user_id=user.id, address=request.data['address'])
+
+      if 'phone' in request.data:
+        print(request.data['phone'])
+        if ContactInfo.objects.filter(user_id=user.id).exists():
+          contact_info=ContactInfo.objects.filter(user_id=user.id).update(phone=request.data['phone'])
+        else:
+          contact_info=ContactInfo.objects.create(user_id=user.id, phone=request.data['phone'])
+
       token = get_tokens_for_user(user)
       return Response({'token': token, 'msg':'Registration Success'}, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

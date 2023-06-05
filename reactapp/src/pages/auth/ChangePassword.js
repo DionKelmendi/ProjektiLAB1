@@ -30,9 +30,6 @@ const ChangePassword = () => {
   };
   // Getting User Data from Redux Store
   const myData = useSelector(state => state.user)
-  // console.log("Change Password", myData)
-
-
 
   function togglePassword() {
 

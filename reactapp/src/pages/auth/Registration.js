@@ -23,6 +23,7 @@ export default function Registration() {
       address: data.get('address'),
       phone: data.get('phone'),
     }
+
     const res = await registerUser(actualData)
     if (res.error) {
       console.log(typeof (res.error.data.errors))

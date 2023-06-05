@@ -46,7 +46,6 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
   def get_contact_info(self, obj):
     user = obj
-    print(user)
 
     try:
       contactInfo = ContactInfo.objects.get(user_id=user.id)
@@ -98,7 +97,6 @@ class SendPasswordResetEmailSerializer(serializers.Serializer):
       uid = urlsafe_base64_encode(force_bytes(user.id))
       token = PasswordResetTokenGenerator().make_token(user)
       link = 'http://127.0.0.1:8000/account/resetpassword/'+ uid + '/' + token
-      print(link)
       # Email part
       body = link
       data = {
