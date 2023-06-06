@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 export default function CarItem({ id, image, logo, name, year, mileage }) {
 
   try {
-    console.log(require('../../images/' + image));
 
     return (
       <div className="carItem">

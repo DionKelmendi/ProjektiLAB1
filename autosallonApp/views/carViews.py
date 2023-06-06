@@ -5,6 +5,7 @@ from ..serializers import CarSerializer
 from ..models import Car
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
+from rest_framework import filters
 
 # Create your views here.
 
@@ -18,7 +19,9 @@ class CarDetailAPIView(generics.RetrieveAPIView):
 class CarAPIView(generics.ListCreateAPIView):
   queryset = Car.objects.all()
   serializer_class = CarSerializer
-
+  filter_backends = [filters.SearchFilter]
+  search_fields = ['make', 'model', 'category_id__name']
+  
   def perform_create(self, serializer):    
     make = serializer.validated_data.get('make')
     model = serializer.validated_data.get('model')
