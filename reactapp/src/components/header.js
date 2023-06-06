@@ -5,9 +5,8 @@ import { useEffect } from 'react';
 
 export default function Header() {
   const { access_token } = getToken()
-  console.log(access_token);
   useEffect(() => {
-    
+
 
     window.onscroll = function () { scrollFunction() };
 
@@ -55,7 +54,7 @@ export default function Header() {
             <li><Link onClick={toggleMenu} className='listItem' to="/cars"> VEHICLES </Link></li>
             <li><a onClick={toggleMenu} className='listItem' href="http://127.0.0.1:8000/chatGPT/"> CAR ASSISTANT </a></li>
             <li><Link onClick={toggleMenu} className='listItem' to="/contact"> CONTACT US </Link></li>
-            <li><Link onClick={toggleMenu} className='listItem' to="/signIn"><button className="signInButton">{access_token===null ? "SIGN IN":"PROFILE"}</button></Link></li>
+            <li><Link onClick={toggleMenu} className='listItem' to="/signIn"><button className="signInButton">{access_token === null ? "SIGN IN" : "PROFILE"}</button></Link></li>
           </ul>
 
           <a onClick={toggleMenu}>

@@ -52,6 +52,18 @@ export const userAuthApi = createApi({
         }
       }
     }),
+    updateUser: builder.mutation({
+      query: (user) => {
+        return {
+          url: 'update/' + user['id'] + "/",
+          method: 'PUT',
+          body: user,
+          headers: {
+            'Content-type': 'application/json',
+          }
+        }
+      }
+    }),
     sendPasswordResetEmail: builder.mutation({
       query: (user) => {
         return {
@@ -79,4 +91,4 @@ export const userAuthApi = createApi({
   }),
 })
 
-export const { useRegisterUserMutation, useLoginUserMutation, useGetLoggedUserQuery, useChangeUserPasswordMutation, useSendPasswordResetEmailMutation, useResetPasswordMutation } = userAuthApi
+export const { useRegisterUserMutation, useLoginUserMutation, useGetLoggedUserQuery, useChangeUserPasswordMutation, useUpdateUserMutation, useSendPasswordResetEmailMutation, useResetPasswordMutation } = userAuthApi

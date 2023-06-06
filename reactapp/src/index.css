@@ -540,7 +540,8 @@ footer .row {
   align-items: center;
 }
 
-.signIn input {
+.signIn input,
+.dashboard .settingsForm input[type="text"] {
 
   width: 80%;
   border-radius: 5px;
@@ -982,7 +983,8 @@ form .successP {
 .dashboard .userFavorites button,
 .dashboard .userWelcome button,
 .dashboard .changePassword .update,
-.dashboard .userInfo button {
+.dashboard .userInfo button,
+.dashboard .settingsForm button {
   width: 202px;
   height: 30px;
   border-radius: 5px;
@@ -1033,7 +1035,8 @@ form .successP {
 .dashboard .userReviews button:hover,
 .dashboard .userFavorites button:hover,
 .dashboard .changePassword .update:hover,
-.dashboard .userInfo button:hover {
+.dashboard .userInfo button:hover,
+.dashboard .settingsForm button:hover {
 
   background: rgb(255, 132, 0);
   cursor: pointer;
@@ -1237,6 +1240,95 @@ form .successP {
 
 .dashboard .reviewRating {
   padding-left: 0;
+}
+
+.dashboard .hide {
+
+  display: none;
+}
+
+.dashboard .show {
+
+  display: block;
+}
+
+.dashboard .settingsForm {
+
+  width: 500px;
+  height: 750px;
+  position: absolute;
+  top: calc(50% - 375px);
+  left: calc(50% - 250px);
+  z-index: 99999;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0px 20px 15px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0px 20px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0px 20px 15px rgba(0, 0, 0, 0.5);
+
+}
+
+.dashboard .settingsForm form {
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-direction: column;
+
+  width: 80%;
+  height: 100%;
+  margin: auto;
+}
+
+.dashboard .settingsForm .close {
+  position: absolute;
+  right: 0;
+  margin: 10px;
+  border-radius: 100%;
+  background: none;
+  width: 30px;
+  border: 2px solid orange;
+  color: orange;
+  font-weight: 700;
+  text-align: center;
+  transition: 0.3s all;
+}
+
+.dashboard .settingsForm button {
+  transition: 0.3s all;
+  align-self: center;
+}
+
+.dashboard .settingsForm button:hover {
+  color: white;
+  background: orange;
+}
+
+.dashboard .settingsForm form div {
+
+  width: 100%;
+}
+
+.dashboard .errorP {
+  width: auto;
+  position: absolute;
+}
+
+.dashboard .settingsForm form input[type="text"] {
+
+  width: 100%;
+  padding: 10px;
+}
+
+.dashboard .settingsForm label {
+
+  font-size: 12px;
+}
+
+.dashboard .settingsForm hr {
+  width: 106%;
+  transform: translateX(-3%);
+  border: 1px solid #aaa;
 }
 
 @media screen and (max-width: 550px) {
@@ -1526,7 +1618,7 @@ form .successP {
 .about-us-visit {
   font-size: 18px;
   line-height: 1.5;
-  color:black;
+  color: black;
 }
 
 .about-us-container p {
@@ -1540,7 +1632,9 @@ form .successP {
   text-shadow: 1px 1px 1px orange;
 }
 
-.about-us-description, .about-us-mission, .about-us-visit {
+.about-us-description,
+.about-us-mission,
+.about-us-visit {
   font-family: 'Helvetica', sans-serif;
 }
 

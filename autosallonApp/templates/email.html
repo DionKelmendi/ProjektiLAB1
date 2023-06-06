@@ -3,11 +3,11 @@
 <body style="margin: 0">
   <span style="opacity: 0"> </span>
   <div style="background: #363636; display: flex; justify-content: center; align-items: center; padding: 50px; margin: 0; height: 100%; font-family: Arial, Helvetica, sans-serif">
-    <div style="background: white; width: 37%; margin: auto; padding: 50px; border-radius: 5px; gap: 20px">
-      <div style="display: table; margin-bottom: 30px">
+    <div style="background: white; width: 100%; max-width: 709px; margin: auto; padding: 50px; border-radius: 5px; gap: 20px">
+      <div style="display: table; margin-bottom: 30px; overflow-wrap: break-word; width: 100%">
         {% comment %} <img style="width: 150px" src="{{site}}{% static 'autosallonLogo.png' %}" /> {% endcomment %}
         <img style="width: 150px" src="cid:myimage" />
-        <h1 style="color: gray; display: table-cell; vertical-align: middle; padding-left: 50px">AutoParadise©</h1>
+        <h1 style="color: gray; display: table-cell; vertical-align: middle; font-size: 26px; float: right; margin-top: 60px">Auto Paradise©</h1>
       </div>
       <h2 style="margin: 0; background: #363636; width: calc(100% - 40px); text-align: center; color: white; border-radius: 5px; padding: 20px; margin-bottom: 10px">
         Reset Password
@@ -30,7 +30,7 @@
           font-size: 15px;
         "
       >
-        {{'http://127.0.0.1:8000/account/resetpassword/'}}</a
+        {{'Change your password here'}}</a
       >
       <p style="margin: 0; background: #eee; width: calc(100% - 40px); text-align: center; color: gray; border-radius: 5px; padding: 20px; text-align: justify">
         Be careful around sensitive information like passwords. Don't share this email to anyone else, or they can be able to change your password without further notice. If this

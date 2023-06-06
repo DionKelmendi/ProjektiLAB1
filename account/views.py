@@ -2,12 +2,14 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
-from account.serializers import SendPasswordResetEmailSerializer, UserPasswordResetSerializer, UserRegistrationSerializer, UserLoginSerializer, UserProfileSerializer, UserChangePasswordSerializer
+from account.serializers import UserUpdateSerializer, SendPasswordResetEmailSerializer, UserPasswordResetSerializer, UserRegistrationSerializer, UserLoginSerializer, UserProfileSerializer, UserChangePasswordSerializer
 from django.contrib.auth import authenticate
 from account.renderers import UserRenderer
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated
 from autosallonApp.models import ContactInfo
+from rest_framework import generics
+from django.contrib.auth.models import User
 
 # Generate Token Manually
 def get_tokens_for_user(user):
@@ -95,3 +97,21 @@ class UserPasswordResetView(APIView):
     if serializer.is_valid(raise_exception=True):
       return Response({'msg':'Password Changed Successfully'}, status=status.HTTP_200_OK)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class UserUpdateView(generics.UpdateAPIView):
+  queryset = User.objects.all()
+  serializer_class = UserUpdateSerializer
+  lookup_field = 'pk'
+    
+  def perform_update(self, serializer):
+    user_id = self.request.data['id']
+    email = self.request.data['email']
+    
+    if serializer.is_valid(raise_exception=True):
+      instance = serializer.save()
+      address = self.request.data['address']
+      phone = self.request.data['phone']
+
+      ContactInfo.objects.filter(user_id=user_id).update(address=address, phone=phone)
+
+      return Response({'msg':'Settings Changed Successfully'}, status=status.HTTP_200_OK)

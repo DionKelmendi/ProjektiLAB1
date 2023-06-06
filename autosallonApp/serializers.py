@@ -28,7 +28,7 @@ class CarImageSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
   class Meta:
     model = User
-    fields = ('id', 'name', 'email', 'password', 'registration_date')
+    fields = ('id', 'username', 'email', 'password')
 
 class ContactInfoSerializer(serializers.ModelSerializer):
   class Meta:

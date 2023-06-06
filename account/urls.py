@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path, include
-from account.views import SendPasswordResetEmailView, UserRegistrationView, UserLoginView, UserProfileView, UserChangePasswordView, UserPasswordResetView
+from account.views import SendPasswordResetEmailView, UserRegistrationView, UserLoginView, UserProfileView, UserChangePasswordView, UserPasswordResetView, UserUpdateView
 from autosallonApp.views.indexViews import index
 
 urlpatterns = [
@@ -24,6 +24,7 @@ urlpatterns = [
     path('changepassword/', UserChangePasswordView.as_view(), name='changepassword'),
     path('resetpasswordemail/', SendPasswordResetEmailView.as_view(), name='resetpasswordemail'),
     path('reset/<uid>/<token>', UserPasswordResetView.as_view(), name='resetpassword'),
-    path('resetpassword/<uid>/<token>', index, name='index')
+    path('resetpassword/<uid>/<token>', index, name='index'),
+    path('update/<int:pk>/', UserUpdateView.as_view(), name='update'),
 
 ]
