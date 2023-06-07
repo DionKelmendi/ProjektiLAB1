@@ -88,7 +88,7 @@ export default function Registration() {
         {server_error.password2 ? <p className='errorP'><i className="fa-solid fa-circle-exclamation"></i> {server_error.password2[0]}</p> : ""}
         {server_error.non_field_errors ? (server_error.non_field_errors[0].startsWith('Password') ? <p className='errorP'><i className="fa-solid fa-circle-exclamation"></i> {server_error.non_field_errors[0]}</p> : '') : ''}
 
-        {isLoading ? <CircularProgress /> : <input type="submit" value="Register" className='logInButton' />}
+        {isLoading ? <CircularProgress style={{ 'color': 'orange' }} /> : <input type="submit" value="Register" className='logInButton' />}
 
         <div className="registerLink">
           <p><span><Link to='/sendpasswordresetemail' >Forgot Password?</Link></span></p>

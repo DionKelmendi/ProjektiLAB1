@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useSendPasswordResetEmailMutation } from "../../services/userAuthApi";
+import { CircularProgress } from '@mui/material';
 
 export default function SendPasswordResetEmail() {
   const [server_error, setServerError] = useState({})
@@ -42,7 +43,7 @@ export default function SendPasswordResetEmail() {
         {server_error.non_field_errors ? <p className='errorP'><i className="fa-solid fa-circle-exclamation"></i> {server_error.non_field_errors[0]}</p> : ''}
         {server_msg.msg ? <p className='successP'><i className="fa-solid fa-circle-check"></i> {server_msg.msg}</p> : ''}
 
-        <input type="submit" value="Send Email" className='logInButton' />
+        {isLoading ? <CircularProgress style={{ 'color': 'orange' }} /> : <input type="submit" value="Send Email" className='logInButton' />}
 
       </form>
     </section>

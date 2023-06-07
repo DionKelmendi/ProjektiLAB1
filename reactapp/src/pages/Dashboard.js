@@ -111,7 +111,7 @@ const Dashboard = () => {
         fetch(favoriteAPI)
           .then((res) => res.json())
           .then((res) => {
-            getFavoriteData(res);
+            getFavoriteData(res.results);
           });
       }
     };

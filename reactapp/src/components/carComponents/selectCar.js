@@ -52,7 +52,7 @@ export default function SelectCar() {
 
   return (
     <>
-      <div className='selectCar'>
+      {/* <div className='selectCar'>
         <label htmlFor="make">Make</label><br />
         <select id="make" onChange={selectMake}>
           <option value="">Select Make</option>
@@ -71,6 +71,11 @@ export default function SelectCar() {
         <select id="model" >
           <option value="" id="option1">Select Make First</option>
         </select>
+      </div> */}
+
+      <div className='selectCar'>
+        <label htmlFor="search">Search</label><br />
+        <input id="search" name="search" type='text' placeholder='Search Here' />
       </div>
 
       <div>
