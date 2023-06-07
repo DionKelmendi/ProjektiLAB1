@@ -828,20 +828,27 @@ form .successP {
 
 
 .filterToggle {
-
   color: #363636;
   position: absolute;
   margin: 10px;
 }
 
 .filterToggle:hover {
-
   color: #565656;
 }
 
 .filterToggle:active {
-
   transform: translateY(1px);
+}
+
+.searchToggle {
+
+  right: 10%;
+}
+
+.extendSearch {
+  background: red;
+  transform: translateY(-50px);
 }
 
 .carItem:hover {

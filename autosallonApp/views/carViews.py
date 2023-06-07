@@ -6,6 +6,7 @@ from ..models import Car
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from rest_framework import filters
+from django_filters.rest_framework import DjangoFilterBackend
 
 # Create your views here.
 
@@ -16,23 +17,14 @@ class CarDetailAPIView(generics.RetrieveAPIView):
   serializer_class = CarSerializer
 
 #Car Read All Instances and Create    
-class CarAPIView(generics.ListCreateAPIView):
+class CarAPIView(generics.ListAPIView):
   queryset = Car.objects.all()
   serializer_class = CarSerializer
-  filter_backends = [filters.SearchFilter]
-  search_fields = ['make', 'model', 'category_id__name']
-  
-  def perform_create(self, serializer):    
-    make = serializer.validated_data.get('make')
-    model = serializer.validated_data.get('model')
-    price = serializer.validated_data.get('price')
-    mileage = serializer.validated_data.get('mileage')
-    year = serializer.validated_data.get('year')
-    color = serializer.validated_data.get('color')
-    sold = serializer.validated_data.get('sold')
-    category_id = serializer.validated_data.get('category_id')
-    image = serializer.validated_data.get('image')
-    serializer.save()
+  filter_backends = [filters.SearchFilter, DjangoFilterBackend]
+  search_fields = ['=make', 'model', 'category_id__name', '=year']
+  filterset_fields = ['color', 'mileage', 'price' ]
+  # 'transmission', 'fuel' missing from model
+  # add lte to mileage and price
 
 #Car Update
 class CarUpdateAPIView(generics.UpdateAPIView):

@@ -6,8 +6,13 @@ export default function ExtendedFilter() {
   function extendFilters() {
 
     let eFilter = document.querySelector(".extendFilter");
-
     eFilter.classList.toggle("show");
+  }
+
+  function extendSearch() {
+
+    let search = document.querySelector(".extendSearch");
+    search.classList.toggle("show");
   }
 
   return (
@@ -92,6 +97,10 @@ export default function ExtendedFilter() {
             <option value="electric">Electric</option>
           </select>
         </div>
+
+      </div>
+
+      <div className="extendSearch">
 
       </div>
     </div>

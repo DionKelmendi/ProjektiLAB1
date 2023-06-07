@@ -48,66 +48,6 @@ function selectMake() {
 
 }
 
-function getLink() {
-  let pathname = document.querySelector("#searchCar");
-  let make = document.querySelector("#make").value;
-  let model = document.querySelector("#model").value;
-  let category = document.querySelector("#category").value;
-  let color = document.querySelector("#color").value;
-  let year = document.querySelector("#year").value;
-  let mileage = document.querySelector("#mileage").value;
-  let price = document.querySelector("#price").value;
-  let transmission = document.querySelector("#transmission").value;
-  let fuel = document.querySelector("#fuel").value;
-
-  if (make === "") {
-    pathname.href = "/cars";
-  } else if (model === "") {
-    pathname.href = "cars?make=" + make;
-  } else {
-    pathname.href = "cars?make=" + make + "&model=" + model;
-  }
-
-  let data = {
-    make: make,
-    model: model,
-    category: category,
-    color: color,
-    year: year,
-    mileage: mileage,
-    price: price,
-    transmission: transmission,
-    fuel: fuel
-  }
-
-  alert(JSON.stringify(data))
-
-  // let url = "/cars?";
-
-  // if (make !== "") {
-  //   url = url.concat("", "?make=" + make)
-
-  //   if (model !== "") {
-  //     url = url.concat("", "&model=" + model)
-  //   }
-  //   if (color !== "") {
-  //     url = url.concat("", "&color=" + color)
-  //   }
-  //   if (year !== "") {
-  //     url = url.concat("", "&year=" + year)
-  //   }
-  //   if (mileage !== "") {
-  //     url = url.concat("", "&mileage=" + mileage)
-  //   }
-  //   if (price !== "") {
-  //     url = url.concat("", "&price=" + price)
-  //   }
-  // }
-
-  // pathname.href = url;
-
-}
-
 export default function SelectCar() {
 
   return (
@@ -140,18 +80,14 @@ export default function SelectCar() {
           <option value="convertible">Convertible</option>
           <option value="coupe">Coupe</option>
           <option value="suv">SUV</option>
-          <option value="stationwagon">Station Wagon</option>
+          <option value="station wagon">Station Wagon</option>
           <option value="sedan">Sedan</option>
           <option value="van">Van</option>
           <option value="other">Other</option>
         </select>
       </div>
 
-      <div>
-        <a id="searchCar" onClick={getLink} href="">
-          <input type="submit" value="Show Results" />
-        </a>
-      </div>
+
     </>
   )
 }
