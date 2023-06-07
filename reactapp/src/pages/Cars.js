@@ -7,24 +7,24 @@ import ExtendedFilter from "../components/carComponents/extendedFilter";
 
 export default function Cars() {
 
+  const [query, setQuery] = useState([]);
   const [data, getData] = useState([]);
-  const [page, setPage] = useState(0); // Current page number
+  const [page, setPage] = useState(1); // Current page number
   const [perPage, setPerPage] = useState(12); // Number of cars per page
-  
-  let API = 'http://127.0.0.1:8000/prova/car/?search=';
+
+
+  let API = "http://127.0.0.1:8000/prova/car/?limit=12&offset=" + (12 * (page - 1)) + "&search=" + query;
   const fetchData = () => {
-    
-    if(page < 0){
-      setPage(0);
+    console.log(page);
+    console.log(API);
+    if (page < 1) {
+      setPage(1);
     }
     // const url = `${API}?page=${page}&limit=${perPage}`;
-    API = "http://127.0.0.1:8000/prova/car/?limit=12&offset=" + (12*page);
-    console.log(API)
     fetch(API)
       .then((res) => res.json())
       .then((res) => {
         getData(res.results);
-        console.log(res.results);
       });
   };
 
@@ -49,9 +49,11 @@ export default function Cars() {
 
     let data = make + " " + model + " " + category + " " + year + color + mileage + price;
 
-    API = "http://127.0.0.1:8000/prova/car/?limit=12&offset=" + (12*page) + "&search=" + data;
+    setQuery(data)
+  }
 
-    console.log(API)
+  useEffect(() => {
+    console.log(query);
     const fetchSearchData = () => {
       fetch(API)
         .then((res) => res.json())
@@ -60,7 +62,8 @@ export default function Cars() {
         })
     }
     fetchSearchData();
-  }
+  }, [query])
+
 
   return (
     <div className="carMain">
@@ -83,12 +86,12 @@ export default function Cars() {
           return <CarItem key={item.id} id={item.id} image={item.imageName} logo={item.make} name={item.make + " " + item.model} year={item.year} mileage={item.mileage} />
         })}
 
-      <div className="pagination">
-        <button onClick={() => setPage(page - 1)}>
-          Previous
-        </button>
-        <button onClick={() => setPage(page + 1)}>Next</button>
-      </div>
+        <div className="pagination">
+          <button onClick={() => setPage(page - 1)}>
+            Previous
+          </button>
+          <button onClick={() => setPage(page + 1)}>Next</button>
+        </div>
       </section>
 
       <Categories />
