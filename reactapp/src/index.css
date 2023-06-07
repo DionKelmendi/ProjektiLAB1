@@ -1595,63 +1595,231 @@ form .successP {
 @media screen and (max-width: 1280px) {}
 
 /* ABOUT US */
-.about-us-container {
-  background-color: white;
-  color: black;
-  padding: 40px;
+.about__container{
+  display: grid;
+  grid-template-columns: 35% 50%;
+  gap: 15%;
+}
+
+.about__me{
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 2rem;
+  background: linear-gradient(45deg,transparent, var(--color-primary),
+  transparent
+  );
+  display: grid;
+  place-items: center;
+}
+.about__me-image{
+  border-radius: 2rem;
+  overflow: hidden;
+  position: relative;
+  transform: rotate(10deg);
+  transition: transform var(--transition); 
+  
+}
+
+.about__me-image:hover{
+  transform: rotate(0);
+transition: 0.5s;
+  
+}
+.about__me-image:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  opacity: 0;
+  transition: all 0.0001s ease;
+}
+
+.about__me-image:hover:before {
+  width: 200%;
+  height: 200%;
+  opacity: 0.8;
+}
+.about__me-text {
+  font-family: 'Dancing Script', cursive;
+font-family: 'Poppins';
+ 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  text-align: center;
+  animation: typing 0.1s linear forwards;
+
+  word-wrap: break-word;
+ 
+  color:var(--color-light);
+  /* Add other styles for the text */
+ 
+}
+
+@keyframes typing {
+  0% {
+    width: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+.about__cards{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 1.5rem;
+}
+.about__card{
+  background: var(--color-bg-variant);
+  border: 1px solid transparent;
+  border-radius: 1rem;
+  padding: 2rem;
   text-align: center;
 
 }
+.about__card:hover{
+  background: transparent;
+  border-color: var(--color-primary-variant);
+  cursor: default;
+}
+.about__icon{
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.about__card h5{
+  font-size: 0.95rem;
 
-.about-us-title {
-  font-size: 32px;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  margin-top: 60px;
+}
+.about__card small{
+  font-size: 0.7rem;
+  color: var(--color-light);
+}
+.about__content p{
+  margin: 2rem 0 2.6rem;
+  color: var(--color-light);
+
 }
 
-.about-us-description {
-  font-size: 18px;
-  line-height: 1.5;
-  margin-bottom: 40px;
-}
+      /*-------------------------media wuery for medium devices---------------------------------------*/
+      @media only screen and (max-width:1024px){ 
+         .about__container{
+          grid-template-columns: 1fr;
+          gap: 0;
+         }
+         .about__me{
+          width: 50%;
+          margin: 2rem auto 4rem ;
+         }
+         .about__content p{
+          margin: 1rem 0 1.5rem;
+         }
+      
+      }
+        /*-------------------------media wuery for small devices---------------------------------------*/
+      @media only screen and (max-width:600px){
+          .about__me{
+              width: 65%;
+              margin: 0 auto 3rem ;
+             }
+             .about__content{
+              padding-bottom: 2rem;
+              text-align: center;
+             }
+             .about__content p{
+              
+              margin:1.5rem 0;
+              }
+              .about__cards{
+                  grid-template-columns: 1fr 1fr;
+                  gap: 1rem;
+              }
+          }
 
-.about-us-mission {
-  font-size: 20px;
-  line-height: 1.5;
-  margin-bottom: 40px;
-}
+/* Contact */
 
-.about-us-visit {
-  font-size: 18px;
-  line-height: 1.5;
-  color: black;
+.container.contact__container{
+  width: 58%;
+  display: grid;
+  grid-template-columns: 30% 58%;
+  gap: 12%;
 }
+.contact__options{
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.contact__option{
+  background: var(--color-bg-variant);
+  padding: 1.2rem;
+  border-radius: 1.2rem;
+  text-align: center;
+  border: 1px solid transparent;
+  transition: var(--transition);
 
-.about-us-container p {
-  margin-bottom: 20px;
-}
 
-/* Additional Fancy Styles */
-.about-us-title {
-  color: black;
-  font-family: 'Arial', sans-serif;
-  text-shadow: 1px 1px 1px orange;
 }
+.contact__option:hover{
+  background: transparent;
+  border-color: var(--color-primary-variant);
+}
+.contact__option-icon{
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
 
-.about-us-description,
-.about-us-mission,
-.about-us-visit {
-  font-family: 'Helvetica', sans-serif;
 }
+.contact__option-icon a{
+  margin-top: 0.7rem;
+  display: inline-block;
+  font-size: 0.8rem;
+}
+form{
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
 
-.about-us-container h1::after {
-  content: "";
-  display: block;
-  width: 80px;
-  height: 4px;
-  background-color: #fff;
-  margin: 0 auto;
-  margin-top: 20px;
-  border-radius: 2px;
 }
+input, textarea{
+
+  width: 100%;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  background: transparent;
+  border: 1px solid var(--color-primary-variant);
+  resize: none;
+  color: white;
+
+}
+@media screen and (max-width: 1024px){
+  .container.contact__container{
+      grid-template-columns: 1fr;
+      gap: 2rem;
+  }
+  
+}
+@media screen and (max-width: 600px){
+ 
+}
+/*-------------------------media wuery for medium devices---------------------------------------*/
+@media only screen and (max-width:1024px){ 
+ 
+ }
+   /*-------------------------media wuery for small devices---------------------------------------*/
+ @media only screen and (max-width:600px){
+  .container.contact__container{
+      width: var(--container-width-sm);
+     
+  }
+  #contact{
+      margin-bottom: 5rem;
+  }
+  
+     }
