@@ -120,52 +120,23 @@ export default function ExtendedFilter() {
 
         <div className='selectCar'>
           <label htmlFor="mileage">Mileage</label><br />
-          <select id="mileage">
-            <option value="">Select Mileage</option>
-            <option value="5k">5.000km</option>
-            <option value="10k">10.000km</option>
-            <option value="20k">20.000km</option>
-            <option value="30k">30.000km</option>
-            <option value="50k">50.000km</option>
-            <option value="100k">100.000km</option>
-            <option value="125k">125.000km</option>
-            <option value="150k">150.000km</option>
-            <option value="gt15k"> &gt;150.000km</option>
-          </select>
+          <input id="mileage" name="mileage" type='text' placeholder='Search Here' />
         </div>
 
         <div className='selectCar'>
           <label htmlFor="price">Price Range</label><br />
           <select id="price">
             <option value="">Select Price Range</option>
-            <option value="lt10000"> &lt;10.000€</option>
-            <option value="10k_20k"> 10.000€ - 20.000€ </option>
-            <option value="20k_30k"> 20.000€ - 30.000€ </option>
-            <option value="30k_40k"> 30.000€ - 40.000€ </option>
-            <option value="40k_50k"> 40.000€ - 50.000€ </option>
-            <option value="50k_70k"> 50.000€ - 70.000€ </option>
-            <option value="gt70k"> &gt;70.000€ </option>
+            <option value="10000"> &lt;10.000€</option>
+            <option value="1020"> 10.000€ - 20.000€ </option>
+            <option value="2030"> 20.000€ - 30.000€ </option>
+            <option value="3040"> 30.000€ - 40.000€ </option>
+            <option value="4050"> 40.000€ - 50.000€ </option>
+            <option value="5070"> 50.000€ - 70.000€ </option>
+            <option value="70"> &gt;70.000€ </option>
           </select>
         </div>
 
-        <div className='selectCar'>
-          <label htmlFor="transmission">Transmission</label><br />
-          <select id="transmission">
-            <option value="">Select Transmission</option>
-            <option value="manual">Manual</option>
-            <option value="automatic">Automatic</option>
-          </select>
-        </div>
-
-        <div className='selectCar'>
-          <label htmlFor="fuel">Fuel</label><br />
-          <select id="fuel">
-            <option value="">Select Fuel</option>
-            <option value="diesel">Diesel</option>
-            <option value="petrol">Petrol</option>
-            <option value="electric">Electric</option>
-          </select>
-        </div>
 
       </div>
 

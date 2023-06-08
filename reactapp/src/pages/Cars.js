@@ -7,6 +7,7 @@ import ExtendedFilter from "../components/carComponents/extendedFilter";
 
 export default function Cars() {
 
+  const [error, setError] = useState([""]);
   const [number, setNumber] = useState([]);
   const [query, setQuery] = useState([]);
   const [data, getData] = useState([]);
@@ -38,17 +39,22 @@ export default function Cars() {
 
     if (document.getElementById("page" + page)) {
       document.getElementById("page" + count).style.background = "";
-      document.getElementById("page" + page).style.background = "red";
+      document.getElementById("page" + page).style.background = "orange";
 
       setCount(page);
     }
 
-    console.log(API);
+    window.scrollTo(0, 0);
 
     fetch(API)
       .then((res) => res.json())
       .then((res) => {
         getData(res.results);
+        if (res.count == 0) {
+          setError("No results");
+        } else {
+          setError("");
+        }
         setTotalPages(Math.ceil(res.count / 12));
       });
   };
@@ -81,15 +87,10 @@ export default function Cars() {
     let mileage = "&mileage=" + document.querySelector("#mileage").value;
     let price = "&price=" + document.querySelector("#price").value;
 
-    let data;
-    // if (search.trim() !== "") {
-    // console.log(search);
-    // data = search;
-    // } else {
+    window.scrollTo(0, 0);
 
-    // data = make + " " + model + " " + category + " " + year + color + mileage + price;
-    data = search + " " + category + " " + year + color + mileage + price;
-    // }
+    let data;
+    data = search + " " + make + model + category + " " + year + color + mileage + price;
     setQuery(data)
   }
 
@@ -110,28 +111,37 @@ export default function Cars() {
     <div className="carMain">
       <section className="cars">
 
-        <div className="container">
-          <SelectCar />
-          <div>
-            <a id="searchCar" onClick={search} href="">
-              <input type="submit" value="Show Results" />
-            </a>
+        <form onSubmit={search} className="container">
+          <div className="container">
+            <SelectCar />
+            <div>
+              <a id="searchCar" href="">
+                <input type="submit" value="Show Results" />
+              </a>
+            </div>
           </div>
-        </div>
+        </form>
       </section>
 
-      <ExtendedFilter />
+      <form onSubmit={search} className="container">
+        <ExtendedFilter />
+      </form>
 
       <section className="carListing">
+        <div id="listingContainer" className="container">
+          {data.map((item, i) => {
+            return (
+              <>
+                <CarItem key={item.id} id={item.id} image={item.imageName} logo={item.make} name={item.make + " " + item.model} year={item.year} mileage={item.mileage} sold={item.sold} />
+              </>
+            )
+          })}
+        </div>
+        {error != "" ? <p>{error}</p> : ""}
         <div className="pagination">
           <button id="paginationPrevious" onClick={() => setPage(page - 1)}>Previous</button>
           {number}
           <button id="paginationNext" onClick={() => setPage(page + 1)}>Next</button>
-        </div>
-        <div className="container">
-          {data.map((item, i) => {
-            return <CarItem key={item.id} id={item.id} image={item.imageName} logo={item.make} name={item.make + " " + item.model} year={item.year} mileage={item.mileage} />
-          })}
         </div>
       </section>
 

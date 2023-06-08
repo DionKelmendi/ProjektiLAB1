@@ -691,12 +691,17 @@ form .successP {
   transition: 0.2s all ease-in;
 }
 
-.carMain input[type="submit"]:hover {
+.carMain input[type="submit"] {
 
   color: white;
   outline: 2px solid #363636;
   background: #363636;
   cursor: pointer;
+}
+
+.carMain input[type="submit"]:hover {
+  outline: 2px solid orange;
+  background: orange;
 }
 
 .carMain option {
@@ -714,6 +719,7 @@ form .successP {
   gap: 10px;
 }
 
+
 .cars .container .selectCar {
   width: 75%;
 }
@@ -721,6 +727,11 @@ form .successP {
 .cars .container div {
 
   width: 25%;
+}
+
+.cars form .container {
+
+  width: 100%;
 }
 
 .carMain input,
@@ -815,11 +826,13 @@ form .successP {
   text-align: center;
   padding: 10px;
   width: 100%;
-
+  position: relative;
 }
 
 .carDetails hr {
 
+  width: 90%;
+  margin: auto;
   color: #e6e6e6;
 }
 
@@ -836,6 +849,33 @@ form .successP {
   padding: 4px;
 }
 
+.soldOverlay {
+  background: rgb(255, 0, 0);
+  background: -moz-linear-gradient(180deg, rgba(255, 0, 0, 0) 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 0, 0, .25) 100%);
+  background: -webkit-linear-gradient(180deg, rgba(255, 0, 0, 0) 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 0, 0, .25) 100%);
+  background: linear-gradient(180deg, rgba(255, 0, 0, 0) 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 0, 0, .25) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff0000", endColorstr="#ff0000", GradientType=1);
+  position: absolute;
+  width: 100%;
+  height: calc(90% - 3px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
+.soldOverlayMessage {
+
+  background-color: white;
+  padding: 25px;
+  width: 60%;
+  font-size: 20px;
+  margin: auto;
+  color: red;
+}
 
 .filterToggle {
   color: #363636;
@@ -1341,11 +1381,11 @@ form .successP {
 .pagination {
   display: flex;
   gap: 5px;
-  transform: translateY(10px);
+  transform: translateY(100px) scale(1.25);
 }
 
 .pagination>* {
-  border: 1px solid black;
+  border: 1px solid #363636;
   width: 30px;
   height: 30px;
   padding: 5px;
@@ -1359,8 +1399,23 @@ form .successP {
   background: none;
   border-radius: 5px;
   color: #363636;
-
+  cursor: pointer;
 }
+
+.pagination button:hover,
+#paginationNext,
+#paginationPrevious {
+  background: #363636;
+  color: white;
+  transition: 0.3s all;
+}
+
+#paginationNext:hover,
+#paginationPrevious:hover {
+  color: #363636;
+  background: none;
+}
+
 
 .pagination button:active {
   transform: translateY(2px);
@@ -1835,12 +1890,12 @@ form .successP {
   font-size: 0.8rem;
 }
 
-form {
+/* form {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
 
-}
+} */
 
 input,
 textarea {
