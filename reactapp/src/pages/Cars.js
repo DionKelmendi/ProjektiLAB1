@@ -82,13 +82,14 @@ export default function Cars() {
     let price = "&price=" + document.querySelector("#price").value;
 
     let data;
-    if (search.trim() !== "") {
-      console.log(search);
-      data = search;
-    } else {
+    // if (search.trim() !== "") {
+    // console.log(search);
+    // data = search;
+    // } else {
 
-      data = make + " " + model + " " + category + " " + year + color + mileage + price;
-    }
+    // data = make + " " + model + " " + category + " " + year + color + mileage + price;
+    data = search + " " + category + " " + year + color + mileage + price;
+    // }
     setQuery(data)
   }
 

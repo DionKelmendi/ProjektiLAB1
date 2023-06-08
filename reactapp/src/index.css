@@ -679,7 +679,7 @@ form .successP {
 }
 
 .carMain select,
-.carMain input[type="submit"] {
+.carMain input {
 
   margin-top: 10px;
   background: none;
@@ -714,9 +714,13 @@ form .successP {
   gap: 10px;
 }
 
+.cars .container .selectCar {
+  width: 75%;
+}
+
 .cars .container div {
 
-  width: 100%;
+  width: 25%;
 }
 
 .carMain input,
@@ -845,16 +849,6 @@ form .successP {
 
 .filterToggle:active {
   transform: translateY(1px);
-}
-
-.searchToggle {
-
-  right: 10%;
-}
-
-.extendSearch {
-  background: red;
-  transform: translateY(-50px);
 }
 
 .carItem:hover {
