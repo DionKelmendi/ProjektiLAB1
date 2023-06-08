@@ -45,6 +45,7 @@
 }
 
 .wrapper .carousel {
+  display: block;
   font-size: 0px;
   cursor: pointer;
   overflow-y: hidden;
@@ -184,9 +185,7 @@
   margin: 0;
 }
 
-.vehicle input[type=number] {
-  -moz-appearance: textfield;
-}
+
 
 .vehicle .contact {
 

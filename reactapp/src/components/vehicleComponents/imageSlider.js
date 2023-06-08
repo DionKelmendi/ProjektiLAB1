@@ -17,7 +17,7 @@ export default function ImageSlider() {
   useEffect(() => {
 
     const carousel = document.querySelector(".carousel"),
-      firstImg = carousel.querySelectorAll("img")[0],
+      firstImg = carousel.querySelectorAll("img")[1],
       arrowIcons = document.querySelectorAll(".wrapper i");
     let isDragStart = false, isDragging = false, prevPageX, prevScrollLeft, positionDiff;
     const showHideIcons = () => {
@@ -28,7 +28,7 @@ export default function ImageSlider() {
     }
     arrowIcons.forEach(icon => {
       icon.addEventListener("click", () => {
-        let firstImgWidth = firstImg.clientWidth + 14; // getting first img width & adding 14 margin value
+        let firstImgWidth = firstImg.clientWidth + 20; // getting first img width & adding 14 margin value
         // if clicked icon is left, reduce width value from the carousel scroll left else add to it
         carousel.scrollLeft += icon.id === "left" ? -firstImgWidth : firstImgWidth;
         setTimeout(() => showHideIcons(), 60); // calling showHideIcons after 60ms
@@ -85,7 +85,7 @@ export default function ImageSlider() {
   return (
     <>
       <div className='mainSliderContainer'>
-        <img className='carLogoMain' src={"VW"} />
+        <img className='carLogoMain' src={VW} />
         <h1 className='carName'>Volkswagen Golf 7</h1>
         <div className='wrapperContainer'>
 
