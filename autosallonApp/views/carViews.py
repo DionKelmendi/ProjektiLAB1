@@ -20,10 +20,10 @@ class CarDetailAPIView(generics.RetrieveAPIView):
 class CarAPIView(generics.ListAPIView):
   queryset = Car.objects.all()
   serializer_class = CarSerializer
-  filter_backends = [filters.SearchFilter, DjangoFilterBackend]
+  filter_backends = [filters.SearchFilter, DjangoFilterBackend, filters.OrderingFilter]
   search_fields = ['=make', 'model', 'category_id__name', '=year']
   filterset_fields = ['color', 'mileage', 'price' ]
-  # 'transmission', 'fuel' missing from model
+  ordering_fields = ['sold', 'price', 'mileage', 'year']
   # add lte to mileage and price
 
 #Car Update

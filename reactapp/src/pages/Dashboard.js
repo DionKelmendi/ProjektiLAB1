@@ -122,7 +122,7 @@ const Dashboard = () => {
         fetch(reviewAPI)
           .then((res) => res.json())
           .then((res) => {
-            getReviewData(res);
+            getReviewData(res.results);
           });
       }
     };

@@ -1,7 +1,7 @@
 import { React } from 'react';
 import { Link } from 'react-router-dom';
 
-export default function CarItem({ id, image, logo, name, year, mileage, sold }) {
+export default function CarItem({ id, image, logo, name, year, mileage, sold, price }) {
 
   try {
 
@@ -28,6 +28,7 @@ export default function CarItem({ id, image, logo, name, year, mileage, sold }) 
             <hr />
             {sold ? <h4 className='soldOverlayMessage'> Sold </h4> :
               <div>
+                <h4><i className="fa-solid fa-dollar"></i> <br /> {price} </h4>
                 <h4><i className="fa-solid fa-calendar-days"></i> <br /> {year} </h4>
                 <h4><i className="fa-solid fa-gauge"></i> <br /> {mileage.toLocaleString("en-US")} km</h4>
               </div>

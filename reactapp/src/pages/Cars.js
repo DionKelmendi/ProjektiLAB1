@@ -7,16 +7,17 @@ import ExtendedFilter from "../components/carComponents/extendedFilter";
 
 export default function Cars() {
 
-  const [error, setError] = useState([""]);
-  const [number, setNumber] = useState([]);
-  const [query, setQuery] = useState([]);
-  const [data, getData] = useState([]);
+  const [ordering, setOrdering] = useState([""]); // Used for sorting data
+  const [error, setError] = useState([""]); // Returns error when no car results
+  const [number, setNumber] = useState([]); // Used for rendering pagination page buttons
+  const [query, setQuery] = useState([]); // Search Query, updated by filters
+  const [data, getData] = useState([]); // Car Data
   const [page, setPage] = useState(1); // Current page number
   const [totalPages, setTotalPages] = useState(1); // Current total page numbers
   const [perPage, setPerPage] = useState(12); // Number of cars per page
   const [count, setCount] = useState(1); // Number of cars per page
 
-  let API = "http://127.0.0.1:8000/prova/car/?limit=12&offset=" + (12 * (page - 1)) + "&search=" + query;
+  let API = "http://127.0.0.1:8000/prova/car/?limit=12&offset=" + (12 * (page - 1)) + "&search=" + query + "&ordering=sold," + ordering;
   const fetchData = () => {
 
     if (page < 1) {
@@ -89,23 +90,20 @@ export default function Cars() {
 
     window.scrollTo(0, 0);
 
-    let data;
-    data = search + " " + make + model + category + " " + year + color + mileage + price;
+    let data = search + " " + make + model + category + " " + year + color + mileage + price;
     setQuery(data)
+
+    let sort = document.querySelector("#sort").value;
+
+    setOrdering(sort);
+    console.log(ordering);
+    console.log(API);
   }
 
-  useEffect(() => {
-    const fetchSearchData = () => {
-      fetch(API)
-        .then((res) => res.json())
-        .then((res) => {
-          getData(res.results)
-
-        })
-    }
-    fetchSearchData();
-  }, [query])
-
+  // useEffect(() => {
+  //   console.log(ordering);
+  //   console.log(API);
+  // }, [ordering, API]);
 
   return (
     <div className="carMain">
@@ -127,13 +125,23 @@ export default function Cars() {
         <ExtendedFilter />
       </form>
 
+      <div className="extendSort">
+        <select id="sort" onChange={search}>
+          <option value="">Sort By</option>
+          <option value="-year">Sort By Year: Newest to Oldest</option>
+          <option value="year">Sort By Year: Oldest to Newest</option>
+          <option value="price">Sort By Price: Lowest to Highest</option>
+          <option value="-price">Sort By Price: Highest to Lowest</option>
+          <option value="mileage">Sort By Mileage: Lowest to Highest</option>
+          <option value="-mileage">Sort By Mileage: Highest to Lowest</option>
+        </select>
+      </div>
+
       <section className="carListing">
         <div id="listingContainer" className="container">
           {data.map((item, i) => {
             return (
-              <>
-                <CarItem key={item.id} id={item.id} image={item.imageName} logo={item.make} name={item.make + " " + item.model} year={item.year} mileage={item.mileage} sold={item.sold} />
-              </>
+              <CarItem key={item.id} id={item.id} image={item.imageName} logo={item.make} name={item.make + " " + item.model} price={item.price} year={item.year} mileage={item.mileage} sold={item.sold} />
             )
           })}
         </div>

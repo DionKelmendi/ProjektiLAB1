@@ -1,7 +1,6 @@
 import { React } from 'react'
 import './vehicle.css';
 import CarInfo from "./carInfo";
-// import Golf7 from "../../images/Golf7.webp";
 import Golf7_2 from "../../images/Golf7_2.webp";
 import backview from "../../images/backview.webp";
 import interior1 from "../../images/interior1.webp"
