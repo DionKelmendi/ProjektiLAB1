@@ -69,7 +69,7 @@
 }
 
 .carousel img {
-  max-height: 318px;
+  height: 318px;
   object-fit: cover;
   user-select: none;
   margin-left: 14px;
@@ -332,11 +332,12 @@
   gap: 1.2rem;
   width: 35%;
 }
+
 .review-form {
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
-  background:black;
+  background: black;
   border-radius: 10px;
   width: 7%;
 }
@@ -349,7 +350,7 @@
   margin-bottom: 20px;
 }
 
-#reviewLabel{
+#reviewLabel {
   display: block;
   font-weight: bold;
   margin-bottom: 5px;

@@ -60,9 +60,16 @@ class CarSerializer(serializers.ModelSerializer):
     fields = ('id', 'make', 'model', 'price', 'mileage', 'year', 'color', 'registration_date', 'sold', 'category', 'image', 'imageName')
 
 class CarImageSerializer(serializers.ModelSerializer):
+
+  imageName = serializers.SerializerMethodField('getImageName')
+
+  def getImageName(self, foo):
+    image = foo.image.name.split("/")[3]
+    return str(image)
+  
   class Meta:
     model = CarImages
-    fields = ('id', 'car', 'image' )    
+    fields = ('imageName', )    
 
 class UserSerializer(serializers.ModelSerializer):
   class Meta:

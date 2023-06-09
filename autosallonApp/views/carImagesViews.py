@@ -12,10 +12,13 @@ class CarImageCreateAPIView(generics.ListCreateAPIView):
   serializer_class = CarImageSerializer
 
 # CarImage Read One Instance
-class CarImageDetailAPIView(generics.RetrieveAPIView):
-    queryset = CarImages.objects.all()
+class CarImageDetailAPIView(generics.ListAPIView):
     serializer_class = CarImageSerializer
-    lookup_field = 'pk'
+    lookup_field = 'car'
+
+    def get_queryset(self):
+      car_id = self.kwargs['car']
+      return CarImages.objects.filter(car=car_id);
 
 # CarImage Update
 class CarImageUpdateAPIView(generics.UpdateAPIView):

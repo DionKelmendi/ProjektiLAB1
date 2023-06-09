@@ -1,4 +1,4 @@
-import { React } from "react";
+import { React, useEffect, useState } from "react";
 import Footer from "../components/footer";
 import ImageSlider from "../components/vehicleComponents/imageSlider";
 import MiddleContent from "../components/vehicleComponents/middleContent";

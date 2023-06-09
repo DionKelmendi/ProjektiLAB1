@@ -1,23 +1,51 @@
-import { React } from 'react'
+import { React, useEffect, useState } from 'react'
 import './vehicle.css';
 import CarInfo from "./carInfo";
-import Golf7_2 from "../../images/Golf7_2.webp";
-import backview from "../../images/backview.webp";
-import interior1 from "../../images/interior1.webp"
-import interior2 from "../../images/interior2.webp"
-import interior3 from "../../images/interior3.webp"
-import interior4 from "../../images/interior4.webp"
-import trunk from "../../images/trunk.webp"
-import VW from "../../images/logos/Volkswagen.webp"
-import { useEffect } from "react";
 
 export default function ImageSlider() {
+
+
+  const [data, setData] = useState("")
+  const [imageData, setImageData] = useState("")
+
+  useEffect(() => {
+
+    let id = (window.location.href).split("=")[1];
+
+    const fetchData = (id) => {
+      const API = 'http://127.0.0.1:8000/prova/car/' + id + "/";
+      if (id) {
+        fetch(API)
+          .then((res) => res.json())
+          .then((res) => {
+            setData(res);
+          });
+      }
+    };
+    const fetchImageData = (id) => {
+      const API = 'http://127.0.0.1:8000/prova/carImages/' + id + "/";
+      if (id) {
+        fetch(API)
+          .then((res) => res.json())
+          .then((res) => {
+            setImageData(res.results);
+          });
+      }
+    };
+    fetchData(id);
+    fetchImageData(id);
+  }, [])
 
   useEffect(() => {
 
     const carousel = document.querySelector(".carousel"),
-      firstImg = carousel.querySelectorAll("img")[1],
+      firstImg = carousel.querySelectorAll("img")[0],
       arrowIcons = document.querySelectorAll(".wrapper i");
+
+    if (carousel.querySelectorAll("img")[0] != undefined) {
+
+      console.log(carousel.querySelectorAll("img")[0].clientWidth);
+    }
     let isDragStart = false, isDragging = false, prevPageX, prevScrollLeft, positionDiff;
     const showHideIcons = () => {
       // showing and hiding prev/next icon according to carousel scroll left value
@@ -27,23 +55,25 @@ export default function ImageSlider() {
     }
     arrowIcons.forEach(icon => {
       icon.addEventListener("click", () => {
-        let firstImgWidth = firstImg.clientWidth + 20; // getting first img width & adding 14 margin value
-        // if clicked icon is left, reduce width value from the carousel scroll left else add to it
+        const carousel = document.querySelector(".carousel"),
+          firstImg = carousel.querySelectorAll("img")[0],
+          arrowIcons = document.querySelectorAll(".wrapper i");
+        let firstImgWidth = firstImg.clientWidth + 20;
         carousel.scrollLeft += icon.id === "left" ? -firstImgWidth : firstImgWidth;
-        setTimeout(() => showHideIcons(), 60); // calling showHideIcons after 60ms
+        setTimeout(() => showHideIcons(), 60);
       });
     });
     const autoSlide = () => {
-      // if there is no image left to scroll then return from here
+      const carousel = document.querySelector(".carousel"),
+        firstImg = carousel.querySelectorAll("img")[0],
+        arrowIcons = document.querySelectorAll(".wrapper i");
       if (carousel.scrollLeft - (carousel.scrollWidth - carousel.clientWidth) > -1 || carousel.scrollLeft <= 0) return;
       positionDiff = Math.abs(positionDiff); // making positionDiff value to positive
       let firstImgWidth = firstImg.clientWidth + 14;
-      // getting difference value that needs to add or reduce from carousel left to take middle img center
       let valDifference = firstImgWidth - positionDiff;
       if (carousel.scrollLeft > prevScrollLeft) { // if user is scrolling to the right
         return carousel.scrollLeft += positionDiff > firstImgWidth / 3 ? valDifference : -positionDiff;
       }
-      // if user is scrolling to the left
       carousel.scrollLeft -= positionDiff > firstImgWidth / 3 ? valDifference : -positionDiff;
     }
     const dragStart = (e) => {
@@ -61,8 +91,6 @@ export default function ImageSlider() {
       carousel.classList.add("dragging");
       positionDiff = (e.pageX) - prevPageX;
       carousel.scrollLeft = prevScrollLeft - positionDiff;
-
-
       showHideIcons();
     }
     const dragStop = () => {
@@ -84,27 +112,37 @@ export default function ImageSlider() {
   return (
     <>
       <div className='mainSliderContainer'>
-        <img className='carLogoMain' src={VW} />
-        <h1 className='carName'>Volkswagen Golf 7</h1>
+        {data ? (
+          <img className="carLogoMain" src={require("../../images/logos/" + data.make + ".webp")} alt="img" draggable="false" />
+        ) : (
+          <></>
+        )}
+        <h1 className='carName'>{data.make} {data.model}</h1>
         <div className='wrapperContainer'>
 
           <div className="wrapper">
             <i id="left" className="fa-solid fa-angle-left"></i>
             <div className="carousel">
-              {/* <img src={"Golf7"} alt="img" draggable="false" /> */}
-              <img src={Golf7_2} alt="img" draggable="false" />
-              <img src={backview} alt="img" draggable="false" />
-              <img src={interior1} alt="img" draggable="false" />
-              <img src={interior2} alt="img" draggable="false" />
-              <img src={interior3} alt="img" draggable="false" />
-              <img src={interior4} alt="img" draggable="false" />
-              <img src={trunk} alt="img" draggable="false" />
+              {data ? (
+                <img src={require("../../images/" + data.imageName)} alt="img" draggable="false" />
+              ) : (
+                <></>
+              )}
+              {imageData && imageData.length > 0 ? (
+                <>
+                  {imageData.map((item, i) => (
+                    <img key={i} src={require("../../images/" + item.imageName)} alt="img" draggable="false" />
+                  ))}
+                </>
+              ) : (
+                <div>Loading images...</div>
+              )}
             </div>
             <i id="right" className="fa-solid fa-angle-right"></i>
           </div>
         </div>
         <hr />
-        <CarInfo make={"Volkswagen"} model={"Golf 7"} year={2020} mileage={10000} fuel={"Diesel"} transmission={"Automatic"} color={"Yellow"} engine={"2.0"} />
+        <CarInfo make={data.make} model={data.model} year={data.year} mileage={data.mileage} fuel={"Diesel"} transmission={"Automatic"} color={data.color} engine={"2.0"} />
       </div>
     </>
   )

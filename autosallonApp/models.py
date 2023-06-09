@@ -41,15 +41,8 @@ class CarImages(models.Model):
     verbose_name_plural = "Car Images"
 
   def __str__(self):
-    car_name = str(self.car).split()
-
-    car_name.remove("sold")
-    if car_name[-1] == "Not":
-      car_name.remove("Not")
-
-    car_name = ' '.join(car_name)
     image_name = str(self.image).split("/")[3]
-    return f"{car_name} {image_name}"
+    return f"{self.car} -- {image_name}"
 
 # class User(models.Model):
 #   name = models.CharField(max_length=50)

@@ -35,7 +35,7 @@ const ReviewForm = () => {
   };
 
   return (
-    <form class="reviewForm" onSubmit={handleSubmit}>
+    <form className="reviewForm" onSubmit={handleSubmit}>
       <h2 id="reviewId">Car Review Form</h2>
       <div>
         <label htmlFor="name">Your Name:</label><br />
@@ -61,7 +61,7 @@ const ReviewForm = () => {
       </div>
       <div>
         <label id="reviewLabel" htmlFor="rating">Rating:</label>
-        <input class="reviewInput" type="number" id="rating" min="1" max="5" value={rating} onChange={handleRatingChange} required />
+        <input className="reviewInput" type="number" id="rating" min="1" max="5" value={rating} onChange={handleRatingChange} required />
       </div>
       <button id="reviewButton" type="submit">Submit Review</button>
     </form>

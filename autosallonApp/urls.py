@@ -4,7 +4,7 @@ from django.urls import path
 urlpatterns = [
 
     path('carImages/', carImagesViews.CarImageCreateAPIView.as_view()),
-    path('carImages/<int:pk>/', carImagesViews.CarImageDetailAPIView.as_view()),
+    path('carImages/<int:car>/', carImagesViews.CarImageDetailAPIView.as_view()),
     path('carImages/<int:pk>/update', carImagesViews.CarImageUpdateAPIView.as_view()),
     path('carImages/<int:pk>/destroy', carImagesViews.CarImageDestroyAPIView.as_view()),
 

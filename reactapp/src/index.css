@@ -1713,7 +1713,7 @@ form .successP {
   width: 100%;
   aspect-ratio: 1/1;
   border-radius: 2rem;
-  background: linear-gradient(45deg, transparent, 
+  background: linear-gradient(45deg, transparent,
       transparent);
   display: grid;
   place-items: center;
@@ -1932,7 +1932,7 @@ form .successP {
   resize: none;
   color: white;
 
-} 
+}
 
 @media screen and (max-width: 1024px) {
   .container.contact__container {
@@ -1960,4 +1960,3 @@ form .successP {
 }
 
 /* Review */
-
