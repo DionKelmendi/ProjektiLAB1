@@ -27,6 +27,24 @@ class MakeSerializer(serializers.ModelSerializer):
         model = Car
         fields = ('id', 'makes')
 
+class CategorySerializer(serializers.ModelSerializer):
+    # count = serializers.SerializerMethodField('getCount')
+    categories = serializers.SerializerMethodField('getCategories')
+
+    def getCategories(self, obj):
+        categories = Car.objects.values_list('category__name', flat=True).distinct()
+        count = []
+        for c in categories:
+          x = Car.objects.filter(category__name=c).values_list('category', flat=True).count()
+          count.append(x)
+        print(count)
+        return categories, count
+
+
+    class Meta:
+        model = Car
+        fields = ('id', 'categories')
+
 
 class CarSerializer(serializers.ModelSerializer):
 

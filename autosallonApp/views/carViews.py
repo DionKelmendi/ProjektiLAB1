@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from rest_framework import generics
-from ..serializers import CarSerializer, MakeSerializer
+from ..serializers import CarSerializer, MakeSerializer, CategorySerializer
 from ..models import Car
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
@@ -20,6 +20,11 @@ class CarDetailAPIView(generics.RetrieveAPIView):
 class CarMakeAPIView(generics.ListAPIView):
   queryset = Car.objects.all()[:1]
   serializer_class = MakeSerializer
+
+# Get Categories and Categories Count
+class CarCategoriesAPIView(generics.ListAPIView):
+  queryset = Car.objects.all()[:1]
+  serializer_class = CategorySerializer
 
 #Car Read All Instances and Create    
 class CarAPIView(generics.ListAPIView):

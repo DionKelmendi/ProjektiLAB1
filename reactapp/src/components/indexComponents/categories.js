@@ -1,21 +1,9 @@
 import { React, useEffect, useState} from "react";
 import CategoryItem from "./categoryItem";
-import BMW from "../../images/logos/BMW.webp";
-import Mercedes from "../../images/logos/Mercedes.webp";
-import Audi from "../../images/logos/Audi.webp";
-import VW from "../../images/logos/Volkswagen.webp";
-import Ford from "../../images/logos/Ford.webp";
-import Hyndai from "../../images/logos/Hyndai.webp";
-import Toyota from "../../images/logos/Toyota.webp";
-import Mitsubishi from "../../images/logos/Mitsubishi.webp";
-import Convertible from "../../images/logos/Convertible.webp";
-import Hatchback from "../../images/logos/Hatchback.webp";
-import SUV from "../../images/logos/SUV.webp";
-import Wagon from "../../images/logos/Wagon.webp";
 
 export default function Categories() {
   const [data, setData] = useState({ makes: [], count: [] });
-
+  const [dataC, setDataC] = useState({ categories: [], count: [] });
   useEffect(() => {
 
 
@@ -30,10 +18,28 @@ export default function Categories() {
     };
     fetchData();
   }, [])
-
-
+ 
   useEffect(() => {
-    console.log(data);
+
+
+    const fetchDataC = () => {
+      const API = 'http://127.0.0.1:8000/prova/car/categories/';
+        fetch(API)
+          .then((res) => res.json())
+          .then((res) => {
+            console.log(res.results);
+            setDataC({ categories: res.results[0].categories[0], count: res.results[0].categories[1] });
+          });
+      
+    };
+    fetchDataC();
+  }, [])
+  useEffect(() => {
+    console.log(dataC);
+  }, [dataC])
+  
+  useEffect(() => {
+    // console.log(data);
   }, [data]);
 
   return (
@@ -52,11 +58,15 @@ export default function Categories() {
 
         <div>
           <h4 className="categoryTitle">Popular Categories</h4>
-
-          <CategoryItem categoryLogo={"Hatchback"} categoryName='Hatchback' carAmount='23' />
+          
+          {dataC.categories.map((category, index) => (
+              <CategoryItem key={category} categoryLogo={category} categoryName={category} carAmount={dataC.count[index]} />
+              
+            ))}
+          {/* <CategoryItem categoryLogo={"Hatchback"} categoryName='Hatchback' carAmount='23' />
           <CategoryItem categoryLogo={"SUV"} categoryName='SUV' carAmount='8' />
           <CategoryItem categoryLogo={"Convertible"} categoryName='Convertible' carAmount='5' />
-          <CategoryItem categoryLogo={"Wagon"} categoryName='Station Wagon' carAmount='4' />
+          <CategoryItem categoryLogo={"Wagon"} categoryName='Station Wagon' carAmount='4' /> */}
         </div>
       </div>
     </section>
