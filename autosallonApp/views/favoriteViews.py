@@ -54,3 +54,17 @@ class FavoriteUserAPIView(generics.ListAPIView):
         cars.append(get_object_or_404(Car, id=car_id))
 
       return cars;
+
+class FavoriteUserAllAPIView(generics.ListAPIView):
+    queryset = Favorite.objects.all()
+    serializer_class = CarSerializer
+    lookup_field = 'user_id'
+
+    def get_queryset(self):
+      car_ids = Favorite.objects.filter(user_id=self.kwargs['user_id']).order_by('-favorite_date').values_list('car_id', flat=True)
+      cars = []
+        
+      for car_id in car_ids:
+        cars.append(get_object_or_404(Car, id=car_id))
+
+      return cars;

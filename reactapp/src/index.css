@@ -931,15 +931,6 @@ form .successP {
   width: 80%;
 }
 
-.carMain .categoryList {
-
-  width: 100%;
-}
-
-.carMain .categoryList .item {
-  width: 25vw;
-}
-
 .carMain .categories h2 {
   width: 100%;
 }
@@ -1179,7 +1170,6 @@ form .successP {
 .dashboard .userFavorites img {
 
   width: 30px;
-  height: 30px;
 }
 
 .dashboard .userFavorites .favoriteItem {

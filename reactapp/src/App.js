@@ -9,6 +9,8 @@ import Cars from "./pages/Cars.js";
 import Vehicle from "./pages/Vehicle.js";
 import Table from "./pages/Table.js";
 import Dashboard from "./pages/Dashboard.js";
+import UserFavorites from "./pages/UserFavorites.js";
+import UserReviews from "./pages/UserReviews.js";
 import ResetPassword from "./pages/auth/ResetPassword.js";
 import SendPasswordResetEmail from "./pages/auth/SendPasswordResetEmail.js"
 import { useSelector } from "react-redux";
@@ -30,6 +32,8 @@ export default function App() {
         <Route path="/vehicle" element={<Vehicle />} />
         <Route path="/table" element={<Table />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/favorites" element={<UserFavorites />} />
+        <Route path="/reviews" element={<UserReviews />} />
         <Route path="/sendpasswordresetemail" element={<SendPasswordResetEmail />} />
         <Route path="/account/resetpassword/:id/:token" element={<ResetPassword />} />
       </Routes>

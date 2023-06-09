@@ -223,7 +223,7 @@ const Dashboard = () => {
             return <FavoriteItem key={item.id} id={item.id} img={item.make} name={item.make + " " + item.model} />
           })}
 
-          <Link to="/favorites">
+          <Link to="/favorites" state={{ id: userData.id }}>
             <button>See all favorites</button>
           </Link>
         </div>
@@ -238,7 +238,7 @@ const Dashboard = () => {
             </Link>
           )}
 
-          <Link to="/reviews">
+          <Link to="/reviews" state={{ id: userData.id }}>
             <button>See all reviews</button>
           </Link>
         </div>
