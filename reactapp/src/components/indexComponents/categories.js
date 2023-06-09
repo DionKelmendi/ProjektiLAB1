@@ -2,6 +2,8 @@ import { React, useEffect, useState } from "react";
 import CategoryItem from "./categoryItem";
 
 export default function Categories() {
+  const [makeTotal, setMakeTotal] = useState(0);
+  const [categoryTotal, setCategoryTotal] = useState(0);
   const [data, setData] = useState({ makes: [], count: [] });
   const [dataC, setDataC] = useState({ categories: [], count: [] });
   useEffect(() => {
@@ -39,8 +41,30 @@ export default function Categories() {
   }, [dataC])
 
   useEffect(() => {
-    // console.log(data);
-  }, [data]);
+
+    const calculateCategoryTotal = () => {
+      if (dataC.categories.length > 9) {
+        const total = dataC.count.slice(9).reduce((acc, count) => acc + count, 0);
+        setCategoryTotal(total);
+      }
+    }
+    calculateCategoryTotal();
+    console.log(categoryTotal);
+  }, [dataC])
+
+  useEffect(() => {
+
+    const calculateMakeTotal = () => {
+      if (data.makes.length > 9) {
+        const total = data.count.slice(9).reduce((acc, count) => acc + count, 0);
+        setMakeTotal(total);
+      }
+    }
+    calculateMakeTotal();
+    console.log(makeTotal);
+    console.log(data);
+  }, [data])
+
 
   return (
     <section className="categories">
@@ -56,7 +80,7 @@ export default function Categories() {
               }
             })}
 
-            <CategoryItem categoryLogo={"Other"} categoryName={"Other"} carAmount={69} />
+            <CategoryItem categoryLogo={"Other"} categoryName={"Other"} carAmount={makeTotal} />
           </div>
         </div>
 
@@ -70,7 +94,7 @@ export default function Categories() {
               }
             })}
 
-            <CategoryItem categoryLogo={"Other"} categoryName={"Other"} carAmount={69} />
+            <CategoryItem categoryLogo={"Other"} categoryName={"Other"} carAmount={categoryTotal} />
 
           </div>
         </div>
