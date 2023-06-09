@@ -215,8 +215,11 @@ nav ul {
 
 .categoryList {
 
-  display: flex;
   width: 700px;
+  height: 430px;
+
+  display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
 }
 

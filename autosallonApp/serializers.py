@@ -1,11 +1,32 @@
 from django.shortcuts import get_object_or_404
 from rest_framework import serializers
+from rest_framework import pagination
 from .models import Category, Car, User, ContactInfo, Distributor, Worker, Favorite, Review, Sale, Dis_Transaction, CarImages
 
 class CategorySerializer(serializers.ModelSerializer):
   class Meta:
     model = Category
     fields = ('id', 'name')
+
+
+class MakeSerializer(serializers.ModelSerializer):
+    # count = serializers.SerializerMethodField('getCount')
+    makes = serializers.SerializerMethodField('getMakes')
+
+    def getMakes(self, obj):
+        makes = Car.objects.values_list('make', flat=True).distinct()
+        count = []
+        for m in makes:
+          x = Car.objects.filter(make=m).values_list('make', flat=True).count()
+          count.append(x)
+        print(count)
+        return makes, count
+
+
+    class Meta:
+        model = Car
+        fields = ('id', 'makes')
+
 
 class CarSerializer(serializers.ModelSerializer):
 
