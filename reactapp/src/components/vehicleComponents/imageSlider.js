@@ -91,7 +91,7 @@ export default function ImageSlider() {
           <div className="wrapper">
             <i id="left" className="fa-solid fa-angle-left"></i>
             <div className="carousel">
-              <img src={"Golf7"} alt="img" draggable="false" />
+              {/* <img src={"Golf7"} alt="img" draggable="false" /> */}
               <img src={Golf7_2} alt="img" draggable="false" />
               <img src={backview} alt="img" draggable="false" />
               <img src={interior1} alt="img" draggable="false" />

@@ -186,7 +186,6 @@
 }
 
 
-
 .vehicle .contact {
 
   display: flex;
@@ -252,7 +251,7 @@
 
 .mainSliderContainer {
 
-  height: 100vh;
+  min-height: 100vh;
   background: linear-gradient(180deg, rgba(246, 246, 246, 1) 79%, rgba(198, 198, 198, 1) 100%);
 }
 
@@ -324,4 +323,66 @@
   background-color: black;
   color: white;
   cursor: pointer;
+}
+
+.reviewForm {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 35%;
+}
+.review-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background:black;
+  border-radius: 10px;
+  width: 7%;
+}
+
+#reviewId {
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+#reviewLabel{
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.reviewInput {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: black;
+  resize: vertical;
+}
+
+#reviewButton {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: orange;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+#reviewButton:hover {
+  background-color: #45a049;
+}
+
+@media (max-width: 480px) {
+  .review-form {
+    width: 90%;
+  }
 }

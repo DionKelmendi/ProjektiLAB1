@@ -12,7 +12,7 @@ function AboutUS() {
   const [isHovered, setIsHovered] = useState(false);
   const [text, setText] = useState('');
 
-  const fullText = "Car Show Room";
+  const fullText = "At AutoParadise, we are passionate about cars and dedicated to providing an exceptional car buying experience.";
 
   useEffect(() => {
     let currentText = '';
@@ -28,7 +28,7 @@ function AboutUS() {
         if (index >= fullText.length) {
           clearInterval(typingInterval);
         }
-      }, 150);
+      }, 80);
     } else {
       clearInterval(typingInterval);
       setText('');

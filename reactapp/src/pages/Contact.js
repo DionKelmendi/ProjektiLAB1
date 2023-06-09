@@ -32,19 +32,19 @@ function Contact() {
             <MdOutlineMailOutline className='contact__option-icon'/>
             <h4>Email</h4>
             <h5>autoparadise@gmail.com</h5>
-            <a href='mailto:brunomike058@gmail.com'>Send a message </a>
+            <a href='#'>Send a message </a>
           </article>
           <article className="contact__option">
             <BsWhatsapp className='contact__option-icon'/>
             <h4>whatsapp</h4>
             <h5>+38345880254</h5>
-            <a href='https://wa.me/+237682370254'>Send a message </a>
+            <a href='#'>Send a message </a>
           </article>
         </div>
         <form ref={form} onSubmit={sendEmail}>
-          <input type="text" name='name' placeholder="Name"required></input>
-          <input type="email" name='email' placeholder="email"required></input>
-          <textarea name='message' placeholder="Message" required></textarea>
+          <input id="contactTextArea" type="text" name='name' placeholder="Name"required></input>
+          <input id="contactTextArea" type="email" name='email' placeholder="email"required></input>
+          <textarea id="contactTextArea"name='message' placeholder="Message" required></textarea>
           <button type="submit"className='btn btn primary'>send Message</button>
         </form>
         </div>

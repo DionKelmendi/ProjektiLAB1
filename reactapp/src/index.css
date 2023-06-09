@@ -936,7 +936,7 @@ form .successP {
 }
 
 .carMain .categoryList .item {
-  width: 550px;
+  width: 25vw;
 }
 
 .carMain .categories h2 {
@@ -1710,24 +1710,28 @@ form .successP {
   width: 100%;
   aspect-ratio: 1/1;
   border-radius: 2rem;
-  background: linear-gradient(45deg, transparent, var(--color-primary),
+  background: linear-gradient(45deg, transparent, 
       transparent);
   display: grid;
   place-items: center;
 }
 
 .about__me-image {
+  width: 450px;
+  height: 450px;
   border-radius: 2rem;
   overflow: hidden;
   position: relative;
-  transform: rotate(10deg);
+  transform: rotate(0deg);
   transition: transform var(--transition);
+  background-size: cover !important;
+  background-position: center;
 
 }
 
 .about__me-image:hover {
   transform: rotate(0);
-  transition: 0.5s;
+  transition: 2s;
 
 }
 
@@ -1742,7 +1746,7 @@ form .successP {
   border-radius: 50%;
   background-color: var(--color-primary);
   opacity: 0;
-  transition: all 0.0001s ease;
+  transition: all 0.01s ease;
 }
 
 .about__me-image:hover:before {
@@ -1754,18 +1758,18 @@ form .successP {
 .about__me-text {
   font-family: 'Dancing Script', cursive;
   font-family: 'Poppins';
-
+  font-size: large;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   opacity: 0;
   text-align: center;
-  animation: typing 0.1s linear forwards;
+  animation: typing 0.5s linear forwards;
 
   word-wrap: break-word;
 
-  color: var(--color-light);
+  color: orange;
   /* Add other styles for the text */
 
 }
@@ -1914,18 +1918,18 @@ form .successP {
 
 } */
 
-/* input,
-textarea {
+.contactinput,
+#contactTextArea {
 
   width: 100%;
   padding: 1.5rem;
   border-radius: 0.5rem;
   background: transparent;
-  border: 1px solid var(--color-primary-variant);
+  border: 1px solid black;
   resize: none;
   color: white;
 
-} */
+} 
 
 @media screen and (max-width: 1024px) {
   .container.contact__container {
@@ -1951,3 +1955,6 @@ textarea {
     margin-bottom: 5rem;
   }
 }
+
+/* Review */
+
