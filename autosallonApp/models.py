@@ -2,7 +2,7 @@ import os
 from django.db import models
 from django.dispatch import receiver
 from django.contrib.auth.models import User
-
+from PIL import Image
 # Create your models here.
   
 def car_image_upload_path(instance, filename):
@@ -41,7 +41,15 @@ class CarImages(models.Model):
     verbose_name_plural = "Car Images"
 
   def __str__(self):
-    return f"{self.car}"
+    car_name = str(self.car).split()
+
+    car_name.remove("sold")
+    if car_name[-1] == "Not":
+      car_name.remove("Not")
+
+    car_name = ' '.join(car_name)
+    image_name = str(self.image).split("/")[3]
+    return f"{car_name} {image_name}"
 
 # class User(models.Model):
 #   name = models.CharField(max_length=50)

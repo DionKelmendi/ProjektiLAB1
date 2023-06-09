@@ -4,6 +4,32 @@ from django.utils.safestring import mark_safe
 from . import models
 from django.urls import reverse
 
+
+# Car Image Admin Display
+class CarImageModelAdmin(admin.StackedInline):
+  model = models.CarImages
+  list_display = ["id","image", "car_id", "car_name" ,"carImage_link"]
+  ordering = ["id"]
+  search_fields = ["car_id__make"]
+  list_filter = ["car_id__id", "car_id__make", "car_id__model"]
+  filter_horizontal = []
+
+  def car_name(self, obj):
+    carName = carViews.getMake(obj.car_id) + " " + carViews.getModel(obj.car_id)
+    return mark_safe('<a href="{}">{}</a>'.format(
+      reverse("admin:autosallonApp_car_change", args=(obj.car_id,)),
+      carName))
+    
+  def carImage_link(self, obj):
+    return mark_safe('<a href="{}">{}</a>'.format(
+      reverse("admin:autosallonApp_carimages_change", args=(obj.id,)),
+      "Edit Car Image"
+    ))  
+  
+  class Meta:
+    model = models.CarImages
+admin.site.register(models.CarImages)
+
 # Category Admin Display
 class CategoryModelAdmin(admin.ModelAdmin):
   list_display = ["id", "name", "category_link"]
@@ -25,7 +51,7 @@ class CarModelAdmin(admin.ModelAdmin):
   search_fields = ["make", "model", "price"]
   ordering = ["id"]
   list_filter = ["sold", "make", "model", "category_id__name", "color"]
-  filter_horizontal = []
+  inlines = [CarImageModelAdmin]
 
   def category_name(self, obj):
     categoryName = categoryViews.getName(obj.category_id)
@@ -207,30 +233,3 @@ class WorkerModelAdmin(admin.ModelAdmin):
     ))
   worker_link.short_description = 'Worker'
 admin.site.register(models.Worker, WorkerModelAdmin)
-
-# Car Image Admin Display
-class CarImageModelAdmin(admin.ModelAdmin):
-  list_display = ["id","image", "car_id", "car_name" ,"carImage_link"]
-  ordering = ["id"]
-  search_fields = ["car_id__make"]
-  list_filter = ["car_id__id", "car_id__make", "car_id__model"]
-  filter_horizontal = []
-
-  def car_name(self, obj):
-    carName = carViews.getMake(obj.car_id) + " " + carViews.getModel(obj.car_id)
-    return mark_safe('<a href="{}">{}</a>'.format(
-      reverse("admin:autosallonApp_car_change", args=(obj.car_id,)),
-      carName))
-    
-  def carImage_link(self, obj):
-    return mark_safe('<a href="{}">{}</a>'.format(
-      reverse("admin:autosallonApp_carimages_change", args=(obj.id,)),
-      "Edit Car Image"
-    ))  
-admin.site.register(models.CarImages, CarImageModelAdmin)
-  
-
-
-
-
-# admin.site.register(models.User)
