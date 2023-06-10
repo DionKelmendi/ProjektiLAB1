@@ -23,7 +23,8 @@ urlpatterns = [
     path('prova/', include('autosallonApp.urls')),
     path('chatGPT/', include('chatgpt_app.urls')),
     path('account/', include('account.urls')),
-    
+    path('payment/', include("payment.urls")),
+
     path('', index, name='index'),
     path('cars/', index, name='index'),
     path('vehicle/', index, name='index'),
