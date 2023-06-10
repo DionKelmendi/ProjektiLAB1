@@ -50,7 +50,7 @@ header .content a {
 }
 
 .navBrand {
-  color: white;
+  color: black;
   text-decoration: none;
   transition: 0.1s all ease-in;
 }
@@ -73,7 +73,7 @@ nav ul {
 .listItem {
 
   text-decoration: none;
-  color: white;
+  color: black;
 
   transition: 0.1s all ease-in;
 }
@@ -887,7 +887,6 @@ form .successP {
 
 .soldOverlayMessage {
 
-  background-color: white;
   padding: 25px;
   width: 60%;
   font-size: 20px;
@@ -1270,6 +1269,7 @@ form .successP {
   padding: 15px;
   word-wrap: break-word;
   max-width: 310px;
+  min-height: 100px;
   text-align: justify;
 }
 
@@ -1308,7 +1308,7 @@ form .successP {
 }
 
 .dashboard .settingsForm,
-.userFavoritesMain .removeWindow {
+.removeWindow {
 
   width: 500px;
   height: 750px;
@@ -1435,138 +1435,135 @@ form .successP {
 }
 
 
-.userFavoritesMain {
+.userFavoritesMain,
+.userReviewsMain {
 
   background: linear-gradient(180deg, rgba(246, 246, 246, 1) 79%, rgba(198, 198, 198, 1) 100%);
-  padding: 100px;
+  padding: 250px 0px;
+}
 
+.userFavoritesMain .container {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: start;
+  align-items: start;
+  flex-flow: wrap;
   gap: 50px;
+
+  max-width: 1550px;
+  margin: auto;
 }
 
 .favoriteTitle {
 
-  align-self: start;
-  margin-left: 20%;
+  position: absolute;
+  top: 125px;
+  left: 10%;
+  font-size: 30px;
 }
 
-.userFavoritesMain img {
-  width: 75px;
-  height: 75px;
-  object-fit: contain;
-  padding-left: 15px;
-}
-
-.userFavoritesMain a {
+.userFavoritesMain a,
+.userReviewsMain a {
   min-width: calc(50% + 35px);
   text-decoration: none;
   font-size: 20px;
   color: black;
 }
 
-.userFavoritesMain .rowHeader .name {
-  min-width: 250px;
-}
-
-.userFavoritesMain .favoriteItem .name {
-  min-width: 200px;
-}
-
-.userFavoritesMain .favoriteItem .year {
-  min-width: 60px;
-}
-
-.userFavoritesMain .rowHeader .year {
-  min-width: 110px;
-}
-
-.userFavoritesMain .rowHeader .brand {
-  min-width: 90px;
-}
-
-.userFavoritesMain .rowHeader .mileage {
-  min-width: 160px;
-}
-
-.userFavoritesMain .favoriteItem .mileage {
-  min-width: 110px;
-}
-
-.userFavoritesMain .rowHeader .price {
-  min-width: 160px;
-}
-
-.userFavoritesMain .favoriteItem .price {
-  min-width: 110px;
-}
-
-.userFavoritesMain .rowHeader {
-
-  display: flex;
-  padding: 5px;
-  border: 1px solid #363636;
-  border-bottom: 0;
-  border-radius: 5px 5px 0px 0px;
-  width: calc(100% - 100px);
-}
-
-.userFavoritesMain .rowHeader p {
-  text-align: center;
-}
-
-.userFavoritesMain .favoriteItem {
+.userReviewsMain .favoriteItem {
 
   height: 100px;
+  width: 1400px;
   margin: auto;
   background: #d9d9d9;
-  border-radius: 0px 5px 5px 5px;
+  border-radius: 5px;
   text-align: center;
-  border: 1px solid #363636;
 
   display: flex;
   align-items: center;
   gap: 50px;
 }
 
-.userFavoritesMain .favoriteItem i {
+.userReviewsMain .favoriteItem:hover {
+  opacity: 80%;
+}
+
+.userReviewsMain .favoriteItem i {
+  color: #f3da35;
+}
+
+.userReviewsMain .favoriteItem .arrow i {
+  color: white;
+}
+
+.userReviewsMain .favoriteItem .arrow {
   margin-left: auto;
   background: #363636;
   border-radius: 0px 5px 5px 0px;
-
-  color: white;
   height: 100%;
   width: 100px;
+
   display: flex;
   justify-content: center;
   align-items: center;
   transition: 0.3s all;
 }
 
-.userFavoritesMain .favoriteItem i:hover {
+.userReviewsMain .favoriteItem .arrow:hover {
   opacity: 70%;
   cursor: pointer;
 }
 
-.userFavoritesMain .removeRow p {
+.userReviewsMain .favoriteItem .carNames {
+
+  padding: 20px;
+  min-width: 200px;
+}
+
+.userReviewsMain .reviewRating div {
+
+  width: 120px;
+}
+
+.userReviewsMain .favoriteItem .comment {
+
+  background: white;
+  padding: 15px;
+  border-radius: 5px;
+  text-align: justify;
+  width: 600px;
+  height: 50px;
+  overflow: hidden;
+}
+
+.userFavoritesMain .removeRow p,
+.userReviewsMain .removeRow p {
+  transform: translateY(75px);
   color: red;
+  margin-bottom: 75px;
   text-decoration: underline;
   cursor: pointer;
 }
 
-.userFavoritesMain .removeRow p:hover {
+.userReviewsMain .removeRow p {
+  transform: none;
+}
+
+.userFavoritesMain .removeRow p:hover,
+.userReviewsMain .removeRow p:hover {
   color: darkred;
 }
 
-.userFavoritesMain .removeWindow {
+.userFavoritesMain .removeWindow,
+.userReviewsMain .removeWindow {
 
+  background: #363636;
+  color: white;
   height: 300px;
   top: calc(50% - 150px);
   display: none;
 }
 
+.userReviewsMain .removeWindow form,
 .userFavoritesMain .removeWindow form {
   height: 100%;
   padding: 20px;
@@ -1577,10 +1574,12 @@ form .successP {
   flex-direction: column;
 }
 
+.userReviewsMain .removeWindow .buttons,
 .userFavoritesMain .removeWindow .buttons {
   display: flex;
 }
 
+.userReviewsMain .removeWindow .buttons p,
 .userFavoritesMain .removeWindow .buttons p {
 
   border-radius: 5px;
@@ -1595,30 +1594,59 @@ form .successP {
   align-items: center;
 }
 
+.userReviewsMain .removeWindow .buttons .yes,
 .userFavoritesMain .removeWindow .buttons .yes {
   color: #e84c3d;
   border: 1px solid #e84c3d;
 }
 
+.userReviewsMain .removeWindow .buttons .yes:hover,
 .userFavoritesMain .removeWindow .buttons .yes:hover {
   background: #e84c3d;
   color: white;
 }
 
+.userReviewsMain .removeWindow .buttons .goBack,
 .userFavoritesMain .removeWindow .buttons .goBack {
 
-  color: #565656;
-  border: 1px solid #565656;
+  color: white;
+  border: 1px solid white;
 }
 
+.userReviewsMain .removeWindow .buttons .goBack:hover,
 .userFavoritesMain .removeWindow .buttons .goBack:hover {
   background: #565656;
   color: white;
 }
 
+.userReviewsMain .show,
 .userFavoritesMain .show {
   display: block;
 }
+
+.userReviewsMain {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.userReviewsMain .reviewContent {
+
+  background: #d9d9d9;
+  width: 417px;
+  height: 150px;
+}
+
+.userReviewsMain .container {
+  display: flex;
+  align-items: baseline;
+  gap: 50px;
+  flex-wrap: wrap;
+  max-width: 1400px;
+}
+
 
 @media screen and (max-width: 550px) {
 

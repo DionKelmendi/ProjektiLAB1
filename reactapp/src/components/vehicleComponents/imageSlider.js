@@ -42,10 +42,6 @@ export default function ImageSlider() {
       firstImg = carousel.querySelectorAll("img")[0],
       arrowIcons = document.querySelectorAll(".wrapper i");
 
-    if (carousel.querySelectorAll("img")[0] != undefined) {
-
-      console.log(carousel.querySelectorAll("img")[0].clientWidth);
-    }
     let isDragStart = false, isDragging = false, prevPageX, prevScrollLeft, positionDiff;
     const showHideIcons = () => {
       // showing and hiding prev/next icon according to carousel scroll left value

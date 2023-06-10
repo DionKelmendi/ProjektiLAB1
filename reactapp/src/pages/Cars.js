@@ -95,15 +95,7 @@ export default function Cars() {
 
     let sort = document.querySelector("#sort").value;
 
-    setOrdering(sort);
-    console.log(ordering);
-    console.log(API);
   }
-
-  // useEffect(() => {
-  //   console.log(ordering);
-  //   console.log(API);
-  // }, [ordering, API]);
 
   return (
     <div className="carMain">

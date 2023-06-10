@@ -29,7 +29,6 @@ export default function Categories() {
       fetch(API)
         .then((res) => res.json())
         .then((res) => {
-          console.log(res.results);
           setDataC({ categories: res.results[0].categories[0], count: res.results[0].categories[1] });
         });
 
@@ -49,7 +48,6 @@ export default function Categories() {
       }
     }
     calculateCategoryTotal();
-    console.log(categoryTotal);
   }, [dataC])
 
   useEffect(() => {
@@ -61,8 +59,6 @@ export default function Categories() {
       }
     }
     calculateMakeTotal();
-    console.log(makeTotal);
-    console.log(data);
   }, [data])
 
 
