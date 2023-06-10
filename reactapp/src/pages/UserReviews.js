@@ -3,8 +3,17 @@ import { useLocation } from 'react-router-dom'
 
 export default function UserReviews() {
   const location = useLocation();
+  const [id, setId] = useState([])
   const [reviewData, getReviewData] = useState([])
-  const { id } = location.state;
+
+  useEffect(() => {
+    if (location.state) {
+      setId(location.state);
+    } else {
+      window.location.replace("/dashboard");
+    }
+  }, [location.state]);
+
   useEffect(() => {
     const fetchReviewData = (id) => {
       const reviewAPI = 'http://127.0.0.1:8000/prova/review/user/' + id + "/all/";

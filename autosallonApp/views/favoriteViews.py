@@ -61,10 +61,23 @@ class FavoriteUserAllAPIView(generics.ListAPIView):
     lookup_field = 'user_id'
 
     def get_queryset(self):
-      car_ids = Favorite.objects.filter(user_id=self.kwargs['user_id']).order_by('-favorite_date').values_list('car_id', flat=True)
-      cars = []
-        
-      for car_id in car_ids:
-        cars.append(get_object_or_404(Car, id=car_id))
+        car_ids = Favorite.objects.filter(user_id=self.kwargs['user_id']).order_by('-favorite_date').values_list('car_id', flat=True)
+        cars = []
 
-      return cars;
+        for car_id in car_ids:
+            cars.append(get_object_or_404(Car, id=car_id))
+        return cars
+
+    def list(self, request, *args, **kwargs):
+        car_ids = Favorite.objects.filter(user_id=self.kwargs['user_id']).order_by('-favorite_date').values_list('car_id', flat=True)
+        queryset = self.get_queryset()
+        serializer = self.serializer_class(queryset, many=True)
+
+        fav_ids = Favorite.objects.filter(user_id=self.kwargs['user_id'], car_id__in=car_ids).order_by('-favorite_date').values_list('id', flat=True)
+        # Create a dictionary to hold the response data
+        response_data = {
+            'cars': serializer.data,
+            'fav_ids': list(fav_ids)
+        }
+
+        return Response(response_data)

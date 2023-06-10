@@ -135,7 +135,10 @@ export default function ImageSlider() {
                   ))}
                 </>
               ) : (
-                <div>Loading images...</div>
+                <>
+                  <img src={require("../../images/No_Image_Available.jpg")} alt="img" draggable="false" />
+                  <img src={require("../../images/No_Image_Available.jpg")} alt="img" draggable="false" />
+                </>
               )}
             </div>
             <i id="right" className="fa-solid fa-angle-right"></i>

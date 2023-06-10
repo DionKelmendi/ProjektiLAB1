@@ -19,7 +19,6 @@ class MakeSerializer(serializers.ModelSerializer):
         for m in makes:
           x = Car.objects.filter(make=m).values_list('make', flat=True).count()
           count.append(x)
-        print(count)
         return makes, count
 
 
@@ -37,7 +36,6 @@ class CategorySerializer(serializers.ModelSerializer):
         for c in categories:
           x = Car.objects.filter(category__name=c).values_list('category', flat=True).count()
           count.append(x)
-        print(count)
         return categories, count
 
 

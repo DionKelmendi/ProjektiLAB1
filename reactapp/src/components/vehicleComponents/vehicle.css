@@ -243,8 +243,8 @@
   transform: translateY(75px);
   width: 75px;
   height: 75px;
-  left: calc(50% - 50px);
-  object-fit: cover;
+  left: calc(50% - 37.5px);
+  object-fit: contain;
   object-position: center center;
   opacity: 50%;
 }

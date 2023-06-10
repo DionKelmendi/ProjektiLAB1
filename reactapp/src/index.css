@@ -1307,7 +1307,8 @@ form .successP {
   display: block;
 }
 
-.dashboard .settingsForm {
+.dashboard .settingsForm,
+.userFavoritesMain .removeWindow {
 
   width: 500px;
   height: 750px;
@@ -1433,6 +1434,191 @@ form .successP {
   width: 30px;
 }
 
+
+.userFavoritesMain {
+
+  background: linear-gradient(180deg, rgba(246, 246, 246, 1) 79%, rgba(198, 198, 198, 1) 100%);
+  padding: 100px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.favoriteTitle {
+
+  align-self: start;
+  margin-left: 20%;
+}
+
+.userFavoritesMain img {
+  width: 75px;
+  height: 75px;
+  object-fit: contain;
+  padding-left: 15px;
+}
+
+.userFavoritesMain a {
+  min-width: calc(50% + 35px);
+  text-decoration: none;
+  font-size: 20px;
+  color: black;
+}
+
+.userFavoritesMain .rowHeader .name {
+  min-width: 250px;
+}
+
+.userFavoritesMain .favoriteItem .name {
+  min-width: 200px;
+}
+
+.userFavoritesMain .favoriteItem .year {
+  min-width: 60px;
+}
+
+.userFavoritesMain .rowHeader .year {
+  min-width: 110px;
+}
+
+.userFavoritesMain .rowHeader .brand {
+  min-width: 90px;
+}
+
+.userFavoritesMain .rowHeader .mileage {
+  min-width: 160px;
+}
+
+.userFavoritesMain .favoriteItem .mileage {
+  min-width: 110px;
+}
+
+.userFavoritesMain .rowHeader .price {
+  min-width: 160px;
+}
+
+.userFavoritesMain .favoriteItem .price {
+  min-width: 110px;
+}
+
+.userFavoritesMain .rowHeader {
+
+  display: flex;
+  padding: 5px;
+  border: 1px solid #363636;
+  border-bottom: 0;
+  border-radius: 5px 5px 0px 0px;
+  width: calc(100% - 100px);
+}
+
+.userFavoritesMain .rowHeader p {
+  text-align: center;
+}
+
+.userFavoritesMain .favoriteItem {
+
+  height: 100px;
+  margin: auto;
+  background: #d9d9d9;
+  border-radius: 0px 5px 5px 5px;
+  text-align: center;
+  border: 1px solid #363636;
+
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.userFavoritesMain .favoriteItem i {
+  margin-left: auto;
+  background: #363636;
+  border-radius: 0px 5px 5px 0px;
+
+  color: white;
+  height: 100%;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s all;
+}
+
+.userFavoritesMain .favoriteItem i:hover {
+  opacity: 70%;
+  cursor: pointer;
+}
+
+.userFavoritesMain .removeRow p {
+  color: red;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.userFavoritesMain .removeRow p:hover {
+  color: darkred;
+}
+
+.userFavoritesMain .removeWindow {
+
+  height: 300px;
+  top: calc(50% - 150px);
+  display: none;
+}
+
+.userFavoritesMain .removeWindow form {
+  height: 100%;
+  padding: 20px;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+}
+
+.userFavoritesMain .removeWindow .buttons {
+  display: flex;
+}
+
+.userFavoritesMain .removeWindow .buttons p {
+
+  border-radius: 5px;
+  width: 200px;
+  height: 50px;
+  margin: 5px;
+  cursor: pointer;
+  transition: 0.3s all;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.userFavoritesMain .removeWindow .buttons .yes {
+  color: #e84c3d;
+  border: 1px solid #e84c3d;
+}
+
+.userFavoritesMain .removeWindow .buttons .yes:hover {
+  background: #e84c3d;
+  color: white;
+}
+
+.userFavoritesMain .removeWindow .buttons .goBack {
+
+  color: #565656;
+  border: 1px solid #565656;
+}
+
+.userFavoritesMain .removeWindow .buttons .goBack:hover {
+  background: #565656;
+  color: white;
+}
+
+.userFavoritesMain .show {
+  display: block;
+}
 
 @media screen and (max-width: 550px) {
 

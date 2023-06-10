@@ -233,7 +233,7 @@ const Dashboard = () => {
           <h1>Most Recent Review</h1>
 
           {reviewData.length > 0 && (
-            <Link className="reviewLink" to="/vehicle?id=1">
+            <Link className="reviewLink" to={"/vehicle?id=" + reviewData[0].car_id}>
               <ReviewContent car_name={reviewData[0].car_name} comment={reviewData[0].comment} ratingAmount={reviewData[0].rating} />
             </Link>
           )}
