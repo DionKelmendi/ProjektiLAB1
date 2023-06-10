@@ -160,7 +160,7 @@ admin.site.register(models.Favorite, FavoriteModelAdmin)
 
 # Review Admin Display
 class ReviewModelAdmin(admin.ModelAdmin):
-  list_display = ["id","user_name", "car_name", "rating", "review_date" ,"review_link"]
+  list_display = ["id","user_name", "car_name", "rating","comment", "review_date" ,"review_link"]
   ordering = ["id"]
   list_filter = ["user_id__username", "car_id__make", "car_id__model", "rating"]
   search_fields = ["user_id__username", "car_id__make", "car_id__model"]

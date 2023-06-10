@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './vehicle.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 const ReviewForm = () => {
   const [name, setName] = useState('');
@@ -19,8 +21,8 @@ const ReviewForm = () => {
     setReview(event.target.value);
   };
 
-  const handleRatingChange = (event) => {
-    setRating(event.target.value);
+  const handleRatingClick = (selectedRating) => {
+    setRating(selectedRating);
   };
 
   const handleSubmit = (event) => {
@@ -46,7 +48,7 @@ const ReviewForm = () => {
         <input className='reviewInput' type="text" id="carModel" value={carModel} onChange={handleCarModelChange} required />
       </div>
       <div>
-        <label htmlFor="review" className="reviewR">Review:</label>
+        <label htmlFor="review" className="reviewR">Comment:</label>
         <textarea
           id="review"
           value={review}
@@ -61,7 +63,18 @@ const ReviewForm = () => {
       </div>
       <div>
         <label id="reviewLabel" htmlFor="rating">Rating:</label>
-        <input className="reviewInput" type="number" id="rating" min="1" max="5" value={rating} onChange={handleRatingChange} required />
+        <div className="starRating">
+          {[1, 2, 3, 4, 5].map((value) => (
+            <FontAwesomeIcon
+              key={value}
+              icon={faStar}
+              className={`star ${value <= rating ? 'active' : ''}`}
+              onClick={() => handleRatingClick(value)}
+              style={{ cursor: 'pointer' }}
+            />
+          ))}
+        </div>
+        <input type="hidden" name="rating" value={rating} />
       </div>
       <button id="reviewButton" type="submit">Submit Review</button>
     </form>

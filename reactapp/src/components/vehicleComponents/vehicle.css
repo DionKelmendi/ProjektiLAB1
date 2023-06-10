@@ -325,22 +325,26 @@
   cursor: pointer;
 }
 
+/* Review */
 .reviewForm {
+  max-width: 400px;
   margin: auto;
   display: flex;
+  background-color: #d3d3d3;
   flex-direction: column;
   gap: 1.2rem;
   width: 35%;
+  border-radius: 10px;
 }
 
-.review-form {
+/* .review-form {
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
   background: black;
   border-radius: 10px;
   width: 7%;
-}
+} */
 
 #reviewId {
   text-align: center;
@@ -379,11 +383,19 @@
 }
 
 #reviewButton:hover {
-  background-color: #45a049;
+  background-color: orangered;
 }
 
 @media (max-width: 480px) {
   .review-form {
     width: 90%;
   }
+}
+
+.star {
+  color: #bbb;
+}
+
+.star.active {
+  color: #ffcc00;
 }
