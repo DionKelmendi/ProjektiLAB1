@@ -4,22 +4,29 @@ import SelectCar from "../components/carComponents/selectCar";
 import CarItem from "../components/carComponents/carItem";
 import Categories from "../components/indexComponents/categories";
 import ExtendedFilter from "../components/carComponents/extendedFilter";
+import { useLocation } from 'react-router-dom'
 
 export default function Cars() {
 
+  const location = useLocation();
   const [ordering, setOrdering] = useState([""]); // Used for sorting data
   const [error, setError] = useState([""]); // Returns error when no car results
   const [number, setNumber] = useState([]); // Used for rendering pagination page buttons
-  const [query, setQuery] = useState([]); // Search Query, updated by filters
   const [data, getData] = useState([]); // Car Data
   const [page, setPage] = useState(1); // Current page number
   const [totalPages, setTotalPages] = useState(1); // Current total page numbers
   const [perPage, setPerPage] = useState(12); // Number of cars per page
   const [count, setCount] = useState(1); // Number of cars per page
+  const [query, setQuery] = useState([]); // Search Query, updated by filters
+
+  useEffect(() => {
+    if (location.state) {
+      setQuery(location.state.query);
+    }
+  }, [location.state]);
 
   let API = "http://127.0.0.1:8000/prova/car/?limit=12&offset=" + (12 * (page - 1)) + "&search=" + query + "&ordering=sold," + ordering;
   const fetchData = () => {
-
     if (page < 1) {
       setPage(1);
     }
@@ -95,6 +102,7 @@ export default function Cars() {
 
     let sort = document.querySelector("#sort").value;
 
+    setOrdering(sort);
   }
 
   return (

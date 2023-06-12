@@ -1642,7 +1642,6 @@ form .successP {
 .userReviewsMain .container {
   display: flex;
   align-items: baseline;
-  gap: 50px;
   flex-wrap: wrap;
   max-width: 1400px;
 }
