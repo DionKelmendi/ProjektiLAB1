@@ -44,7 +44,7 @@ export default function UserFavorites() {
   }
 
   function remove() {
-    fetch('http://127.0.0.1:8000/prova/favorite/' + removeId + '/destroy', {  // Enter your IP address here
+    fetch('http://127.0.0.1:8000/prova/favorite/' + removeId + '/destroy', {
 
       method: 'DELETE',
       mode: 'cors',

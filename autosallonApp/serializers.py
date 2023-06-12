@@ -38,7 +38,6 @@ class CategorySerializer(serializers.ModelSerializer):
           count.append(x)
         return categories, count
 
-
     class Meta:
         model = Car
         fields = ('id', 'categories')
@@ -92,7 +91,7 @@ class WorkerSerializer(serializers.ModelSerializer):
 class FavoriteSerializer(serializers.ModelSerializer):
   class Meta:
     model = Favorite
-    fields = ('id', 'user_id', 'car_id', 'favorite_date')
+    fields = ('id', 'user', 'car', 'favorite_date')
 
 class ReviewSerializer(serializers.ModelSerializer):
   class Meta:

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
+from rest_framework import serializers
 from rest_framework import generics
 from ..serializers import FavoriteSerializer, CarSerializer
 from ..models import Favorite, Car
@@ -18,8 +19,10 @@ class FavoriteAPIView(generics.ListCreateAPIView):
   serializer_class = FavoriteSerializer
 
   def perform_create(self, serializer):
-    user_id = serializer.validated_data.get('user_id')
-    car_id = serializer.validated_data.get('car_id')
+    user_id = serializer.validated_data.get('user')
+    car_id = serializer.validated_data.get('car')
+    if Favorite.objects.filter(user_id=user_id, car_id=car_id).exists():
+      raise serializers.ValidationError("Already favorited!")
     serializer.save()
 
 # favorite Update

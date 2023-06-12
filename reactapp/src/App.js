@@ -36,8 +36,6 @@ export default function App() {
   console.log(storedUserData);
 
   const handleSetState = (data) => {
-    console.log(data.id);
-    console.log(data.is_staff);
     setUserData({
       id: data.id,
       is_staff: data.is_staff,

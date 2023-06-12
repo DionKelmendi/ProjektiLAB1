@@ -4,13 +4,6 @@ import CarInfo from "./carInfo";
 
 export default function ImageSlider({ userData }) {
 
-  useEffect(() => {
-
-    console.log(userData.id);
-    console.log(userData.is_staff);
-  }, [userData.id, userData.is_staff])
-
-
   const [data, setData] = useState("")
   const [imageData, setImageData] = useState("")
 
@@ -111,10 +104,42 @@ export default function ImageSlider({ userData }) {
 
   }, [])
 
+  const [errorMessage, setErrorMessage] = useState("")
+
+  const favorite = (e) => {
+    e.preventDefault()
+    const API = 'http://127.0.0.1:8000/prova/favorite/';
+    let data = { user: e.target[0].value, car: e.target[1].value }
+    fetch(API, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then(response => response.json())
+      .then(result => {
+        console.log(result);
+
+        if (result[0]) {
+          setErrorMessage(result[0])
+        } else {
+          setErrorMessage("Added to favorites")
+        }
+      })
+  }
+
   return (
     <>
       {userData ? (
-        <div className='favoriteButton'>{userData.id}</div>
+        <div className='favoriteButton'>
+          <form onSubmit={favorite}>
+            <input type='hidden' name="user_id" defaultValue={userData.id} />
+            <input type='hidden' name="car_id" defaultValue={data.id} />
+            <button type='submit'><i className="fa-regular fa-star" /> Favorite</button>
+          </form>
+          {errorMessage != "" ? <p className='errorP'><i className="fa-solid fa-circle-exclamation"></i> {errorMessage} </p> : <></>}
+        </div>
       ) : (
         <></>
       )}

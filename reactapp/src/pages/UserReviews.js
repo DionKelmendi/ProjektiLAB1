@@ -38,7 +38,7 @@ export default function UserReviews() {
   }
 
   function remove() {
-    fetch('http://127.0.0.1:8000/prova/review/' + removeId + '/destroy', {  // Enter your IP address here
+    fetch('http://127.0.0.1:8000/prova/review/' + removeId + '/destroy', {
 
       method: 'DELETE',
       mode: 'cors',
