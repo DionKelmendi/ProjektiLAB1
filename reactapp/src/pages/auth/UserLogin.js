@@ -8,7 +8,7 @@ import { useLoginUserMutation } from '../../services/userAuthApi';
 import { Link } from 'react-router-dom';
 
 
-export default function UserLogin() {
+export default function UserLogin({ }) {
   const [server_error, setServerError] = useState({})
   const navigate = useNavigate();
   const [loginUser, { isLoading }] = useLoginUserMutation()

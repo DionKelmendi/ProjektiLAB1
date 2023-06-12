@@ -1,12 +1,15 @@
-import { React } from 'react'
+import { React, useState } from 'react'
 import { Link } from 'react-router-dom';
-import { getToken, removeToken } from '../services/LocalStorageService';
+import { getToken } from '../services/LocalStorageService';
 import { useEffect } from 'react';
+import { useGetLoggedUserQuery } from '../services/userAuthApi';
 
-export default function Header() {
+export default function Header({ userData }) {
   const { access_token } = getToken()
-  useEffect(() => {
 
+  // console.log(userData);
+
+  useEffect(() => {
 
     window.onscroll = function () { scrollFunction() };
 
@@ -50,7 +53,7 @@ export default function Header() {
         </div>
         <div className='content'>
           <ul className="contentList contentHidden">
-            {/* <li><Link className='listItem' to="/about"> ABOUT </Link></li> */}
+            {userData.is_staff ? <li><a onClick={toggleMenu} className='listItem' href="http://127.0.0.1:8000/en/admin"> ADMIN </a></li> : <></>}
             <li><Link onClick={toggleMenu} className='listItem' to="/cars"> VEHICLES </Link></li>
             <li><a onClick={toggleMenu} className='listItem' href="http://127.0.0.1:8000/chatGPT/"> CAR ASSISTANT </a></li>
             <li><Link onClick={toggleMenu} className='listItem' to="/contact"> CONTACT US </Link></li>

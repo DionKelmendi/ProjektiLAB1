@@ -21,7 +21,6 @@ const ChangePassword = () => {
       setServerError(res.error.data.errors)
     }
     if (res.data) {
-      console.log(res.data)
       setServerError({})
       setServerMsg(res.data)
       document.getElementById("password-change-form").reset();

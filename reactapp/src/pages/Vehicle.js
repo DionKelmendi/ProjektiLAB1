@@ -5,12 +5,12 @@ import MiddleContent from "../components/vehicleComponents/middleContent";
 import Categories from "../components/indexComponents/categories";
 import ReviewForm from "../components/vehicleComponents/reviewForm";
 
-export default function Cars() {
+export default function Vehicle({ userData }) {
 
   return (
     <>
       <div className="vehicle">
-        <ImageSlider />
+        <ImageSlider userData={userData} />
         <MiddleContent />
         <div className="carMain">
           <Categories />

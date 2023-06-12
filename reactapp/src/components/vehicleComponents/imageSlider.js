@@ -2,7 +2,13 @@ import { React, useEffect, useState } from 'react'
 import './vehicle.css';
 import CarInfo from "./carInfo";
 
-export default function ImageSlider() {
+export default function ImageSlider({ userData }) {
+
+  useEffect(() => {
+
+    console.log(userData.id);
+    console.log(userData.is_staff);
+  }, [userData.id, userData.is_staff])
 
 
   const [data, setData] = useState("")
@@ -107,6 +113,11 @@ export default function ImageSlider() {
 
   return (
     <>
+      {userData ? (
+        <div className='favoriteButton'>{userData.id}</div>
+      ) : (
+        <></>
+      )}
       <div className='mainSliderContainer'>
         {data ? (
           <img className="carLogoMain" src={require("../../images/logos/" + data.make + ".webp")} alt="img" draggable="false" />

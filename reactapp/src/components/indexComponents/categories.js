@@ -36,10 +36,6 @@ export default function Categories() {
     fetchDataC();
   }, [])
   useEffect(() => {
-    console.log(dataC);
-  }, [dataC])
-
-  useEffect(() => {
 
     const calculateCategoryTotal = () => {
       if (dataC.categories.length > 9) {

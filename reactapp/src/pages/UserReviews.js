@@ -23,7 +23,6 @@ export default function UserReviews() {
         fetch(API)
           .then((res) => res.json())
           .then((res) => {
-            console.log(res);
             getData(res.results);
           });
       }
@@ -39,8 +38,6 @@ export default function UserReviews() {
   }
 
   function remove() {
-    console.log(removeId);
-
     fetch('http://127.0.0.1:8000/prova/review/' + removeId + '/destroy', {  // Enter your IP address here
 
       method: 'DELETE',

@@ -5,7 +5,7 @@ import { useRegisterUserMutation } from '../../services/userAuthApi'
 import { storeToken } from '../../services/LocalStorageService';
 import { Link } from 'react-router-dom';
 
-export default function Registration() {
+export default function Registration({ }) {
 
   const [server_error, setServerError] = useState({})
   const navigate = useNavigate();

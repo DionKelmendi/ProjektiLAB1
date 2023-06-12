@@ -12,12 +12,13 @@ import FavoriteItem from '../components/dashboardComponents/favoriteItem';
 import ReviewContent from '../components/dashboardComponents/reviewContent';
 import { useUpdateUserMutation } from '../services/userAuthApi'
 
-const Dashboard = () => {
+const Dashboard = ({ onUpdate, updateMain }) => {
 
   const handleLogout = () => {
     dispatch(unsetUserInfo({ id: "", name: "", email: "", first_name: "", last_name: "" }))
     dispatch(unSetUserToken({ access_token: null }))
     removeToken()
+    onUpdate();
     navigate('/')
   }
 
@@ -82,6 +83,7 @@ const Dashboard = () => {
         address: data.contact_info[0],
         phone: data.contact_info[1],
       })
+      updateMain(data);
     }
   }, [data, isSuccess])
 

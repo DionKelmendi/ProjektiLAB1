@@ -1,4 +1,4 @@
-import { React } from "react";
+import { React, useState, useEffect } from "react";
 import Home from "./pages/Home.js";
 import Contact from "./pages/Contact.js";
 import SignIn from "./pages/auth/UserLogin.js";
@@ -16,13 +16,45 @@ import SendPasswordResetEmail from "./pages/auth/SendPasswordResetEmail.js"
 import { useSelector } from "react-redux";
 import AboutUs from "./pages/AboutUs.js";
 import HomePage from "./HomePage.js";
-
+// import Message from './components/Message';
+// import Checkout from './components/Checkout';
+// import Product from './components/Product';
+import { getToken } from './services/LocalStorageService';
+import { useGetLoggedUserQuery } from './services/userAuthApi';
 
 export default function App() {
-  const { access_token } = useSelector(state => state.auth)
+  // const { access_token } = useSelector(state => state.auth)
+
+  const { access_token } = getToken();
+  const initialUserData = JSON.parse(localStorage.getItem('userData')) || {
+    id: "",
+    is_staff: "",
+  };
+  const [userData, setUserData] = useState(initialUserData);
+
+  const storedUserData = localStorage.getItem('userData');
+  console.log(storedUserData);
+
+  const handleSetState = (data) => {
+    console.log(data.id);
+    console.log(data.is_staff);
+    setUserData({
+      id: data.id,
+      is_staff: data.is_staff,
+    })
+
+    let storeData = { id: data.id, is_staff: data.is_staff }
+    localStorage.setItem('userData', JSON.stringify(storeData));
+  };
+
+  const handleStateUpdate = () => {
+    setUserData("");
+    localStorage.removeItem('userData');
+  };
+
   return (
     <>
-      <Header />
+      <Header userData={userData} />
       <Routes>
 
         <Route path="" element={<Home />} />
@@ -31,15 +63,19 @@ export default function App() {
         <Route path="/cars" element={<Cars />} />
         <Route path="/signIn" element={!access_token ? <SignIn /> : <Navigate to="/dashboard" />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/vehicle" element={<Vehicle />} />
+        <Route path="/vehicle" element={<Vehicle userData={userData} />} />
         <Route path="/table" element={<Table />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard onUpdate={handleStateUpdate} updateMain={handleSetState} />} />
         <Route path="/favorites" element={<UserFavorites />} />
         <Route path="/reviews" element={<UserReviews />} />
         <Route path="/sendpasswordresetemail" element={<SendPasswordResetEmail />} />
         <Route path="/account/resetpassword/:id/:token" element={<ResetPassword />} />
-        <Route path='/homepage' component={HomePage} />
-      </Routes>
+        {/* <Route path='/homepage' component={HomePage} /> */}
+        {/* <Route exact path='/success' element={<Message />} /> */}
+        {/* <Route path="/:product_id" element={<Product />} /> */}
+        {/* <Route exact path="checkout/:prod_id" element={<Checkout />} /> */}
+
+      </Routes >
     </>
   )
 }
