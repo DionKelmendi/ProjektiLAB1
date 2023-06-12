@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-r4%co-!n2@86gtb(3evj66z%u^21&_a_jwco%p**t&cd*$=t(4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1" , "172.16.2.97"]
+ALLOWED_HOSTS = ["127.0.0.1" , "172.16.2.97", "localhost"]
 
 
 # Application definition
@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'chatgpt_app',
     'account',
     'django_cleanup.apps.CleanupConfig', # Keep last installed app
-    'payment',
+    'payments',
 ]
 
 
@@ -78,6 +78,8 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:8000'
 ]
+
+SITE_URL = 'http://localhost:3000'
 
 ROOT_URLCONF = 'autosallon.urls'
 
@@ -159,10 +161,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'autosallonApp/static'),
 ]
 
-STRIPE_PUBLIC_KEY="pk_test_51NHPa5ItGJg7D0eNaEdK8PQIrJIwDY65vOnOkFu7mPrAR2IazfiMK6Ns5BKRjgJZBcx0q2DJJ9M9D7mRe5iVRmWY00Xya6vbgC"
-STRIPE_SECRET_KEY="sk_test_51NHPa5ItGJg7D0eNfmu2gv9L904YjywDhloiQZdTU64ppuhX3RGaTcDqx5phnEov9b4OJVI0t0tvHiFgcIhgXxik00G8K4Q5B0"
 
-STRIPE_SECRET_WEBHOOK="whsec_mwXBR7ZwLZe5XTFPlDekNrQeFaqrXkNj"
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
@@ -346,6 +345,9 @@ JAZZMIN_UI_TWEAKS = {
 
 # JWT Configuration
 REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny'
+    ],
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
         

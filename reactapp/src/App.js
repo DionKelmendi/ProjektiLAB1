@@ -2,7 +2,7 @@ import { React } from "react";
 import Home from "./pages/Home.js";
 import Contact from "./pages/Contact.js";
 import SignIn from "./pages/auth/UserLogin.js";
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes, Navigate, } from "react-router-dom";
 import Header from './components/header';
 import Register from './pages/auth/Registration.js';
 import Cars from "./pages/Cars.js";
@@ -15,9 +15,8 @@ import ResetPassword from "./pages/auth/ResetPassword.js";
 import SendPasswordResetEmail from "./pages/auth/SendPasswordResetEmail.js"
 import { useSelector } from "react-redux";
 import AboutUs from "./pages/AboutUs.js";
-import Message from './components/Message';
-import Checkout from './components/Checkout';
-import Product from './components/Product';
+import HomePage from "./HomePage.js";
+
 
 export default function App() {
   const { access_token } = useSelector(state => state.auth)
@@ -39,9 +38,7 @@ export default function App() {
         <Route path="/reviews" element={<UserReviews />} />
         <Route path="/sendpasswordresetemail" element={<SendPasswordResetEmail />} />
         <Route path="/account/resetpassword/:id/:token" element={<ResetPassword />} />
-        <Route exact path='/success' element={<Message/>}/>      
-          <Route  path="/:product_id" element={<Product/>}/> 
-          <Route exact path="checkout/:prod_id" element={<Checkout/>}/>
+        <Route path='/homepage' component={HomePage} />
       </Routes>
     </>
   )
