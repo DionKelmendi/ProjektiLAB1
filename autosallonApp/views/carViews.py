@@ -32,9 +32,12 @@ class CarAPIView(generics.ListAPIView):
   serializer_class = CarSerializer
   filter_backends = [filters.SearchFilter, DjangoFilterBackend, filters.OrderingFilter]
   search_fields = ['make', 'model', 'category_id__name', '=year']
-  filterset_fields = ['color', 'mileage', 'price' ]
+  filterset_fields = {
+        'color': ['exact'],
+        'mileage': ['exact', 'lte'],
+        'price': ['exact', 'lte']   
+  }
   ordering_fields = ['sold', 'price', 'mileage', 'year']
-  # add lte to mileage and price
 
 #Car Update
 class CarUpdateAPIView(generics.UpdateAPIView):

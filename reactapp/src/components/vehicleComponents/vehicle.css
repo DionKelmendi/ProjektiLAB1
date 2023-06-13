@@ -479,10 +479,12 @@
   justify-content: space-evenly;
   align-items: center;
 }
-#reservebutton{
-  right:333px;
+
+#reservebutton {
+  right: 333px;
   color: white;
 }
+
 .vehicle .favoriteButton:hover {
 
   background: orange;
@@ -628,8 +630,7 @@
 
   .vehicle .container>.vItem {
 
-    width: 60vw
+    width: 60vw;
     margin: 50px
   }
 }
-
