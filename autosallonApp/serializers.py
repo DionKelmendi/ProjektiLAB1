@@ -131,7 +131,7 @@ class ReviewUserSerializer(serializers.ModelSerializer):
 class SaleSerializer(serializers.ModelSerializer):
   class Meta:
     model = Sale
-    fields = ('id', 'car_id', 'user_id', 'worker_id', 'price', 'sale_date')
+    fields = ('id', 'car_id', 'user_id', 'worker_id', 'price','iscompleted', 'sale_date')
 
 class Dis_TransactionSerializer(serializers.ModelSerializer):
   class Meta:

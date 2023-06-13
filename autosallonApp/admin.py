@@ -50,7 +50,7 @@ class CarModelAdmin(admin.ModelAdmin):
   list_display = ["id", "make", "model", "price", "mileage", "year", "color", "category_name","sold","reservedlink", "car_link"]
   search_fields = ["make", "model", "price"]
   ordering = ["id"]
-  list_filter = ["sold", "make", "model", "category_id__name", "color"]
+  list_filter = ["sold", "make", "model", "category_id__name", "color", "category__name"]
   inlines = [CarImageModelAdmin]
 
   def category_name(self, obj):
@@ -187,10 +187,10 @@ admin.site.register(models.Review, ReviewModelAdmin)
 
 # Sale Admin Display
 class SaleModelAdmin(admin.ModelAdmin):
-  list_display = ["id","user_name", "car_name", "worker_name", "sale_date","sale_link"]
+  list_display = ["id","user_name", "car_name", "worker_name","iscompleted", "sale_date","sale_link"]
   ordering = ["id"]
-  list_filter = ["user_id__username", "car_id__make", "car_id__model", "worker_id__name"]
-  search_fields = ["user_id__username", "car_id__make", "car_id__model", "worker_id__name"]
+  list_filter = ["user_id__username", "car_id__make", "car_id__model","iscompleted", "worker_id__name"]
+  search_fields = ["user_id__username", "car_id__make", "car_id__model","iscompleted", "worker_id__name"]
   filter_horizontal = []
 
   def car_name(self, obj):

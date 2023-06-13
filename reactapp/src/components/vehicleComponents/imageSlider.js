@@ -3,7 +3,6 @@ import './vehicle.css';
 import CarInfo from "./carInfo";
 
 export default function ImageSlider({ userData, data, imageData }) {
-
   useEffect(() => {
 
     const carousel = document.querySelector(".carousel"),
@@ -102,6 +101,7 @@ export default function ImageSlider({ userData, data, imageData }) {
   return (
     <>
       {userData ? (
+        <>
         <div className='favoriteButton'>
           <form onSubmit={favorite}>
             <input type='hidden' name="user_id" defaultValue={userData.id} />
@@ -110,6 +110,11 @@ export default function ImageSlider({ userData, data, imageData }) {
           </form>
           {errorMessage != "" ? <p className='errorP'><i className="fa-solid fa-circle-exclamation"></i> {errorMessage} </p> : <></>}
         </div>
+       { data.reservedlink=== null ? <button type='submit' id="reservebutton" className='favoriteButton'> Payment not yet offered</button> : <a href={data.reservedlink}>
+       <button type='submit' id="reservebutton" className='favoriteButton'> Buy</button>
+        </a>} 
+        
+        </>
       ) : (
         <></>
       )}

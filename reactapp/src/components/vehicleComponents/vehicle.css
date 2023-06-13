@@ -473,12 +473,16 @@
   cursor: pointer;
   font-weight: 700;
   letter-spacing: 1.5px;
+  border-radius: 10px;
 
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
-
+#reservebutton{
+  right:333px;
+  color: white;
+}
 .vehicle .favoriteButton:hover {
 
   background: orange;
@@ -624,7 +628,8 @@
 
   .vehicle .container>.vItem {
 
-    width: 60vw;
+    width: 60vw
     margin: 50px
   }
 }
+
