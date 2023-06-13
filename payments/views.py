@@ -13,12 +13,12 @@ class StripeCheckoutView(APIView):
     def post(self, request):
         try:
             checkout_session = stripe.checkout.Session.create(
-                line_items=[
-                    {
-                        'price': 'price_1NIGH0ItGJg7D0eNPwpFFAq6',
-                        'quantity': 1,
-                    },
-                ],
+                # line_items=[
+                #     {
+                #         'price': 'price_1NIGH0ItGJg7D0eNPwpFFAq6',
+                #         'quantity': 1,
+                #     },
+                # ],
                 payment_method_types=['card',],
                 mode='payment',
                 success_url=settings.SITE_URL + '/?success=true&session_id={CHECKOUT_SESSION_ID}',

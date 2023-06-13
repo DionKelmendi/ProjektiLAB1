@@ -13,14 +13,14 @@ import UserFavorites from "./pages/UserFavorites.js";
 import UserReviews from "./pages/UserReviews.js";
 import ResetPassword from "./pages/auth/ResetPassword.js";
 import SendPasswordResetEmail from "./pages/auth/SendPasswordResetEmail.js"
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import AboutUs from "./pages/AboutUs.js";
-import HomePage from "./HomePage.js";
 // import Message from './components/Message';
 // import Checkout from './components/Checkout';
 // import Product from './components/Product';
 import { getToken } from './services/LocalStorageService';
-import { useGetLoggedUserQuery } from './services/userAuthApi';
+// import { useGetLoggedUserQuery } from './services/userAuthApi';
+
 
 export default function App() {
   // const { access_token } = useSelector(state => state.auth)
@@ -68,10 +68,6 @@ export default function App() {
         <Route path="/reviews" element={<UserReviews />} />
         <Route path="/sendpasswordresetemail" element={<SendPasswordResetEmail />} />
         <Route path="/account/resetpassword/:id/:token" element={<ResetPassword />} />
-        {/* <Route path='/homepage' component={HomePage} /> */}
-        {/* <Route exact path='/success' element={<Message />} /> */}
-        {/* <Route path="/:product_id" element={<Product />} /> */}
-        {/* <Route exact path="checkout/:prod_id" element={<Checkout />} /> */}
 
       </Routes >
     </>
