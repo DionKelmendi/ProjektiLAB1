@@ -982,7 +982,7 @@ form .successP {
 .dashboard {
 
   background: #363636;
-  height: 100vh;
+  min-height: 100vh;
 
   display: flex;
   justify-content: center;
@@ -1525,13 +1525,13 @@ form .successP {
 }
 
 .userReviewsMain .favoriteItem .comment {
-
   background: white;
   padding: 15px;
   border-radius: 5px;
   text-align: justify;
   width: 600px;
   height: 50px;
+  overflow-wrap: break-word;
   overflow: hidden;
 }
 
@@ -1657,7 +1657,81 @@ form .successP {
 
 }
 
+@media screen and (max-width: 1400px) {
+
+  .userReviewsMain .favoriteItem {
+
+    width: 100vw;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+
+  .userFavoritesMain .container {
+
+    justify-content: center;
+    align-items: center;
+  }
+
+  .dashboard {
+
+    padding: 100px;
+  }
+
+  .dashboard .userWelcome {
+
+    order: 1;
+  }
+
+  .dashboard .changePassword {
+    order: 2;
+  }
+
+  .dashboard .userInfo {
+
+    order: 3;
+  }
+
+  .dashboard .userFavorites {
+
+    order: 4;
+  }
+
+  .dashboard .userReviews {
+
+    order: 5;
+  }
+}
+
 @media screen and (max-width: 1000px) {
+
+
+  .extendFilter .selectCar {
+
+    width: 25vw;
+  }
+
+  .show {
+
+    height: 160px;
+  }
+
+  .extendFilter {
+
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0;
+    transform: translateY(30px);
+  }
+
+  #sort {
+    transform: translate(-28px, 7px);
+  }
+
+  .signInButton {
+    margin: 0;
+  }
 
   .categories .container {
 
@@ -1688,6 +1762,11 @@ form .successP {
 }
 
 @media screen and (max-width: 768px) {
+
+  .userReviewsMain .favoriteItem .reviewRating {
+
+    transform: translate(-210px, 25px);
+  }
 
   .signIn form {
 
@@ -1741,7 +1820,6 @@ form .successP {
 
   .categories .container div {
 
-    margin: auto;
     margin-bottom: 10px;
   }
 
@@ -1753,6 +1831,47 @@ form .successP {
 
 
 @media screen and (max-width: 530px) {
+
+  .userReviewsMain .favoriteItem .comment {
+
+    position: absolute;
+    width: 50vw;
+    right: 20px;
+  }
+
+  .userReviewsMain .favoriteItem .arrow,
+  .userReviewsMain .favoriteItem .date {
+
+    display: none;
+  }
+
+
+  .dashboard .containerMain {
+
+    width: 100vw;
+  }
+
+  .dashboard .userInfo {
+
+    width: auto;
+  }
+
+  .dashboard .settingsForm {
+
+    width: 90vw;
+    left: calc(50% - 45vw);
+    transform: translateY(550px);
+  }
+
+  .extendFilter .selectCar {
+
+    width: 45%;
+  }
+
+  .show {
+
+    height: 250px;
+  }
 
   .formTitle p {
 
@@ -1789,6 +1908,7 @@ form .successP {
 
     flex-direction: column;
     gap: 20px;
+    height: auto;
   }
 
   footer h3 {
@@ -1870,7 +1990,6 @@ form .successP {
   .categories .container>*:last-child {
     display: flex;
     flex-wrap: wrap;
-    width: 100vw;
     margin-bottom: 50px;
   }
 

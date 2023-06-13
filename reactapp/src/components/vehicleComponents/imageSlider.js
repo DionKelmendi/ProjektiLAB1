@@ -90,7 +90,6 @@ export default function ImageSlider({ userData, data, imageData }) {
     })
       .then(response => response.json())
       .then(result => {
-        console.log(result);
 
         if (result[0]) {
           setErrorMessage(result[0])

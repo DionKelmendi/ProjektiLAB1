@@ -76,7 +76,7 @@ export default function ReviewContent({ id, username, carId, car_name, comment, 
           <div id={"comment" + id} onMouseEnter={() => openComment(id)} onMouseLeave={() => closeComment(id)} className='comment'>
             <p>{comment}</p>
           </div>
-          {review_date ? <p>{review_date}</p> : ""}
+          {review_date ? <p className='date'>{review_date}</p> : ""}
           {car_name ?
             <div className='arrow'>
               <i className="fa-solid fa-arrow-right"></i>

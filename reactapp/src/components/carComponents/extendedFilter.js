@@ -76,7 +76,7 @@ export default function ExtendedFilter() {
             </select>
           </div>
 
-          <div>
+          <div className="selectCar">
             <label htmlFor="model">Model</label><br />
             <select id="model" >
               <option value="" id="option1">Select Make First</option>

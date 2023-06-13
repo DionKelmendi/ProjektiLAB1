@@ -81,18 +81,6 @@
   margin-left: 0px;
 }
 
-@media screen and (max-width: 900px) {
-  .carousel img {
-    width: calc(100% / 2);
-  }
-}
-
-@media screen and (max-width: 550px) {
-  .carousel img {
-    width: 100%;
-  }
-}
-
 .vehicle section {
 
   height: 100vh;
@@ -521,12 +509,6 @@
   background-color: rgb(255, 132, 0);
 }
 
-@media (max-width: 480px) {
-  .review-form {
-    width: 90%;
-  }
-}
-
 .star {
   color: #bbb;
 }
@@ -539,4 +521,110 @@
 
   background: white;
   padding: 5px;
+}
+
+@media screen and (max-width: 1000px) {
+
+
+  .vehicle section {
+
+    height: auto;
+  }
+
+  .vehicle .container>.vItem {
+
+    width: 60vw;
+    margin: 50px
+  }
+
+  .vehicle .favoriteButton {
+
+    top: 200px;
+    right: calc(50% - 87px);
+  }
+
+  .carInfo {
+    flex-wrap: wrap;
+    height: auto;
+  }
+
+  .carInfo p {
+
+    text-align: center;
+    width: 25vw;
+  }
+
+  .vehicle .categories {
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .carousel img {
+    width: calc(100% / 2);
+  }
+}
+
+
+@media screen and (max-width: 550px) {
+  .carousel img {
+    width: 100%;
+  }
+
+  .wrapperContainer {
+
+    transform: translateY(60px);
+  }
+
+  .vehicle .container {
+    flex-direction: column;
+  }
+
+  .reviewForm .container {
+
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .reviewForm form {
+
+    width: auto;
+  }
+
+  .vehicle .allReviews {
+
+    width: 75%;
+    margin-bottom: 20px;
+  }
+
+}
+
+@media (max-width: 480px) {
+  .review-form {
+    width: 90%;
+  }
+
+  .carInfo p {
+    width: 50vw;
+  }
+}
+
+@media screen and (max-height: 500px) and (orientation: landscape) {
+
+  .wrapperContainer {
+
+    margin-top: 200px;
+  }
+
+  .vehicle section {
+
+    height: auto;
+    flex-direction: column;
+  }
+
+  .vehicle .container>.vItem {
+
+    width: 60vw;
+    margin: 50px
+  }
 }

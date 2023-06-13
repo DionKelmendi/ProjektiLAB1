@@ -51,7 +51,6 @@ const ReviewForm = ({ userData, data }) => {
           .then((res) => res.json())
           .then((res) => {
             getReviewData(res.results);
-            console.log(res.results);
           });
       };
     }
