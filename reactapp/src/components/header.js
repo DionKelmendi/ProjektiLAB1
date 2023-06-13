@@ -11,23 +11,23 @@ export default function Header({ userData }) {
 
   useEffect(() => {
 
-    window.onscroll = function () { scrollFunction() };
+    // window.onscroll = function () { scrollFunction() };
 
-    function scrollFunction() {
+    // function scrollFunction() {
 
-      let path = window.location.pathname;
-      if (((document.documentElement.scrollTop > (window.innerHeight - 50) && document.documentElement.scrollTop < (2 * window.innerHeight - 50)) || document.documentElement.scrollTop > (3 * window.innerHeight - 50)) || path !== "/") {
-        document.querySelectorAll(".listItem").forEach(li => {
-          li.style.color = "black";
-        });
-        document.querySelector(".navBrand").style.color = "black";
-      } else {
-        document.querySelectorAll(".listItem").forEach(li => {
-          li.style.color = "white";
-        });
-        document.querySelector(".navBrand").style.color = "white";
-      }
-    }
+    //   let path = window.location.pathname;
+    //   if (((document.documentElement.scrollTop > (window.innerHeight - 50) && document.documentElement.scrollTop < (2 * window.innerHeight - 50)) || document.documentElement.scrollTop > (3 * window.innerHeight - 50)) || path !== "/") {
+    //     document.querySelectorAll(".listItem").forEach(li => {
+    //       li.style.color = "black";
+    //     });
+    //     document.querySelector(".navBrand").style.color = "black";
+    //   } else {
+    //     document.querySelectorAll(".listItem").forEach(li => {
+    //       li.style.color = "white";
+    //     });
+    //     document.querySelector(".navBrand").style.color = "white";
+    //   }
+    // }
 
   }, [])
 

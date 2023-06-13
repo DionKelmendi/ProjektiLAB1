@@ -58,7 +58,7 @@ export default function App() {
         <Route path="" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/aboutus" element={<AboutUs />} />
-        <Route path="/cars" element={<Cars />} />
+        <Route path="/cars" element={<Cars userData={userData} />} />
         <Route path="/signIn" element={!access_token ? <SignIn /> : <Navigate to="/dashboard" />} />
         <Route path="/register" element={<Register />} />
         <Route path="/vehicle" element={<Vehicle userData={userData} />} />

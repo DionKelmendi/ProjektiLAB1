@@ -50,7 +50,7 @@ header .content a {
 }
 
 .navBrand {
-  color: black;
+  color: orange;
   text-decoration: none;
   transition: 0.1s all ease-in;
 }
@@ -73,7 +73,7 @@ nav ul {
 .listItem {
 
   text-decoration: none;
-  color: black;
+  color: orange;
 
   transition: 0.1s all ease-in;
 }
@@ -673,7 +673,8 @@ form .successP {
 
 .cars {
   height: 20vh;
-  color: #363636;
+  background: #363636;
+  color: white;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -685,18 +686,18 @@ form .successP {
   margin-top: 10px;
   background: none;
   border: none;
-  outline: 2px solid #363636;
+  outline: 2px solid white;
   border-radius: 5px;
-  color: #363636;
+  color: white;
 
   transition: 0.2s all ease-in;
 }
 
 .carMain input[type="submit"] {
 
-  color: white;
-  outline: 2px solid #363636;
-  background: #363636;
+  color: #363636;
+  outline: 2px solid white;
+  background: white;
   cursor: pointer;
 }
 
@@ -753,9 +754,10 @@ form .successP {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(180deg, rgba(246, 246, 246, 1) 79%, rgba(198, 198, 198, 1) 100%);
 
   margin: auto;
-  margin-bottom: 175px;
+  padding-bottom: 175px;
 }
 
 .carListing .container {
@@ -790,6 +792,12 @@ form .successP {
 
   object-position: center;
   object-fit: cover;
+}
+
+.carMain .formContainer {
+  background: #363636;
+  color: white;
+  padding-bottom: 30px;
 }
 
 .extendFilter {
@@ -885,6 +893,27 @@ form .successP {
   align-items: start;
 }
 
+.adminOverlay {
+
+  background: orange;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  transition: 0.3s all;
+  transform: translateX(310px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.adminOverlay:hover {
+
+  background: rgb(200, 132, 0);
+  opacity: 100;
+}
+
+
 .soldOverlayMessage {
 
   padding: 25px;
@@ -895,13 +924,13 @@ form .successP {
 }
 
 .filterToggle {
-  color: #363636;
+  color: white;
   position: absolute;
   margin: 10px;
 }
 
 .filterToggle:hover {
-  color: #565656;
+  color: orange;
 }
 
 .filterToggle:active {

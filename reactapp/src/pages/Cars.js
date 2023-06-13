@@ -6,7 +6,7 @@ import Categories from "../components/indexComponents/categories";
 import ExtendedFilter from "../components/carComponents/extendedFilter";
 import { useLocation } from 'react-router-dom'
 
-export default function Cars() {
+export default function Cars({ userData }) {
 
   const location = useLocation();
   const [ordering, setOrdering] = useState([""]); // Used for sorting data
@@ -135,27 +135,27 @@ export default function Cars() {
         </form>
       </section>
 
-      <form onSubmit={search} className="container">
+      <form onSubmit={search} className="formContainer container">
         <ExtendedFilter />
-      </form>
 
-      <div className="extendSort">
-        <select id="sort" onChange={search}>
-          <option value="">Sort By</option>
-          <option value="-year">Sort By Year: Newest to Oldest</option>
-          <option value="year">Sort By Year: Oldest to Newest</option>
-          <option value="price">Sort By Price: Lowest to Highest</option>
-          <option value="-price">Sort By Price: Highest to Lowest</option>
-          <option value="mileage">Sort By Mileage: Lowest to Highest</option>
-          <option value="-mileage">Sort By Mileage: Highest to Lowest</option>
-        </select>
-      </div>
+        <div className="extendSort">
+          <select id="sort" onChange={search}>
+            <option value="">Sort By</option>
+            <option value="-year">Sort By Year: Newest to Oldest</option>
+            <option value="year">Sort By Year: Oldest to Newest</option>
+            <option value="price">Sort By Price: Lowest to Highest</option>
+            <option value="-price">Sort By Price: Highest to Lowest</option>
+            <option value="mileage">Sort By Mileage: Lowest to Highest</option>
+            <option value="-mileage">Sort By Mileage: Highest to Lowest</option>
+          </select>
+        </div>
+      </form>
 
       <section className="carListing">
         <div id="listingContainer" className="container">
           {data.map((item, i) => {
             return (
-              <CarItem key={item.id} id={item.id} image={item.imageName} logo={item.make} name={item.make + " " + item.model} price={item.price} year={item.year} mileage={item.mileage} sold={item.sold} />
+              <CarItem userData={userData} key={item.id} id={item.id} image={item.imageName} logo={item.make} name={item.make + " " + item.model} price={item.price} year={item.year} mileage={item.mileage} sold={item.sold} />
             )
           })}
         </div>
@@ -167,7 +167,7 @@ export default function Cars() {
         </div>
       </section>
 
-      <Categories />
+      {/* <Categories /> */}
 
       <Footer />
     </div >

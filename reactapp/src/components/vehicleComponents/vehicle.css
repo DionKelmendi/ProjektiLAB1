@@ -482,6 +482,7 @@
 
 #reservebutton {
   right: 333px;
+  border: 0;
   color: white;
 }
 
@@ -546,7 +547,12 @@
   .vehicle .favoriteButton {
 
     top: 200px;
-    right: calc(50% - 87px);
+    right: calc(30% - 87px);
+  }
+
+  #reservebutton {
+
+    left: calc(30% - 87px);
   }
 
   .carInfo {

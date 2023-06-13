@@ -1,12 +1,16 @@
 import { React } from 'react';
 import { Link } from 'react-router-dom';
 
-export default function CarItem({ id, image, logo, name, year, mileage, sold, price }) {
+export default function CarItem({ id, image, logo, name, year, mileage, sold, price, userData }) {
 
   try {
 
     return (
       <div className="carItem">
+
+        {userData.is_staff ? <div className='adminOverlay'>
+          <a href={'http://127.0.0.1:8000/en/admin/autosallonApp/car/' + id + '/change/'}><i className="fa-solid fa-bars"></i></a>
+        </div> : <></>}
 
         <Link to={"/vehicle?id=" + id}>
 
