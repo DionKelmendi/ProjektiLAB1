@@ -327,24 +327,23 @@
 
 /* Review */
 .reviewForm {
-  max-width: 400px;
-  margin: auto;
-  display: flex;
-  background-color: #d3d3d3;
-  flex-direction: column;
-  gap: 1.2rem;
-  width: 35%;
-  border-radius: 10px;
+
+  background: #c6c6c6;
 }
 
-/* .review-form {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  background: black;
-  border-radius: 10px;
-  width: 7%;
-} */
+.reviewForm .container {
+  width: 80%;
+  margin: auto;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.reviewForm form {
+
+  width: 45%;
+  padding: 50px;
+}
 
 #reviewId {
   text-align: center;
@@ -362,11 +361,80 @@
 
 .reviewInput {
   width: 100%;
+  min-height: 40px;
+  height: 40px;
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
   color: black;
   resize: vertical;
+  background: none;
+  border: 0;
+  border-bottom: 2px solid #363636;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.reviewInput:focus {
+
+  outline: 0;
+}
+
+.vehicle .bottomRow {
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.vehicle .allReviews {
+
+  display: flex;
+  flex-direction: column;
+
+  width: 50%;
+  overflow: scroll;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: orange #363636;
+  height: 200px;
+}
+
+.vehicle .allReviews a {
+
+  background: #c6c6c6;
+  cursor: default;
+  color: black;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.vehicle .allReviews a .favoriteItem {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  width: 95%;
+  margin: auto;
+  background-color: #363636;
+  color: white;
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.vehicle .allReviews a .favoriteItem .comment {
+  overflow: hidden;
+  width: 100%;
+}
+
+.vehicle .allReviews a .favoriteItem .reviewRating div {
+
+  margin-left: 10px;
+}
+
+.vehicle .allReviews a .favoriteItem i {
+
+  color: #ffcc00;
 }
 
 .vehicle .favoriteButton {
@@ -378,6 +446,30 @@
   height: 50px;
   border-radius: 10px;
   transition: 0.3s all;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.vehicle .favoriteButton:active {
+  transform: translatey(-2px);
 }
 
 .vehicle .favoriteButton form {
@@ -415,7 +507,6 @@
 
 #reviewButton {
   display: block;
-  width: 100%;
   padding: 10px;
   background-color: orange;
   color: white;
@@ -427,7 +518,7 @@
 }
 
 #reviewButton:hover {
-  background-color: orangered;
+  background-color: rgb(255, 132, 0);
 }
 
 @media (max-width: 480px) {
@@ -442,4 +533,10 @@
 
 .star.active {
   color: #ffcc00;
+}
+
+.starRating {
+
+  background: white;
+  padding: 5px;
 }

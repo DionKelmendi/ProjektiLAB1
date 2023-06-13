@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from rest_framework import generics
-from ..serializers import CarSerializer, ReviewSerializer, ReviewUserSerializer
+from ..serializers import CarSerializer, ReviewCarSerializer, ReviewSerializer, ReviewUserSerializer
 from ..models import Car, Review
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
@@ -20,11 +20,11 @@ class ReviewAPIView(generics.ListCreateAPIView):
   serializer_class = ReviewSerializer
 
   def perform_create(self, serializer):
-    user_id = serializer.validated_data.get('user_id')
-    car_id = serializer.validated_data.get('car_id')
+    user_id = serializer.validated_data.get('user')
+    car_id = serializer.validated_data.get('car')
     rating = serializer.validated_data.get('rating')
-    review_date = serializer.validated_data.get('review_date')
     comment = serializer.validated_data.get('comment')
+    serializer.save();
 
 #Review Update
 class ReviewUpdateAPIView(generics.UpdateAPIView):
@@ -51,7 +51,6 @@ class ReviewUserAPIView(generics.ListAPIView):
     lookup_field = 'user_id'
 
     def get_queryset(self):
-      
       car_ids = Review.objects.filter(user_id=self.kwargs['user_id']).order_by('-review_date').values_list('car_id', flat=True)[:1]
       cars = []
 
@@ -60,6 +59,17 @@ class ReviewUserAPIView(generics.ListAPIView):
       
       return Review.objects.filter(user_id=self.kwargs['user_id']).order_by('-review_date').values()[:1]
     
+
+# Review Read All Instances From One Car
+class ReviewCarAPIView(generics.ListAPIView):
+    queryset = Review.objects.all()
+    serializer_class = ReviewCarSerializer
+    lookup_field = 'car_id'
+
+    def get_queryset(self):
+      print(self.kwargs['car_id'])
+      return Review.objects.filter(car_id = self.kwargs['car_id'])
+
 class ReviewUserAllAPIView(generics.ListAPIView):
     queryset = Review.objects.all()
     serializer_class = ReviewUserSerializer

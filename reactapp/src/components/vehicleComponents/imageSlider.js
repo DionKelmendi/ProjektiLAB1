@@ -2,38 +2,7 @@ import { React, useEffect, useState } from 'react'
 import './vehicle.css';
 import CarInfo from "./carInfo";
 
-export default function ImageSlider({ userData }) {
-
-  const [data, setData] = useState("")
-  const [imageData, setImageData] = useState("")
-
-  useEffect(() => {
-
-    let id = (window.location.href).split("=")[1];
-
-    const fetchData = (id) => {
-      const API = 'http://127.0.0.1:8000/prova/car/' + id + "/";
-      if (id) {
-        fetch(API)
-          .then((res) => res.json())
-          .then((res) => {
-            setData(res);
-          });
-      }
-    };
-    const fetchImageData = (id) => {
-      const API = 'http://127.0.0.1:8000/prova/carImages/' + id + "/";
-      if (id) {
-        fetch(API)
-          .then((res) => res.json())
-          .then((res) => {
-            setImageData(res.results);
-          });
-      }
-    };
-    fetchData(id);
-    fetchImageData(id);
-  }, [])
+export default function ImageSlider({ userData, data, imageData }) {
 
   useEffect(() => {
 
@@ -107,6 +76,8 @@ export default function ImageSlider({ userData }) {
   const [errorMessage, setErrorMessage] = useState("")
 
   const favorite = (e) => {
+
+    e.target[2].style.background = "orange";
     e.preventDefault()
     const API = 'http://127.0.0.1:8000/prova/favorite/';
     let data = { user: e.target[0].value, car: e.target[1].value }

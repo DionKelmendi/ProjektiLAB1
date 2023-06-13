@@ -96,7 +96,22 @@ class FavoriteSerializer(serializers.ModelSerializer):
 class ReviewSerializer(serializers.ModelSerializer):
   class Meta:
     model = Review
-    fields = ('id', 'user_id', 'car_id', 'rating', 'review_date', 'comment')
+    fields = ('id', 'user', 'car', 'rating', 'review_date', 'comment')
+
+class ReviewCarSerializer(serializers.ModelSerializer):
+  
+  user_name = serializers.SerializerMethodField()
+
+  def get_user_name(self, obj):
+    user_id = obj.user_id
+    user = User.objects.filter(id=user_id).values_list('username')
+
+    return user
+  
+  class Meta:
+    model = Review
+    fields = ('user_name', 'rating', 'review_date', 'comment')
+
 
 class ReviewUserSerializer(serializers.ModelSerializer):
   
