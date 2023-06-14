@@ -81,6 +81,7 @@ class Worker(models.Model):
   phone = models.CharField(max_length=20)
   salary = models.IntegerField()
   position = models.CharField(max_length=50)
+  image = models.ImageField(upload_to=car_image_upload_path, default='reactapp/src/images/No_Image_Available.jpg')
 
   def __str__(self):
     return f"({self.id}) {self.name} {self.position}"

@@ -62,21 +62,6 @@ export default function UserFavorites() {
         {data && data.length > 0 ? (
           <div className="container">
             {data.map((item, i) => {
-              // return <>
-              //   <div className="rowContainer" >
-              //     <div className="rowHeader">
-              //       <p className="brand">Brand</p>
-              //       <p className="year">Year</p>
-              //       <p className="name">Car Name</p>
-              //       <p className="mileage">Mileage</p>
-              //       <p className="price">Price</p>
-              //     </div>
-              //     <FavoriteItem id={item.id} img={item.make} year={item.year} mileage={item.mileage} price={item.price} name={item.make + " " + item.model} />
-              //     <div className="removeRow">
-              //       <p id={favId[i]} onClick={toggleRemove}>Remove from favorites</p>
-              //     </div>
-              //   </div>
-              // </>
               return <>
                 <div className="rowContainer">
                   <CarItem key={item.id} id={item.id} image={item.imageName} logo={item.make} name={item.make + " " + item.model} price={item.price} year={item.year} mileage={item.mileage} sold={item.sold} />

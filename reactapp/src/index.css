@@ -1934,12 +1934,16 @@ form .successP {
   width: 90%;
   margin: auto;
   transform: translateY(75px);
+  gap: 20px;
 }
 
 .aboutUs .staff .subContainer img {
 
   height: 50%;
-  object-fit: contain;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: cover;
 }
 
 .aboutUs .staff .subContainer .staffName {

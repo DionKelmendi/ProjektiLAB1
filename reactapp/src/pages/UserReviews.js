@@ -64,7 +64,6 @@ export default function UserReviews() {
                     <p id={item.id} onClick={toggleRemove}>Remove from reviews</p>
                   </div>
                 </div>
-                {/* <p key={i}>{item.car_id} {item.car_name[0] + " " + item.car_name[1]} {item.comment} {item.review_date}</p> */}
               </>
             })}
           </div>

@@ -220,7 +220,7 @@ admin.site.register(models.Sale, SaleModelAdmin)
 
 # Worker Admin Display
 class WorkerModelAdmin(admin.ModelAdmin):
-  list_display = ["id", "name", "email", "address", "phone", "salary", "position", "worker_link"]
+  list_display = ["id", "name", "email", "address", "phone", "salary", "position", "image", "worker_link"]
   ordering = ["id"]
   list_filter = ["position", "address"]
   search_fields = ["name", "email"]

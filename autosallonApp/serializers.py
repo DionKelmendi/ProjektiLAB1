@@ -86,7 +86,7 @@ class DistributorSerializer(serializers.ModelSerializer):
 class WorkerSerializer(serializers.ModelSerializer):
   class Meta:
     model = Worker
-    fields = ('id', 'name', 'email', 'address', 'phone', 'salary', 'position')
+    fields = ('id', 'name', 'email', 'address', 'phone', 'salary', 'position', 'image')
 
 class FavoriteSerializer(serializers.ModelSerializer):
   class Meta:

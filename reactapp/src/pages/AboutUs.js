@@ -1,13 +1,28 @@
-import { React } from "react";
+import { React, useEffect, useState } from "react";
 import Footer from '../components/footer'
 import "../index.css";
-import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import Porsche from "../images/porscheCar.webp"
 import Worker from "../images/worker.webp"
 import fillerImage from "../images/fillerImage.webp"
 
 export default function AboutUS() {
+
+  const [workers, getWorkers] = useState([])
+
+  useEffect(() => {
+    const fetchData = () => {
+      const API = 'http://127.0.0.1:8000/prova/worker/';
+      fetch(API)
+        .then((res) => res.json())
+        .then((res) => {
+          getWorkers(res.results);
+          console.log(res.results);
+        });
+
+    };
+    fetchData();
+  }, [])
 
   return (
     <>
@@ -54,29 +69,23 @@ export default function AboutUS() {
             <h1>Our experienced and dedicated team</h1>
 
             <div className="subContainer">
-              <div className="item">
-                <img src={Worker} />
-                <h3 className="staffName">Erin Orana</h3>
-                <p>CEO</p>
-              </div>
 
-              <div className="item">
-                <img src={Worker} />
-                <h3 className="staffName">Erin Orana</h3>
-                <p>CEO</p>
-              </div>
+              <>
+                {
+                  workers.map((item, i) => {
+                    let names = item.name.split(" ")
+                    return (
+                      <div className="item">
+                        <img src={require('../images/' +
+                          names[0] + "_" + names[1] + ".webp")} />
+                        <h3 className="staffName">{item.name}</h3>
+                        <p>CEO</p>
+                      </div>
+                    )
+                  })
+                }
+              </>
 
-              <div className="item">
-                <img src={Worker} />
-                <h3 className="staffName">Erin Orana</h3>
-                <p>CEO</p>
-              </div>
-
-              <div className="item">
-                <img src={Worker} />
-                <h3 className="staffName">Erin Orana</h3>
-                <p>CEO</p>
-              </div>
             </div>
           </div>
 
