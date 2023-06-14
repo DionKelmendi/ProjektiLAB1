@@ -1,12 +1,6 @@
 import { React, useState } from "react";
 import SliderItem from "./sliderItem"
 import { useRef, useEffect } from "react";
-import porsche from "../../images/porscheCar.webp"
-import diablo from "../../images/diablo.webp"
-import mclaren from "../../images/mclaren.webp"
-import ferrari from "../../images/ferrari.webp"
-import audiA8 from "../../images/audiA8.webp"
-import filler from "../../images/fillerCar.webp"
 
 export default function CarSlider() {
 
