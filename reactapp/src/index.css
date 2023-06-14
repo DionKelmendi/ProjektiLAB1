@@ -361,6 +361,11 @@ nav ul {
   gap: 25px;
 }
 
+.reviewCard p {
+  height: 110px;
+  overflow: hidden;
+}
+
 .reviewCard .star {
 
   transform: scale(1.5);
@@ -384,7 +389,7 @@ nav ul {
   width: 175px;
   height: 175px;
   object-fit: cover;
-  object-position: center center;
+  object-position: left center;
   border-radius: 100%;
   position: absolute;
   transform: translateY(-225px);
@@ -969,7 +974,8 @@ form .successP {
   justify-content: center;
   align-items: center;
 
-  background: #565656;
+  color: white;
+  background: #454d55;
   padding-bottom: 30px;
   font-size: 18px;
 }
@@ -978,7 +984,7 @@ form .successP {
 
   margin: auto;
   margin-top: 100px;
-  background-color: #f7f7f7;
+  background-color: #343a40;
   -webkit-border-radius: 5px;
   border-radius: 5px;
   margin-bottom: 50px;
@@ -987,15 +993,18 @@ form .successP {
 .loanTable table td,
 .loanTable table th {
 
-  border: 2px solid #494949;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  padding: 5px;
+  border-bottom: 2px solid #494949;
+  padding: 10px;
+  text-align: center;
+}
+
+.loanTable table th {
+  color: #ffc107;
 }
 
 .loanTable table tr:nth-child(even) {
 
-  background: #b1b1b1;
+  background: #303030;
 }
 
 .formName div {
@@ -1675,6 +1684,149 @@ form .successP {
   max-width: 1400px;
 }
 
+.contactMain {
+  background: linear-gradient(180deg, rgba(246, 246, 246, 1) 79%, rgba(198, 198, 198, 1) 100%);
+  padding-bottom: 200px;
+}
+
+.contactMain .container {
+  min-height: calc(100vh - 200px);
+  transform: translateY(200px);
+  width: 90%;
+  margin: auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 150px;
+}
+
+.contactMain .contactTitle {
+  position: absolute;
+  top: -75px;
+  left: 15%;
+  font-size: 30px;
+}
+
+.contactMain .container>* {
+
+  display: flex;
+  flex-direction: column;
+}
+
+.contactMain .contactForm {
+
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.contactMain form {
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contactMain form div {
+
+  width: 100%;
+}
+
+.contactMain form input,
+.contactMain form textarea {
+
+  width: 100%;
+  height: 50px;
+  background: #e6e6e6;
+  border: 0;
+  padding-left: 10px;
+}
+
+.contactMain form input:focus,
+.contactMain form textarea:focus {
+  outline: 2px solid orange;
+}
+
+.contactMain form button {
+  border: 0;
+  height: 50px;
+  cursor: pointer;
+  transition: 0.3s all;
+  background: #363636;
+  color: white;
+}
+
+.contactMain form button:hover {
+  background: orange;
+}
+
+.contactMain form textarea {
+
+  resize: vertical;
+  font-size: 14px;
+  padding-top: 10px;
+}
+
+.contactMain .ourInfo {
+
+  height: 510px;
+  width: 25%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.contactMain .container .item {
+
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.contactMain .container .item p {
+
+  color: gray;
+}
+
+.contactMain .container .item i {
+
+  border-radius: 100%;
+  background: #363636;
+  padding: 15px;
+  color: white;
+}
+
+.schedule {
+
+  background: #e6e6e6;
+  border: 5px solid #e6e6e6;
+}
+
+.schedule hr {
+
+  width: 10%;
+  margin: 10px;
+  margin-left: 0;
+  color: orange;
+  height: 3px;
+  background: orange;
+  border: 0;
+}
+
+.schedule p {
+
+  text-align: right;
+  padding: 5px;
+  color: #363636;
+}
+
+.schedule span {
+
+  font-weight: 700;
+  float: left;
+}
 
 @media screen and (max-width: 550px) {
 
@@ -1691,6 +1843,14 @@ form .successP {
   .userReviewsMain .favoriteItem {
 
     width: 100vw;
+  }
+}
+
+
+@media screen and (max-width: 1200px) {
+  .reviews .container .reviewCard:nth-child(4) {
+
+    display: none;
   }
 }
 
@@ -2222,11 +2382,23 @@ form .successP {
 
 /* Contact */
 
+.mainContact {
+
+  margin: 0;
+}
+
+.mainContact .container {
+
+  height: 100vh;
+}
+
 .container.contact__container {
+
   width: 58%;
   display: grid;
   grid-template-columns: 30% 58%;
   gap: 12%;
+  margin: auto;
 }
 
 .contact__options {

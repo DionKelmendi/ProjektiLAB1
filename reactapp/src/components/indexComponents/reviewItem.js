@@ -31,7 +31,8 @@ export default function ReviewItem({ image, name, review, ratingAmount }) {
 
   return (
     <div className="reviewCard">
-      <img className="profilePic" src={image} />
+      <img className="profilePic" src={require('../../images/' +
+        image)} />
       <h4>{name}</h4>
       <p>"{review}"</p>
       <div className="star">

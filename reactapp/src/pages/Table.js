@@ -35,6 +35,7 @@ export default function Table() {
           cell1 = row.insertCell();
           cell1.colSpan = "5"
           cell1.style.textAlign = 'center'
+          cell1.style.color = '#ffc107'
           cell1.innerHTML = "End of year " + year++;
 
           count = 0;

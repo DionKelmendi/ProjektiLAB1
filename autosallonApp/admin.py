@@ -47,10 +47,10 @@ admin.site.register(models.Category, CategoryModelAdmin)
 
 # Car Admin Display
 class CarModelAdmin(admin.ModelAdmin):
-  list_display = ["id", "make", "model", "price", "mileage", "year", "color", "category_name","sold","reservedlink", "car_link"]
+  list_display = ["id", "make", "model", "price", "mileage", "year", "transmission", "fuel", "engine", "color", "category_name","sold","reservedlink", "car_link"]
   search_fields = ["make", "model", "price"]
   ordering = ["id"]
-  list_filter = ["sold", "make", "model", "category_id__name", "color", "category__name"]
+  list_filter = ["sold", "make", "model", "category_id__name", "color", "transmission", "fuel"]
   inlines = [CarImageModelAdmin]
 
   def category_name(self, obj):
@@ -233,3 +233,5 @@ class WorkerModelAdmin(admin.ModelAdmin):
     ))
   worker_link.short_description = 'Worker'
 admin.site.register(models.Worker, WorkerModelAdmin)
+
+admin.site.register(models.Message)

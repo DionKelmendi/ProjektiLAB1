@@ -21,6 +21,7 @@ export default function Vehicle({ userData }) {
           .then((res) => res.json())
           .then((res) => {
             setData(res);
+            console.log(res);
           });
       }
     };

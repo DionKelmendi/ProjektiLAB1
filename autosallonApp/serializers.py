@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404
 from rest_framework import serializers
 from rest_framework import pagination
-from .models import Category, Car, User, ContactInfo, Distributor, Worker, Favorite, Review, Sale, Dis_Transaction, CarImages
+from .models import Category, Car, User, ContactInfo, Distributor, Worker, Favorite, Review, Sale, Dis_Transaction, CarImages, Message
 
 class CategorySerializer(serializers.ModelSerializer):
   class Meta:
@@ -54,7 +54,7 @@ class CarSerializer(serializers.ModelSerializer):
 
   class Meta:
     model = Car
-    fields = ('id', 'make', 'model', 'price', 'mileage', 'year', 'color', 'registration_date', 'sold', 'category','reservedlink', 'image', 'imageName')
+    fields = ('id', 'make', 'model', 'price', 'mileage', 'year', 'color', 'registration_date', 'sold', 'category','reservedlink', 'image', 'imageName', 'transmission', 'fuel', 'engine')
 
 class CarImageSerializer(serializers.ModelSerializer):
 
@@ -94,9 +94,25 @@ class FavoriteSerializer(serializers.ModelSerializer):
     fields = ('id', 'user', 'car', 'favorite_date')
 
 class ReviewSerializer(serializers.ModelSerializer):
+
+  user_name = serializers.SerializerMethodField()
+  car_image = serializers.SerializerMethodField()
+
+  def get_user_name(self, obj):
+    user_id = obj.user_id
+    user = User.objects.filter(id=user_id).values_list('username')
+    return user
+  
+  def get_car_image(self, obj):
+    car_id = obj.car_id
+    car = Car.objects.filter(id=car_id).values_list('image').first()
+    car = car[0]
+    image = car.split("/")[3]
+    return image
+
   class Meta:
     model = Review
-    fields = ('id', 'user', 'car', 'rating', 'review_date', 'comment')
+    fields = ('id', 'user', 'car', 'rating', 'review_date', 'comment', 'user_name', 'car_image')
 
 class ReviewCarSerializer(serializers.ModelSerializer):
   
@@ -137,3 +153,8 @@ class Dis_TransactionSerializer(serializers.ModelSerializer):
   class Meta:
     model = Dis_Transaction
     fields = ('id', 'distributor_id', 'car_id', 'amount', 'transaction_date')
+
+class MessageSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = Message
+    fields = ('id', 'name', 'email', 'phone', 'title', 'message')

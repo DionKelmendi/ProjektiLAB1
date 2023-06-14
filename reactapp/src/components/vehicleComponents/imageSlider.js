@@ -102,18 +102,18 @@ export default function ImageSlider({ userData, data, imageData }) {
     <>
       {userData ? (
         <>
-        <div className='favoriteButton'>
-          <form onSubmit={favorite}>
-            <input type='hidden' name="user_id" defaultValue={userData.id} />
-            <input type='hidden' name="car_id" defaultValue={data.id} />
-            <button type='submit'><i className="fa-regular fa-star" /> Favorite</button>
-          </form>
-          {errorMessage != "" ? <p className='errorP'><i className="fa-solid fa-circle-exclamation"></i> {errorMessage} </p> : <></>}
-        </div>
-       { data.reservedlink=== null ? <button type='submit' id="reservebutton" className='favoriteButton'> Payment not yet offered</button> : <a href={data.reservedlink}>
-       <button type='submit' id="reservebutton" className='favoriteButton'> Buy</button>
-        </a>} 
-        
+          <div className='favoriteButton'>
+            <form onSubmit={favorite}>
+              <input type='hidden' name="user_id" defaultValue={userData.id} />
+              <input type='hidden' name="car_id" defaultValue={data.id} />
+              <button type='submit'><i className="fa-regular fa-star" /> Favorite</button>
+            </form>
+            {errorMessage != "" ? <p className='errorP'><i className="fa-solid fa-circle-exclamation"></i> {errorMessage} </p> : <></>}
+          </div>
+          {data.reservedlink === null ? <button type='submit' id="reservebutton" className='favoriteButton'> Payment not yet offered</button> : <a href={data.reservedlink}>
+            <button type='submit' id="reservebutton" className='favoriteButton'> Buy</button>
+          </a>}
+
         </>
       ) : (
         <></>
@@ -152,7 +152,7 @@ export default function ImageSlider({ userData, data, imageData }) {
           </div>
         </div>
         <hr />
-        <CarInfo make={data.make} model={data.model} year={data.year} mileage={data.mileage} fuel={"Diesel"} transmission={"Automatic"} color={data.color} engine={"2.0"} />
+        <CarInfo make={data.make} model={data.model} year={data.year} mileage={data.mileage} fuel={data.fuel} transmission={data.transmission} color={data.color} engine={data.engine} />
       </div>
     </>
   )

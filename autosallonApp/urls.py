@@ -1,4 +1,4 @@
-from .views import carImagesViews, carViews, categoryViews, contactInfoViews, dis_TransactionViews, distributorViews, favoriteViews, reviewViews, saleViews, userViews, workerViews
+from .views import carImagesViews, carViews, categoryViews, contactInfoViews, dis_TransactionViews, distributorViews, favoriteViews, reviewViews, saleViews, userViews, workerViews, messageViews
 from django.urls import path
 
 urlpatterns = [
@@ -65,4 +65,7 @@ urlpatterns = [
     path('worker/<int:pk>/', workerViews.WorkerDetailAPIView.as_view()),
     path('worker/<int:pk>/update', workerViews.WorkerUpdateAPIView.as_view()),
     path('worker/<int:pk>/destroy', workerViews.WorkerDestroyAPIView.as_view()),
+
+    path('message/', messageViews.MessageAPIView.as_view()),
+
 ]

@@ -24,6 +24,9 @@ class Car(models.Model):
   mileage = models.IntegerField()
   year = models.IntegerField()
   color = models.CharField(max_length=50)
+  transmission = models.CharField(max_length=50, default="")
+  fuel = models.CharField(max_length=50, default="")
+  engine = models.CharField(max_length=50, default="")
   registration_date = models.DateTimeField(auto_now_add=True)
   sold = models.BooleanField(null=False, default=False)
   category = models.ForeignKey(Category, on_delete=models.CASCADE)
@@ -120,3 +123,12 @@ class Dis_Transaction(models.Model):
   def __str__(self):
     return f"({self.id}) {self.distributor} : {self.car} : {self.amount}"
   
+class Message(models.Model):
+  name = models.CharField(max_length=50)
+  email = models.CharField(max_length=50)
+  phone = models.CharField(max_length=50)
+  title = models.CharField(max_length=50, blank=True)
+  message = models.TextField()
+
+  def __str__(self):
+    return f"{self.name}'s Message ({self.email})"

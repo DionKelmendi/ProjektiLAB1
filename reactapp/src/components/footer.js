@@ -1,4 +1,5 @@
 import { React, useEffect } from 'react'
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
 
@@ -42,8 +43,8 @@ export default function Footer() {
 
         <div className='item'>
           <h4><b>Support</b></h4><br />
-          <a href="http://localhost:3000/contact"><p>Contact</p></a>
-          <a href="http://localhost:3000/aboutus"><p>About Us</p></a>
+          <Link to="/contact"><p>Contact</p></Link>
+          <Link to="/aboutus"><p>About Us</p></Link>
           <a href="#"><p>History</p></a>
           <a href="#"><p>Location</p></a>
         </div>
