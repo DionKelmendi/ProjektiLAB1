@@ -1,85 +1,90 @@
 import { React } from "react";
 import Footer from '../components/footer'
 import "../index.css";
+import { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
+import Porsche from "../images/porscheCar.webp"
+import Worker from "../images/worker.webp"
+import fillerImage from "../images/fillerImage.webp"
 
-import Aboutimg from '../images/heroImage.webp'
-import {FaAward} from 'react-icons/fa'
-import {FiUsers} from 'react-icons/fi'
-import { BiBook } from 'react-icons/bi';
-import  { useState, useEffect } from 'react';
-
-function AboutUS() {
-  const [isHovered, setIsHovered] = useState(false);
-  const [text, setText] = useState('');
-
-  const fullText = "At AutoParadise, we are passionate about cars and dedicated to providing an exceptional car buying experience.";
-
-  useEffect(() => {
-    let currentText = '';
-    let index = 0;
-    let typingInterval;
-
-    if (isHovered) {
-      typingInterval = setInterval(() => {
-        currentText += fullText[index];
-        setText(currentText);
-        index++;
-
-        if (index >= fullText.length) {
-          clearInterval(typingInterval);
-        }
-      }, 80);
-    } else {
-      clearInterval(typingInterval);
-      setText('');
-    }
-
-    return () => clearInterval(typingInterval);
-  }, [isHovered]);
+export default function AboutUS() {
 
   return (
-    <section id='about'>
-      <h5>get to</h5>
-      <h2>Know me</h2>
-
-      <div className="container about__container">
-        <div className="about__me">
-        <div className="about__me-image"onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-<img src={Aboutimg} alt='hello'></img>
-<div className="about__me-text">{text}</div>
-        </div>
-        </div>
-        <div className="about__content">
-          <div className="about__cards">
-            <article className='about__card'>
-              <FaAward className="about__icon"/>
-              <h5>experience</h5>
-              <small>5+ Years working </small>
-
-            </article>
-            <article className='about__card'>
-              <FiUsers className="about__icon"/>
-              <h5>clients</h5>
-              <small>10,000 + lcients worldwide</small>
-
-            </article>
-            <article className='about__card'>
-              <BiBook className="about__icon"/>
-              <h5>Projects</h5>
-              <small>Over 18,000 done projects</small>
-
-            </article>
-
+    <>
+      <section className="aboutUs">
+        <div className="container">
+          <div className="aboutHero">
+            <h1 className="heroTitle">We Make Car Shopping Hassle Free</h1>
+            <p>Since we started we were always ready to provide you one of the best services provided. We always try to handle any problems we face our way, any fight we can muster, all in the name of the client.</p>
+            <Link to="/cars">
+              <button>Get Started</button>
+            </Link>
+            <img src={Porsche}></img>
           </div>
-          <p>Car Show Room</p>
-        <a href='http://127.0.0.1:8000/chatGPT/' className='btn btn-primary'> let's talk</a>
+          <div className="plan">
+            <h1>
+              Our greatest features
+            </h1>
+
+            <div className="subContainer">
+              <div className="item">
+                <i className="fa-solid fa-question"></i>
+                <h3>Problem solvers</h3>
+                <p>We have the answers to your questions, all will gladly respond. If not, you always have our Car Companion™</p>
+                <Link to="/cars">Read more</Link>
+              </div>
+
+              <div className="item">
+                <i className="fa-solid fa-l"></i>
+                <h3>On-time deliveries</h3>
+                <p>After your car purchase, it won't take long to recieve your new prized possession. Enjoy your new car!</p>
+                <Link to="/signIn">Read more</Link>
+              </div>
+
+              <div className="item">
+                <i className="fa-regular fa-lightbulb"></i>
+                <h3>Services by experts</h3>
+                <p>Having car problems? Don't you worry! Just write us a <Link to="/contact">message</Link>, and we will gladly schedule an appointment.</p>
+                <Link to="/contact">Read more</Link>
+              </div>
+            </div>
+          </div>
+
+          <div className="staff">
+            <h1>Our experienced and dedicated team</h1>
+
+            <div className="subContainer">
+              <div className="item">
+                <img src={Worker} />
+                <h3 className="staffName">Erin Orana</h3>
+                <p>CEO</p>
+              </div>
+
+              <div className="item">
+                <img src={Worker} />
+                <h3 className="staffName">Erin Orana</h3>
+                <p>CEO</p>
+              </div>
+
+              <div className="item">
+                <img src={Worker} />
+                <h3 className="staffName">Erin Orana</h3>
+                <p>CEO</p>
+              </div>
+
+              <div className="item">
+                <img src={Worker} />
+                <h3 className="staffName">Erin Orana</h3>
+                <p>CEO</p>
+              </div>
+            </div>
+          </div>
+
+          <img src={fillerImage} className="fillerImage"></img>
+
         </div>
-      </div>
+      </section>
       <Footer />
-    </section>
-    
-    
+    </>
   )
 }
-
-export default AboutUS

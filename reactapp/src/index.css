@@ -1684,7 +1684,8 @@ form .successP {
   max-width: 1400px;
 }
 
-.contactMain {
+.contactMain,
+.aboutUs {
   background: linear-gradient(180deg, rgba(246, 246, 246, 1) 79%, rgba(198, 198, 198, 1) 100%);
   padding-bottom: 200px;
 }
@@ -1826,6 +1827,200 @@ form .successP {
 
   font-weight: 700;
   float: left;
+}
+
+.aboutUs {
+
+  overflow: hidden;
+}
+
+.aboutUs .container {
+  min-height: calc(100vh - 200px);
+  transform: translateY(200px);
+  margin: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.aboutUs .aboutHero {
+  height: calc(100vh - 200px);
+  background: linear-gradient(180deg, rgba(246, 246, 246, 1) 79%, rgba(198, 198, 198, 1) 100%);
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.aboutUs .heroTitle {
+
+  font-size: 70px;
+  width: 775px;
+}
+
+.aboutUs .aboutHero p {
+
+  width: 600px;
+  font-size: 20px;
+  color: gray;
+}
+
+.aboutUs .aboutHero img {
+
+  position: absolute;
+  top: 75px;
+  right: 150px;
+  height: 725px;
+}
+
+.aboutUs .aboutHero button {
+
+  border: 0;
+  width: 225px;
+  height: 60px;
+  background: orange;
+  color: white;
+  border-radius: 10px;
+  font-size: 20px;
+  transition: 0.3s all;
+}
+
+.aboutUs .aboutHero button:hover {
+
+  cursor: pointer;
+  background: #ffc107;
+}
+
+.aboutUs .aboutHero>* {
+
+  transform: translate(400px, -100px);
+}
+
+.aboutUs .plan {
+
+  height: 100vh;
+  background: #363636;
+
+}
+
+.aboutUs .staff {
+
+  height: 100vh;
+  background: linear-gradient(180deg, rgba(246, 246, 246, 1) 79%, rgba(198, 198, 198, 1) 100%);
+  width: 100%;
+}
+
+.aboutUs .plan .subContainer,
+.aboutUs .staff .subContainer {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.aboutUs .plan .subContainer {
+  gap: 50px;
+  width: 90%;
+  margin: auto;
+}
+
+.aboutUs .staff .subContainer {
+
+  width: 90%;
+  margin: auto;
+  transform: translateY(75px);
+}
+
+.aboutUs .staff .subContainer img {
+
+  height: 50%;
+  object-fit: contain;
+}
+
+.aboutUs .staff .subContainer .staffName {
+
+  margin-top: 50px;
+  font-size: 30px;
+}
+
+.aboutUs .plan .item {
+
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 10px;
+  width: 25%;
+  background-color: white;
+  aspect-ratio: 1 / 1;
+  margin: auto;
+  padding: 50px;
+}
+
+.aboutUs .plan .item h3 {
+  font-size: 30px;
+  margin-top: 75px;
+}
+
+.aboutUs .plan .item p {
+  font-size: 20px;
+  color: gray;
+}
+
+.aboutUs .plan .item a {
+  color: black;
+  margin-top: 50px;
+}
+
+.aboutUs .plan .item a:hover {
+
+  opacity: 70%;
+}
+
+.aboutUs .plan h1,
+.aboutUs .staff h1 {
+
+  position: absolute;
+  color: white;
+  transform: translate(100px, 75px);
+  font-size: 50px;
+}
+
+.aboutUs .staff h1 {
+
+  color: black;
+}
+
+.aboutUs .plan .item i {
+
+  width: 100px;
+  aspect-ratio: 1 / 1;
+  background-color: orange;
+  border-radius: 10px;
+  font-size: 30px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.aboutUs .staff .item {
+  width: 25%;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.aboutUs .fillerImage {
+
+  padding: 100px;
+  height: 100%;
+  width: 100%;
 }
 
 @media screen and (max-width: 550px) {
