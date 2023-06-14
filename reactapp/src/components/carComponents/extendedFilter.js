@@ -12,21 +12,25 @@ export default function ExtendedFilter() {
     let label = [];
 
     if (make === "audi") {
-      label = ["A1", "A2", "A3", "A4", "A5", "A6"];
-    } else if (make === "bmw") {
-      label = ["M3", "M4", "M5", "X6", "X7"];
-    } else if (make === "lamborghini") {
-      label = ["Aventador", "Diablo", "Huracan", "Veneno"];
+      label = ["A7", "A8", "R8", "RS6"];
+    } else if (make === "bentley") {
+      label = ["Bentayga"];
+    }else if (make === "bmw") {
+      label = ["5", "7", "M4", "X6"];
+    } else if (make === "ferrari") {
+      label = ["296 GTB", "812 Superfast", "F8"];
+    }else if (make === "lamborghini") {
+      label = ["Aventador", "Huracan", "Urus"];
+    } else if (make === "maserati") {
+      label = ["Grecale"];
+    } else if (make === "mclaren") {
+      label = ["600LT Spider"];
     } else if (make === "mercedes") {
-      label = ["A-Class", "B-Class", "C-Class", "D-Class", "E-Class"];
+      label = ["G-Class", "GLE", "GLS", "GT63", "V-Class", "X-Class"];
     } else if (make === "porsche") {
-      label = ["Boxster", "Cayman", "Cayene", "911 Spider"];
-    } else if (make === "rangeRover") {
-      label = ["Evoque", "Discovery", "Velar", "Vogue"];
-    } else if (make === "rollsRoyce") {
-      label = ["Cullinan", "Ghost", "Phantom", "Wraith"];
+      label = ["Panamera 4s", "Cayene Turbo", "718 Spyder"];
     } else if (make === "volkswagen") {
-      label = ["Golf 1", "Golf 2", "Golf 3", "Golf 4", "Golf 5", "Golf 6"];
+      label = ["Golf 8", "Arteon"];
     }
 
     for (let i = 0; i < length; i++) {
@@ -66,12 +70,14 @@ export default function ExtendedFilter() {
             <select id="make" onChange={selectMake}>
               <option value="">Select Make</option>
               <option value="audi">Audi</option>
+              <option value="bentley">Bentley</option>
               <option value="bmw">BMW</option>
+              <option value="ferrari">Ferrari</option>
               <option value="lamborghini">Lamborghini</option>
+              <option value="maserati">Maserati</option>
+              <option value="mclaren">McLaren</option>
               <option value="mercedes">Mercedes</option>
               <option value="porsche">Porsche</option>
-              <option value="rangeRover">Range Rover</option>
-              <option value="rollsRoyce">Rolls Royce</option>
               <option value="volkswagen">Volkswagen</option>
             </select>
           </div>
@@ -88,8 +94,10 @@ export default function ExtendedFilter() {
             <select id="color">
               <option value="">Select Color</option>
               <option value="black">Black</option>
+              <option value="brown">Brown</option>
               <option value="blue">Blue</option>
               <option value="gray">Gray</option>
+              <option value="green">Green</option>
               <option value="red">Red</option>
               <option value="white">White</option>
             </select>
@@ -113,12 +121,36 @@ export default function ExtendedFilter() {
 
           <div className='selectCar'>
             <label htmlFor="mileage">Mileage</label><br />
-            <input id="mileage" name="mileage" type='text' placeholder='Search Here' />
+            <select id="mileage" name="mileage">
+              <option value="">Select Mileage</option>
+              <option value="10000"> &lt; 10,000 </option>
+              <option value="20000"> &lt; 20,000</option>
+              <option value="30000"> &lt; 30,000</option>
+              <option value="40000"> &lt; 40,000</option>
+              <option value="50000"> &lt; 50,000 </option>
+              <option value="100000"> &lt; 100,000</option>
+              <option value="150000"> &lt; 150,000</option>
+              <option value="200000"> &lt; 200,000</option>
+            </select>
           </div>
+
+          {/* <div className='selectCar'>
+            <label htmlFor="price">Price</label><br />
+            <input id="price" name="price" type='text' placeholder='Search Here' />
+          </div> */}
 
           <div className='selectCar'>
             <label htmlFor="price">Price</label><br />
-            <input id="price" name="price" type='text' placeholder='Search Here' />
+            <select id="price" name="price">
+              <option value="">Select Price</option>
+              <option value="40000"> &lt; $40,000</option>
+              <option value="50000"> &lt; $50,000 </option>
+              <option value="100000"> &lt; $100,000</option>
+              <option value="150000"> &lt; $150,000</option>
+              <option value="200000"> &lt; $200,000</option>
+              <option value="300000"> &lt; $300,000</option>
+              <option value="500000"> &lt; $500,000</option>
+            </select>
           </div>
 
         </div>

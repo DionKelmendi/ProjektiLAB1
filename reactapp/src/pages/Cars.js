@@ -92,26 +92,14 @@ export default function Cars({ userData }) {
     let category = document.querySelector("#category").value;
     let year = document.querySelector("#year").value;
     let color = "&color=" + document.querySelector("#color").value;
+    let mileage = "&mileage__lte=" + document.querySelector("#mileage").value;
 
-    let mileage = "&mileage__lte="
-    if (typeof mileage == 'number') {
-      mileage = "&mileage__lte=" + document.querySelector("#mileage").value;
-    }
-
-    let price = "&price__lte="
-    if (typeof price == 'number') {
-
-      price = "&price__lte=" + document.querySelector("#price").value;
-    }
+    let price = "&price__lte=" + document.querySelector("#price").value;
 
     window.scrollTo(0, 0);
 
-    console.log(mileage);
-    console.log(price);
+    let data = search + " " + make + " " + model + category + " " + year + color + mileage + price;
 
-    let data = search + " " + make + model + category + " " + year + color + mileage + price;
-
-    console.log(data);
     setQuery(data)
 
     let sort = document.querySelector("#sort").value;

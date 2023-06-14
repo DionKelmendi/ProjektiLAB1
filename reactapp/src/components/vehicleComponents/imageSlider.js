@@ -1,8 +1,10 @@
 import { React, useEffect, useState } from 'react'
 import './vehicle.css';
 import CarInfo from "./carInfo";
+import { Link } from 'react-router-dom';
 
 export default function ImageSlider({ userData, data, imageData }) {
+ 
   useEffect(() => {
 
     const carousel = document.querySelector(".carousel"),
@@ -76,6 +78,11 @@ export default function ImageSlider({ userData, data, imageData }) {
 
   const favorite = (e) => {
 
+    console.log(userData.id);
+
+    if(userData.id == "" || userData.id == undefined){
+      window.location.reload(true);
+    }
     e.target[2].style.background = "orange";
     e.preventDefault()
     const API = 'http://127.0.0.1:8000/prova/favorite/';
@@ -100,7 +107,7 @@ export default function ImageSlider({ userData, data, imageData }) {
 
   return (
     <>
-      {userData ? (
+      {userData.id != "" && userData.id != undefined ? (
         <>
           <div className='favoriteButton'>
             <form onSubmit={favorite}>
@@ -123,7 +130,16 @@ export default function ImageSlider({ userData, data, imageData }) {
 
         </>
       ) : (
-        <></>
+        <>
+          <div className='favoriteButton'>
+              <Link id="favoriteRedirect" to="/signIn"><i className="fa-regular fa-star" /> Favorite</Link>
+            {errorMessage != "" ? <p className='errorP'><i className="fa-solid fa-circle-exclamation"></i> {errorMessage} </p> : <></>}
+          </div>
+          {data.sold ? <></> : <>
+              <Link to="/signIn" id="reservebutton" className='favoriteButton'> Reserve for 100$ </Link>
+          </>}
+
+        </>
       )}
       <div className='mainSliderContainer'>
         {data ? (

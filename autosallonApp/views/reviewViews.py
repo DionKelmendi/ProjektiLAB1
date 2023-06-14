@@ -5,6 +5,7 @@ from ..serializers import CarSerializer, ReviewCarSerializer, ReviewSerializer, 
 from ..models import Car, Review
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
+from rest_framework import filters
 
 # Create your views here.
 
@@ -24,7 +25,7 @@ class ReviewAPIView(generics.ListCreateAPIView):
     car_id = serializer.validated_data.get('car')
     rating = serializer.validated_data.get('rating')
     comment = serializer.validated_data.get('comment')
-    serializer.save();
+    serializer.save()
 
 #Review Update
 class ReviewUpdateAPIView(generics.UpdateAPIView):
@@ -65,6 +66,8 @@ class ReviewCarAPIView(generics.ListAPIView):
     queryset = Review.objects.all()
     serializer_class = ReviewCarSerializer
     lookup_field = 'car_id'
+    filter_backends = [filters.OrderingFilter]
+    ordering_fields = ['review_date']
 
     def get_queryset(self):
       return Review.objects.filter(car_id = self.kwargs['car_id'])

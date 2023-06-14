@@ -17,6 +17,22 @@ const ReviewForm = ({ userData, data }) => {
     setRating(selectedRating);
   };
 
+  useEffect(() => {
+
+    const fetchReviewData = () => {
+      const reviewAPI = 'http://127.0.0.1:8000/prova/review/car/' + data.id + "/?ordering=-review_date";
+      if (data.id) {
+
+        fetch(reviewAPI)
+          .then((res) => res.json())
+          .then((res) => {
+            getReviewData(res.results);
+          });
+      };
+    }
+    fetchReviewData();
+  }, [data.id])
+
   const handleSubmit = (event) => {
     event.preventDefault();
     let user = userData.id;
@@ -38,24 +54,8 @@ const ReviewForm = ({ userData, data }) => {
 
     setComment('');
     setRating(0);
-    // window.location.reload(true);
+    window.location.reload(true);
   }
-
-  useEffect(() => {
-
-    const fetchReviewData = () => {
-      const reviewAPI = 'http://127.0.0.1:8000/prova/review/car/' + data.id + "/";
-      if (data.id) {
-
-        fetch(reviewAPI)
-          .then((res) => res.json())
-          .then((res) => {
-            getReviewData(res.results);
-          });
-      };
-    }
-    fetchReviewData();
-  }, [data.id])
 
   return (
     <>
