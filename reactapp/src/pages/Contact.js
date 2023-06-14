@@ -3,6 +3,7 @@ import Footer from '../components/footer'
 import "../index.css";
 
 export default function Contact() {
+  window.scrollTo(0, 0);
 
   const [success, setSuccess] = useState([])
 

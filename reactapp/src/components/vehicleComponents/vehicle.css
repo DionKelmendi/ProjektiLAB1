@@ -330,7 +330,7 @@
 
 .reviewForm form {
 
-  width: 45%;
+  width: 100%;
   padding: 50px;
 }
 
@@ -378,12 +378,13 @@
   display: flex;
   flex-direction: column;
 
-  width: 50%;
   overflow: scroll;
   overflow-x: hidden;
   scrollbar-width: thin;
   scrollbar-color: orange #363636;
-  height: 200px;
+  height: 300px;
+  margin: auto;
+  margin-bottom: 100px;
 }
 
 .vehicle .allReviews a {

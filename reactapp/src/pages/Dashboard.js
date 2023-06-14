@@ -61,6 +61,12 @@ const Dashboard = ({ onUpdate, updateMain }) => {
   const { access_token } = getToken()
   const { data, isSuccess } = useGetLoggedUserQuery(access_token)
 
+
+  if (access_token == null) {
+    navigate('/')
+  }
+
+
   const [userData, setUserData] = useState({
     id: "",
     email: "",
@@ -100,7 +106,6 @@ const Dashboard = ({ onUpdate, updateMain }) => {
         phone: data.contact_info[1],
       }))
     }
-
   }, [data, isSuccess, dispatch])
 
   const [favoriteData, getFavoriteData] = useState([])

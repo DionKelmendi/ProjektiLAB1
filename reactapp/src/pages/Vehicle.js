@@ -6,6 +6,7 @@ import Categories from "../components/indexComponents/categories";
 import ReviewForm from "../components/vehicleComponents/reviewForm";
 
 export default function Vehicle({ userData }) {
+  window.scrollTo(0, 0);
 
   const [data, setData] = useState("")
   const [imageData, setImageData] = useState("")

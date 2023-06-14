@@ -7,6 +7,7 @@ import Worker from "../images/worker.webp"
 import fillerImage from "../images/fillerImage.webp"
 
 export default function AboutUS() {
+  window.scrollTo(0, 0);
 
   const [workers, getWorkers] = useState([])
 

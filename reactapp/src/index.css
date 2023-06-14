@@ -403,6 +403,12 @@ footer {
   color: white;
 }
 
+footer img {
+  position: absolute;
+  width: 50px;
+  transform: translateX(-75px);
+}
+
 footer a {
 
   color: #ddd;

@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom'
 
 export default function Table() {
   const location = useLocation();
+  window.scrollTo(0, 0);
 
   useEffect(() => {
 

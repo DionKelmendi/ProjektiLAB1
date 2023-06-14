@@ -1,5 +1,6 @@
 import { React, useEffect } from 'react'
 import { Link } from 'react-router-dom';
+import logo from '../images/autosallonLogo.png'
 
 export default function Footer() {
 
@@ -26,27 +27,20 @@ export default function Footer() {
 
       <div className='container'>
         <div className='item'>
-          <h4><b>Explore</b></h4><br />
-          <a href="#"><p>History</p></a>
-          <a href="#"><p>Location</p></a>
-          <a href="#"><p>Team</p></a>
-          <a href="#"><p>Media</p></a>
+          <img id="footerLogo" src={logo} />
+          <h4><b>AutosallonParadise</b></h4> <br />
+          <p>Prishtine</p>
+          <p>Dukagjini Center 10000</p>
+          <p>Kosove</p>
         </div>
 
         <div className='item'>
-          <h4><b>Shop</b></h4><br />
-          <a href="#"><p>History</p></a>
-          <a href="#"><p>Location</p></a>
-          <a href="#"><p>Team</p></a>
-          <a href="#"><p>Media</p></a>
-        </div>
-
-        <div className='item'>
-          <h4><b>Support</b></h4><br />
+          <h4><b>Links</b></h4><br />
+          <Link to="/vehicles"><p>Vehicles</p></Link>
+          <Link to="http://127.0.0.1:8000/chatGPT/"><p>Car Companion</p></Link>
           <Link to="/contact"><p>Contact</p></Link>
           <Link to="/aboutus"><p>About Us</p></Link>
-          <a href="#"><p>History</p></a>
-          <a href="#"><p>Location</p></a>
+          <Link to="/dashboard"><p>Dashboard</p></Link>
         </div>
 
         <div className='item'>
