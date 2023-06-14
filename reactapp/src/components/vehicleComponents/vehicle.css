@@ -53,6 +53,7 @@
   scroll-behavior: smooth;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  margin-top: 40px;
 }
 
 .wrapper::-webkit-scrollbar {
@@ -528,6 +529,7 @@
 
   background: white;
   padding: 5px;
+  border-radius: 5px;
 }
 
 @media screen and (max-width: 1000px) {

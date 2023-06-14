@@ -67,7 +67,6 @@ class ReviewCarAPIView(generics.ListAPIView):
     lookup_field = 'car_id'
 
     def get_queryset(self):
-      print(self.kwargs['car_id'])
       return Review.objects.filter(car_id = self.kwargs['car_id'])
 
 class ReviewUserAllAPIView(generics.ListAPIView):
