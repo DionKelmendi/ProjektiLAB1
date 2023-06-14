@@ -1934,6 +1934,10 @@ form .successP {
   height: 100%;
 }
 
+.aboutUs .plan .subContainer{
+  height: 120vh;
+}
+
 .aboutUs .plan .subContainer {
   gap: 50px;
   width: 90%;

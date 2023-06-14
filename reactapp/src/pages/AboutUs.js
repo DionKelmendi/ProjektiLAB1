@@ -3,7 +3,6 @@ import Footer from '../components/footer'
 import "../index.css";
 import { Link } from "react-router-dom";
 import Porsche from "../images/porscheCar.webp"
-import Worker from "../images/worker.webp"
 import fillerImage from "../images/fillerImage.webp"
 
 export default function AboutUS() {
@@ -80,7 +79,7 @@ export default function AboutUS() {
                         <img src={require('../images/' +
                           names[0] + "_" + names[1] + ".webp")} />
                         <h3 className="staffName">{item.name}</h3>
-                        <p>CEO</p>
+                        <p>{item.position}</p>
                       </div>
                     )
                   })
