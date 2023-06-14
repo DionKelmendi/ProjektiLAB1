@@ -29,6 +29,7 @@ class Car(models.Model):
   engine = models.CharField(max_length=50, default="")
   registration_date = models.DateTimeField(auto_now_add=True)
   sold = models.BooleanField(null=False, default=False)
+  ads = models.BooleanField(null=False, default=False)
   category = models.ForeignKey(Category, on_delete=models.CASCADE)
   reservedlink = models.URLField(blank=True, null=True)
   image = models.ImageField(upload_to=car_image_upload_path, default='reactapp/src/images/No_Image_Available.jpg')

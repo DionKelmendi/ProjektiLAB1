@@ -270,6 +270,11 @@ nav ul {
   transition: 1s all ease-in-out;
 }
 
+.fillerCarLast {
+
+  opacity: 10% !important;
+}
+
 .carSlider .sliderItem img {
 
   width: 750px;

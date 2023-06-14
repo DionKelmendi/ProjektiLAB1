@@ -47,7 +47,7 @@ admin.site.register(models.Category, CategoryModelAdmin)
 
 # Car Admin Display
 class CarModelAdmin(admin.ModelAdmin):
-  list_display = ["id", "make", "model", "price", "mileage", "year", "transmission", "fuel", "engine", "color", "category_name","sold","reservedlink", "car_link"]
+  list_display = ["id", "make", "model", "price", "mileage", "year", "transmission", "fuel", "engine", "color", "category_name","sold", "ads","reservedlink", "car_link"]
   search_fields = ["make", "model", "price"]
   ordering = ["id"]
   list_filter = ["sold", "make", "model", "category_id__name", "color", "transmission", "fuel"]

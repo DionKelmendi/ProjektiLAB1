@@ -1,4 +1,4 @@
-import { React } from "react";
+import { React, useState } from "react";
 import SliderItem from "./sliderItem"
 import { useRef, useEffect } from "react";
 import porsche from "../../images/porscheCar.webp"
@@ -9,55 +9,85 @@ import audiA8 from "../../images/audiA8.webp"
 import filler from "../../images/fillerCar.webp"
 
 export default function CarSlider() {
+
+  const [data, getData] = useState([])
+
+  useEffect(() => {
+
+    const fetchData = () => {
+      const API = 'http://127.0.0.1:8000/prova/car/ads/';
+
+      fetch(API)
+        .then((res) => res.json())
+        .then((res) => {
+          getData(res.results);
+        });
+    }
+    fetchData();
+
+  }, [])
+
+
   const prova = useRef();
   const description = "Long description containing exiting informacion about this very car! Yes, it is a very good vehicle, and you should consider buying it! Offer wont last long!!!";
 
   useEffect(() => {
 
-    let imgWidth = document.querySelector(".sliderItem")['firstChild']['firstChild']['clientWidth'];
+    if (prova.current.firstChild) {
 
-    const slider = prova.current;
-    const items = slider['childNodes'];
 
-    let count = 1;
-    let x = 2 * imgWidth;
-    items[1].classList.remove("hidden");
+      let imgWidth = document.querySelector(".sliderItem")['firstChild']['firstChild']['clientWidth'];
 
-    function loop() {
-      slider.style.transform = ("translateX(" + x + "px)");
-      x -= imgWidth;
+      const slider = prova.current;
+      const items = slider['childNodes'];
 
-      if (count != 1) {
-        items[(count - 1)].classList.add("hidden");
-      } else {
-        items[(items.length - 2)].classList.add("hidden");
+      let count = 1;
+      let x = 2 * imgWidth;
+      items[1].classList.remove("hidden");
+
+      function loop() {
+        console.log("Count " + count);
+        console.log("X " + x);
+        slider.style.transform = ("translateX(" + x + "px)");
+        x -= imgWidth;
+
+        items[(items.length - 1)].classList.add("hidden");
+
+        if (count != 1) {
+          items[(count - 1)].classList.add("hidden");
+        } else {
+          items[(items.length - 2)].classList.add("hidden");
+        }
+
+        items[count].classList.remove("hidden");
+        count++;
+
+        if (x < -(2 * imgWidth)) {
+          x = 2 * imgWidth;
+          count = 1;
+          items[1].classList.remove("hidden");
+        }
+
+        setTimeout(loop, 3000);
       }
 
-      items[count].classList.remove("hidden");
-      count++;
-
-      if (x < -(2 * imgWidth)) {
-        x = 2 * imgWidth;
-        count = 1;
-        items[1].classList.remove("hidden");
-      }
-
-      setTimeout(loop, 3000);
+      loop();
     }
-
-    loop();
-  }, [])
+  }, [data])
 
   return (
     <section className="carSlider">
       <div className="sliderContainer" ref={prova}>
-        <SliderItem image={filler} name="Car name" description={description} />
-        <SliderItem image={porsche} name="Porsche 718 Spyder" description={description} />
-        <SliderItem image={diablo} name="Lamborghini Diablo VT 6.0" description={description} />
-        <SliderItem image={mclaren} name="McLaren 600LT" description={description} />
-        <SliderItem image={ferrari} name="Ferrari 812 Superfast" description={description} />
-        <SliderItem image={audiA8} name="Audi R8" description={description} />
-        <SliderItem image={filler} name="Car name" description={description} />
+
+        <SliderItem image={"fillerCar.webp"} name="Car name" description={description} />
+
+        {data.map((item, i) => {
+          return (
+            <SliderItem id={item.id} image={item.imageName} name={item.make + " " + item.model} description={description} />
+          )
+        })}
+
+        <SliderItem image={"fillerCar.webp"} name="Car name" description={description} />
       </div>
     </section >
   )

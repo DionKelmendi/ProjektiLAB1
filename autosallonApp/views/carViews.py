@@ -66,3 +66,11 @@ def getMake(id):
 def getModel(id):
    queryset = Car.objects.get(id=id)
    return queryset.model
+
+#Car Read All Instances and Create    
+class CarAdsAPIView(generics.ListAPIView):
+  queryset = Car.objects.all()
+  serializer_class = CarSerializer
+
+  def get_queryset(self):
+    return Car.objects.filter(ads=True);
