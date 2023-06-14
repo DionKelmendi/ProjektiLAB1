@@ -64,7 +64,7 @@ export default function UserFavorites() {
             {data.map((item, i) => {
               return <>
                 <div className="rowContainer">
-                  <CarItem key={item.id} id={item.id} image={item.imageName} logo={item.make} name={item.make + " " + item.model} price={item.price} year={item.year} mileage={item.mileage} sold={item.sold} />
+                  <CarItem key={item.id} fromFavorites={true} id={item.id} image={item.imageName} logo={item.make} name={item.make + " " + item.model} price={item.price} year={item.year} mileage={item.mileage} sold={item.sold} />
                   <div className="removeRow">
                     <p id={favId[i]} onClick={toggleRemove}>Remove from favorites</p>
                   </div>
