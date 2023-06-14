@@ -111,7 +111,7 @@ export default function ImageSlider({ userData, data, imageData }) {
             {errorMessage != "" ? <p className='errorP'><i className="fa-solid fa-circle-exclamation"></i> {errorMessage} </p> : <></>}
           </div>
           {data.reservedlink === null ? <button type='submit' id="reservebutton" className='favoriteButton'> Payment not yet offered</button> : <a href={data.reservedlink}>
-            <button type='submit' id="reservebutton" className='favoriteButton'> Buy</button>
+            <button type='submit' id="reservebutton" className='favoriteButton'> Reserve for 100$</button>
           </a>}
 
         </>
