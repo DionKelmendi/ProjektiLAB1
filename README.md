@@ -10,7 +10,7 @@ To set up the project locally, follow the instructions below:
 
 - Python (version 3.11.3)
 - Node.js (version 18.15.0)
-- MySQL (version 15.1)
+- XAMPP (version 3.3.0)
 
 ### Django Setup
 
@@ -30,7 +30,7 @@ To set up the project locally, follow the instructions below:
 
    - Create a MySQL database for the project.
    - Update the database settings in the `autosallon/settings.py` file to match your MySQL database configuration.
-
+   - Import in mySQL the file called `autosallon.sql` in your database `autosallon`
 4. Apply migrations to create the necessary database tables:
 
    ```bash
@@ -49,8 +49,9 @@ To set up the project locally, follow the instructions below:
   - Update the file with the necessary info
 
 7. Start the Django API server:
-
-  ```bashk
+   -You must create a superuser and with that superuser you should login in http://127.0.0.1:8000/en/admin/
+  ```bash
+  py manage.py createsuperuser 
   py manage.py runserver
   ```
   
