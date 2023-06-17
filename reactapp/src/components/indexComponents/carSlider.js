@@ -35,6 +35,8 @@ export default function CarSlider() {
       const slider = prova.current;
       const items = slider['childNodes'];
 
+if(items.length > 2){
+
       let count = 1;
       let x = 2 * imgWidth;
       items[1].classList.remove("hidden");
@@ -66,6 +68,7 @@ export default function CarSlider() {
       }
 
       loop();
+    }
     }
   }, [data])
 
